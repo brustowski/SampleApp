@@ -1,0 +1,38 @@
+.nav-tabs {
+    display: flex;
+    border-bottom: 1px solid #e4e9ef;
+    margin-bottom: 30px;
+    > li {
+        margin-right: 60px;
+        &:last-child {
+            margin-right: 0;
+        }
+        > a {
+            display: block;
+            margin: 0;
+            color: #697692;
+            font-size: 16px;
+            border-bottom: 3px solid transparent;
+            padding: 10px 0;
+            &:hover {
+                opacity: 0.8;
+                text-decoration: none;
+            }
+            &.tab-link-disabled {
+                color: #99a2b4;
+                cursor: not-allowed;
+            }
+        }
+        &.active > a {
+            &,
+            &:hover,
+            &:focus {
+                background: none;
+                color: #0a867a;
+                border: none;
+                border-bottom: 3px solid #0a867a;
+                cursor: default;
+            }
+        }
+    }
+}

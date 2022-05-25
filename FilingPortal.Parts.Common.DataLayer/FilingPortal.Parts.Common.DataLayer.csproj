@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04F1A1D6-5F20-4FB1-9CDF-50FD1F2EECC8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Parts.Common.DataLayer</RootNamespace>
+    <AssemblyName>FilingPortal.Parts.Common.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Inflector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Inflector.1.0.0.0\lib\net45\Inflector.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Base\FpConfiguration.cs" />
+    <Compile Include="Base\FpContext.cs" />
+    <Compile Include="Base\FpContextFactory.cs" />
+    <Compile Include="Base\FPMigration.cs" />
+    <Compile Include="Base\FPMigrationCodeGenerator.cs" />
+    <Compile Include="Base\FPPluginMigrationCodeGenerator.cs" />
+    <Compile Include="Base\FpMigrationConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppAddressConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppAdminConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppDocumentConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppPermissionsConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppRolesConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppSettingsConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppUsersDataConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppUsersModelConfiguration.cs" />
+    <Compile Include="Configuration\AppSystem\AppUsersStatusModelConfiguration.cs" />
+    <Compile Include="Configuration\Clients\ClientAddressConfiguration.cs" />
+    <Compile Include="Configuration\Clients\ClientCodesConfiguration.cs" />
+    <Compile Include="Configuration\Clients\ClientContactsAdditionalPhonesConfigurations.cs" />
+    <Compile Include="Configuration\Clients\ClientContactsConfiguration.cs" />
+    <Compile Include="Configuration\Clients\ClientManagementReadModelConfiguration.cs" />
+    <Compile Include="Configuration\FilingStatusConfiguration.cs" />
+    <Compile Include="Configuration\MappingStatusConfiguration.cs" />
+    <Compile Include="Configuration\JobStatusesConfiguration.cs" />
+    <Compile Include="Conventions\ColumnNameConvention.cs" />
+    <Compile Include="Conventions\DatetimeConvention.cs" />
+    <Compile Include="Conventions\DecimalConvention.cs" />
+    <Compile Include="Conventions\KeyConvention.cs" />
+    <Compile Include="Conventions\StringConvention.cs" />
+    <Compile Include="Entities\FieldConfiguration.cs" />
+    <Compile Include="Entities\UpdateField.cs" />
+    <Compile Include="Entities\ImportField.cs" />
+    <Compile Include="Helpers\MigrationHelper.cs" />
+    <Compile Include="Migrations\202010211909528_init.cs" />
+    <Compile Include="Migrations\202010211909528_init.Designer.cs">
+      <DependentUpon>202010211909528_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010261203315_cbdev_3425_move_common_tables.cs" />
+    <Compile Include="Migrations\202010261203315_cbdev_3425_move_common_tables.Designer.cs">
+      <DependentUpon>202010261203315_cbdev_3425_move_common_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010301130267_cbdev_3457_job_status_extended_with_code.cs" />
+    <Compile Include="Migrations\202010301130267_cbdev_3457_job_status_extended_with_code.Designer.cs">
+      <DependentUpon>202010301130267_cbdev_3457_job_status_extended_with_code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201322260_cbdev_3497_add_required_handbooks.cs" />
+    <Compile Include="Migrations\202011201322260_cbdev_3497_add_required_handbooks.Designer.cs">
+      <DependentUpon>202011201322260_cbdev_3497_add_required_handbooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="CommonContext.cs" />
+    <Compile Include="CommonContextFactory.cs" />
+    <Compile Include="CommonDatabaseInit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\BaseDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\Base\BaseDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\Base\BaseDefValuesRepository.cs" />
+    <Compile Include="Repositories\Base\BaseDocumentRepository.cs" />
+    <Compile Include="Repositories\Base\BaseFilingHeadersRepository.cs" />
+    <Compile Include="Repositories\Base\BaseTablesRepository.cs" />
+    <Compile Include="Repositories\JobStatusRepository.cs" />
+    <Compile Include="Services\BaseDbStructureService.cs" />
+    <Compile Include="Services\SqlQueryExecutor.cs" />
+    <Compile Include="Services\UniqueConstraintsRegister.cs" />
+    <Compile Include="UnitOfWorkContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.PluginEngine\FilingPortal.PluginEngine.csproj">
+      <Project>{F86952F8-6A1A-4A29-8E24-8A5F72F007C3}</Project>
+      <Name>FilingPortal.PluginEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.DataLayer\Framework.DataLayer.csproj">
+      <Project>{40E2F1E2-0F84-4436-9352-D76A6B6A2FC7}</Project>
+      <Name>Framework.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010211909528_init.resx">
+      <DependentUpon>202010211909528_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261203315_cbdev_3425_move_common_tables.resx">
+      <DependentUpon>202010261203315_cbdev_3425_move_common_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301130267_cbdev_3457_job_status_extended_with_code.resx">
+      <DependentUpon>202010301130267_cbdev_3457_job_status_extended_with_code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201322260_cbdev_3497_add_required_handbooks.resx">
+      <DependentUpon>202011201322260_cbdev_3497_add_required_handbooks.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\Admin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Migrations\202011201322260_cbdev_3497_add_required_handbooks.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

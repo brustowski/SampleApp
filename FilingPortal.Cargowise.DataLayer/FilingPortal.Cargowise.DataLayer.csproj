@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90AFFDF9-3C95-4784-B910-2CD46A003EE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Cargowise.DataLayer</RootNamespace>
+    <AssemblyName>FilingPortal.Cargowise.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Configuration\CountryConfiguration.cs" />
+    <Compile Include="Configuration\CwFirmsCodesConfiguration.cs" />
+    <Compile Include="Configuration\DomesticPortsConfiguration.cs" />
+    <Compile Include="Configuration\ForeignPortsConfiguration.cs" />
+    <Compile Include="Configuration\PortOfClearanceConfiguration.cs" />
+    <Compile Include="Configuration\UnlocoDictionaryEntryConfiguration.cs" />
+    <Compile Include="Configuration\USStatesConfiguration.cs" />
+    <Compile Include="Migrations\202010261636599_cbdev_3425_move_common_tables.cs" />
+    <Compile Include="Migrations\202010261636599_cbdev_3425_move_common_tables.Designer.cs">
+      <DependentUpon>202010261636599_cbdev_3425_move_common_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010301152353_cbdev_3457_empty.cs" />
+    <Compile Include="Migrations\202010301152353_cbdev_3457_empty.Designer.cs">
+      <DependentUpon>202010301152353_cbdev_3457_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011162219358_cbdev_3490_sync_only_us_ports.cs" />
+    <Compile Include="Migrations\202011162219358_cbdev_3490_sync_only_us_ports.Designer.cs">
+      <DependentUpon>202011162219358_cbdev_3490_sync_only_us_ports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="CargoWiseContext.cs" />
+    <Compile Include="PluginContextFactory.cs" />
+    <Compile Include="PluginDatabaseInit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
+    <Compile Include="Repositories\DomesticPortsRepository.cs" />
+    <Compile Include="Repositories\FirmsCodesRepository.cs" />
+    <Compile Include="Repositories\ForeignPortsRepository.cs" />
+    <Compile Include="Repositories\PortsOfClearanceRepository.cs" />
+    <Compile Include="Repositories\UnlocoDictionaryRepository.cs" />
+    <Compile Include="Repositories\USStatesRepository.cs" />
+    <Compile Include="UnitOfWorkContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Cargowise.Domain\FilingPortal.Cargowise.Domain.csproj">
+      <Project>{0f14e876-6876-410d-b819-8d4912669376}</Project>
+      <Name>FilingPortal.Cargowise.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.DataLayer\FilingPortal.Parts.Common.DataLayer.csproj">
+      <Project>{04F1A1D6-5F20-4FB1-9CDF-50FD1F2EECC8}</Project>
+      <Name>FilingPortal.Parts.Common.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.PluginEngine\FilingPortal.PluginEngine.csproj">
+      <Project>{F86952F8-6A1A-4A29-8E24-8A5F72F007C3}</Project>
+      <Name>FilingPortal.PluginEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.DataLayer\Framework.DataLayer.csproj">
+      <Project>{40E2F1E2-0F84-4436-9352-D76A6B6A2FC7}</Project>
+      <Name>Framework.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010261636599_cbdev_3425_move_common_tables.resx">
+      <DependentUpon>202010261636599_cbdev_3425_move_common_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301152353_cbdev_3457_empty.resx">
+      <DependentUpon>202010301152353_cbdev_3457_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011162219358_cbdev_3490_sync_only_us_ports.resx">
+      <DependentUpon>202011162219358_cbdev_3490_sync_only_us_ports.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Migrations\202011162219358_cbdev_3490_sync_only_us_ports.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202011162219358_cbdev_3490_sync_only_us_ports_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(ProjectDir)Resources\Migrations" "$(SolutionDir)FilingPortal.Web\bin\Resources\Migrations\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

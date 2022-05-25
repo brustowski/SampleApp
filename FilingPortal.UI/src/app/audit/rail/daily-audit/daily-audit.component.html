@@ -1,0 +1,73 @@
+<lxft-report-filters-panel [gridName]="paginationOptions.filterConfigName"
+                    (onApply)="setFilters($event)"
+                    (onReset)="setFilters()"
+                    (onReport)="report($event)">
+</lxft-report-filters-panel>
+<div class="grid-content"
+     *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <div class="grid-caption">
+      <h2 class="title">Daily audit records</h2>
+    </div>
+  </div>
+  <ngx-datatable #gridTable
+                 class="material"
+                 [headerHeight]="40"
+                 [footerHeight]="0"
+                 [rowHeight]="40"
+                 [rows]="rows"
+                 [columns]="columns"
+                 [columnMode]="'force'"
+                 [externalPaging]="true"
+                 [externalSorting]="true"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+                 [count]="paginationOptions.rowsOnPage"
+                 [offset]="paginationOptions.pageNumber"
+                 [limit]="paginationOptions.size"
+                 [sorts]="defSortGrid"
+                 [rowClass]="getRowClass"
+                 (sort)="setSort($event)"
+                 (resize)="onColumnResize($event)">
+  </ngx-datatable>
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"></lxft-grid-toolbar>
+  </div>
+</div>
+<ng-template #notificationIconTmpl let-row="row" let-value="value">
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row, Severity.Error)" [messages]="getErrors(row)"></lxft-icon-tooltip>
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row, Severity.Warning)" [messages]="getWarnings(row)"></lxft-icon-tooltip>
+</ng-template>
+<ng-template #actionsTmpl
+             let-row="row"
+             let-value="value">
+  <button class="btn-small btn-primary"
+          (click)="editRule(row)"
+          title="Edit rule">
+    <span class="icon-edit"></span>
+  </button>
+</ng-template>
+
+<ng-template #editableColumnTmpl
+             let-row="row"
+             let-value="value"
+             let-column="column">
+  <div class="edit-grid-field">
+    <div class="ellipsis"
+         title="{{ value }}">
+      <ng-container [ngSwitch]="column.type">
+        <div *ngSwitchCase="'boolean'">
+          <input type="checkbox"
+                 [id]="row.Id"
+                 [checked]="value"
+                 disabled />
+          <label [for]="row.Id"
+                 class="datatable-checkbox"></label>
+        </div>
+        <span *ngSwitchDefault>{{ value }}</span>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,100 @@
+<div class="data-item-readonly" [attr.title]="viewModeValue" *ngIf="viewMode">
+  {{ viewModeValue }}
+</div>
+<div *ngIf="!viewMode"
+     ngbDropdown
+     [placement]="'auto'"
+     [autoClose]="'outside'"
+     [container]="'body'"
+     class="address-dropdown"
+     #myDrop="ngbDropdown">
+  <div class="address-selector">
+    <span class="address-anchor"
+          ngbDropdownAnchor></span>
+    <lxft-field-lookup *ngIf="!override"
+                       [(value)]="addressId"
+                       [options]="options"
+                       [viewMode]="viewMode"
+                       lxftDependsOn
+                       (valueChange)="onValueChange()"
+                       (onBlur)="onInputBlur($event)"></lxft-field-lookup>
+    <input *ngIf="override"
+           type="text"
+           readonly="true"
+           [value]="address1 ? address1 : ''"
+           (click)="myDrop.open()"
+            />
+  </div>
+  <input type="checkbox"
+         id="override_{{options.name}}"
+         [(ngModel)]="override"
+         (change)="onValueChange()"/>
+  <label class="datatable-checkbox"
+         title="Override"
+         for="override_{{options.name}}"></label>
+  <div ngbDropdownMenu
+       class="modal-content address-dropdown-menu">
+    <div class="data-container">
+      <div class="data-item long">
+        <label class="data-item-header">Co</label>
+        <div class="data-item-textfield">
+          <input type="text"
+                 [(ngModel)]="companyName"
+                 (blur)="onValueChange()" />
+        </div>
+
+      </div>
+      <div class="data-item long">
+        <label class="data-item-header">Addr</label>
+        <div class="data-item-textfield">
+          <input type="text"
+                 [(ngModel)]="address1"
+                 (blur)="onValueChange()" />
+        </div>
+
+      </div>
+      <div class="data-item long">
+        <label class="data-item-header"></label>
+        <div class="data-item-textfield">
+          <input type="text"
+                 [(ngModel)]="address2"
+                 (blur)="onValueChange()" />
+        </div>
+      </div>
+      <div class="data-item">
+        <label class="data-item-header">Ctry</label>
+        <div class="data-item-textfield">
+          <lxft-field-lookup [(value)]="countryCode"
+                             [options]="countryOptions"
+                             [viewMode]="viewMode"
+                             (valueChange)="onValueChange()"
+                             (onBlur)="onInputBlur($event)"></lxft-field-lookup>
+        </div>
+      </div>
+      <div class="data-item">
+        <label class="data-item-header">City</label>
+        <div class="data-item-textfield">
+          <input type="text"
+                 [(ngModel)]="city"
+                 (blur)="onValueChange()" />
+        </div>
+      </div>
+      <div class="data-item">
+        <label class="data-item-header">P/C</label>
+        <div class="data-item-textfield">
+          <input type="text"
+                 [(ngModel)]="postalCode"
+                 (blur)="onValueChange()" />
+        </div>
+      </div>
+      <div class="data-item">
+        <label class="data-item-header">State</label>
+        <div class="data-item-textfield">
+          <input type="text"
+                 [(ngModel)]="stateCode"
+                 (blur)="onValueChange()" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

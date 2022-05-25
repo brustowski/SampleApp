@@ -1,0 +1,83 @@
+.filters {
+  background: #fff;
+  margin: 0 0 16px;
+}
+.filters-header {
+  background: #fff;
+  padding: 18px 15px 18px;
+  .title {
+    font: 16px/22px 'SourceSansProSemiBold', Arial, sans-serif;
+    color: #2d3547;
+    margin: 0;
+    .icon-dropdown{
+      display: inline-block;
+      color: #909090;
+      transition: all 0.2s ease;
+      line-height: 22px;
+    }
+    &.expanded{
+      .icon-dropdown{
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .right{
+    margin-top: -4px;
+  }
+}
+.filters-container {
+  background: #e1efee;
+  padding: 8px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  .advanced-label {
+    font: 12px/40px 'SourceSansProSemiBold', Arial, sans-serif;
+    color: #0a867a;
+    .icon-dropdown{
+      display: inline-block;
+      color: #909090;
+      transition: all 0.2s ease;
+      line-height: 22px;
+    }
+    &.expanded{
+      .icon-dropdown{
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+.filters-btn-set {
+  margin-top: 22px;
+  display: flex;
+  align-items: flex-start;
+  min-width: 220px;
+}
+.filter-label {
+  display: block;
+  font: 14px 'SourceSansProSemibold';
+  color: #697692;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.filter-item {
+  width: 152px;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  vertical-align: top;
+}
+.filter-item,
+.ngx-datatable,
+.drag-drop {
+  .ng-select .ng-select-container {
+    border: solid 1px #e5e8ef;
+    border-radius: 3px;
+  }
+  .ng-select.ng-select-single .ng-select-container {
+    height: 30px;
+    min-height: 30px;
+    .ng-value-container .ng-input {
+      top:0;
+    }
+  }
+}

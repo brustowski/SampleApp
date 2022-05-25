@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E6E1FD2-D644-482F-A2E1-10DB05812A51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Parts.Zones.Entry.Web</RootNamespace>
+    <AssemblyName>FilingPortal.Parts.Zones.Entry.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.5.2\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Reinforced.Typings, Version=1.5.5.0, Culture=neutral, PublicKeyToken=e17b428d860a38ed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Reinforced.Typings.1.5.5\lib\net45\Reinforced.Typings.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.5\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Common\Providers\FormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Providers\TableColumnsDataProvider.cs" />
+    <Compile Include="Common\Providers\TableNamesDataProvider.cs" />
+    <Compile Include="Configs\DataProviderNames.cs" />
+    <Compile Include="Configs\FilingConfigurationFactory.cs" />
+    <Compile Include="Configs\PageConfigNames.cs" />
+    <Compile Include="Controllers\ZonesEntryAutoFileController.cs" />
+    <Compile Include="Controllers\ZonesEntryDefaultValuesController.cs" />
+    <Compile Include="Controllers\ZonesEntryDownloadDocumentsController.cs" />
+    <Compile Include="Controllers\ZonesEntryFilingActionsController.cs" />
+    <Compile Include="Controllers\ZonesEntryFilingGridController.cs" />
+    <Compile Include="Controllers\ZonesEntryFilingProcedureController.cs" />
+    <Compile Include="Controllers\ZonesEntryRuleImporterController.cs" />
+    <Compile Include="Controllers\ZonesEntryImportController.cs" />
+    <Compile Include="Controllers\ZonesEntryInboundRecordsController.cs" />
+    <Compile Include="GridConfigs\DefaultValuesGridConfig.cs" />
+    <Compile Include="GridConfigs\FilingGridConfig.cs" />
+    <Compile Include="GridConfigs\RuleImporterGridConfig.cs" />
+    <Compile Include="GridConfigs\InboundRecordsGridConfig.cs" />
+    <Compile Include="Mappings\DomainToViewModelProfile.cs" />
+    <Compile Include="Mappings\ViewModelToDomainProfile.cs" />
+    <Compile Include="Models\ImporterChangeModel.cs" />
+    <Compile Include="Models\InboundRecordViewModel.cs" />
+    <Compile Include="Models\RuleImporterEditModel.cs" />
+    <Compile Include="Models\RuleImporterViewModel.cs" />
+    <Compile Include="PageActionsConfig\Inbound\RecordActions\Configuration.cs" />
+    <Compile Include="PageActionsConfig\Inbound\RecordActions\DeleteRule.cs" />
+    <Compile Include="PageActionsConfig\Inbound\RecordActions\DownloadRule.cs" />
+    <Compile Include="PageActionsConfig\Inbound\RecordActions\SelectRule.cs" />
+    <Compile Include="PageActionsConfig\Inbound\PageActions\Configuration.cs" />
+    <Compile Include="PageActionsConfig\Inbound\PageActions\ImportRule.cs" />
+    <Compile Include="PageActionsConfig\Inbound\PageActions\ImportTemplateRule.cs" />
+    <Compile Include="PageActionsConfig\Inbound\RecordActions\EditRule.cs" />
+    <Compile Include="PageActionsConfig\Inbound\RecordActions\ViewRule.cs" />
+    <Compile Include="PageActionsConfig\Rules\PageActions\Configuration.cs" />
+    <Compile Include="PageActionsConfig\Rules\PageActions\RulesPageAddRule.cs" />
+    <Compile Include="PageActionsConfig\Rules\RecordActions\Configuration.cs" />
+    <Compile Include="PageActionsConfig\Rules\RecordActions\RuleDeleteRule.cs" />
+    <Compile Include="PageActionsConfig\Rules\RecordActions\RuleEditRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\RuleImporterEditModelValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Domain\FilingPortal.Domain.csproj">
+      <Project>{C5756CA9-CE4B-4910-9790-F911796D74FF}</Project>
+      <Name>FilingPortal.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Infrastructure\FilingPortal.Infrastructure.csproj">
+      <Project>{B33DC68F-2B27-46B9-9327-9129F3E0EBE6}</Project>
+      <Name>FilingPortal.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Zones.Entry.DataLayer\FilingPortal.Parts.Zones.Entry.DataLayer.csproj">
+      <Project>{EE575F55-D7C9-45A3-9AF7-B6D6B492C3BF}</Project>
+      <Name>FilingPortal.Parts.Zones.Entry.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Zones.Entry.Domain\FilingPortal.Parts.Zones.Entry.Domain.csproj">
+      <Project>{CF2679F6-DF81-43E9-B2B8-F8937230B576}</Project>
+      <Name>FilingPortal.Parts.Zones.Entry.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.PluginEngine\FilingPortal.PluginEngine.csproj">
+      <Project>{F86952F8-6A1A-4A29-8E24-8A5F72F007C3}</Project>
+      <Name>FilingPortal.PluginEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Web\FilingPortal.Web.csproj">
+      <Project>{52249045-1FF4-45C1-86DA-FC546BE9CF43}</Project>
+      <Name>FilingPortal.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reinforced.Typings.settings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(TargetDir)FilingPortal.Parts.Zones.Entry.DataLayer.dll" "$(SolutionDir)FilingPortal.Web\bin\Plugins\"
+xcopy /y "$(TargetDir)FilingPortal.Parts.Zones.Entry.Domain.dll" "$(SolutionDir)FilingPortal.Web\bin\Plugins\"
+xcopy /y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)FilingPortal.Web\bin\Plugins\"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets" Condition="Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets'))" />
+  </Target>
+</Project>

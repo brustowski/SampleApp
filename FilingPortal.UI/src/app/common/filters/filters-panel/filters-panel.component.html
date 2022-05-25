@@ -1,0 +1,43 @@
+<div class="filters">
+    <div class="filters-header">
+        <div class="right">
+          <button class="btn" (click)="setFilters()" [disabled]="disabled"><span class="icon-search"></span>Search</button>
+          <button class="btn btn-primary" (click)="resetFilters()" [disabled]="disabled">Reset All</button>
+            </div>
+        <h2 class="title clickable" [ngClass]="{'expanded': !isCollapsed}" (click)="toggleCollapsed()"><i class="icon-dropdown"></i>Search</h2>
+    </div>
+    <div class="filters-container" *ngIf="!isCollapsed">
+        <div class="filters-list">
+            <div class="filter-item" *ngFor="let filter of (filters | basic)">
+                <label class="filter-label">{{filter.title}}</label>
+                <input type="text" *ngIf="filter.type === 'text'" [attr.maxlength]="filter.maxLength" [(ngModel)]="filter.value">
+                <lxft-filter-number *ngIf="filter.type === 'number'" [filter]="filter"></lxft-filter-number>
+                <lxft-filter-float-number *ngIf="filter.type === 'floatNumber'" [filter]="filter"></lxft-filter-float-number>
+                <lxft-filter-select *ngIf="filter.type==='select'" [filter]="filter"></lxft-filter-select>
+                <lxft-filter-date-range *ngIf="filter.type==='date-range'" [filter]="filter"></lxft-filter-date-range>
+            </div>
+            <div class="filter-item">
+                <label class="filter-label">&nbsp;</label>
+                <span *ngIf="(filters | advanced).length > 0"
+                    class="advanced-label clickable"
+                    [ngClass]="{'expanded': !isAdvancedCollapsed}"
+                    (click)="toggleAdvancedCollapsed()">
+                    Advanced
+                    <i class="icon-dropdown"></i>
+                </span>
+            </div>
+            <div class="row" *ngIf="!isAdvancedCollapsed">
+                <div class="filters-list">
+                        <div class="filter-item" *ngFor="let filter of (filters | advanced)">
+                            <label class="filter-label">{{filter.title}}</label>
+                            <input type="text" *ngIf="filter.type === 'text'" [attr.maxlength]="filter.maxLength" [(ngModel)]="filter.value">
+                            <lxft-filter-number *ngIf="filter.type === 'number'" [filter]="filter"></lxft-filter-number>
+                            <lxft-filter-float-number *ngIf="filter.type === 'floatNumber'" [filter]="filter"></lxft-filter-float-number>
+                            <lxft-filter-select *ngIf="filter.type==='select'" [filter]="filter"></lxft-filter-select>
+                            <lxft-filter-date-range *ngIf="filter.type==='date-range'" [filter]="filter"></lxft-filter-date-range>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,266 @@
+﻿@using System.Globalization
+@using RazorEngine
+@using FilingPortal.Domain.DTOs.Rail.Manifest
+@inherits RazorEngine.Templating.TemplateBase<Manifest>
+@{ var bol = Model.BillOfLading.BillOfLadingNumber;}
+<html>
+<head>
+    <title>Manifest</title>
+</head>
+<body>
+    <p>Manifest Header Details</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Carrier Code</td>
+                <td>@Model.ManifestHeader.CarrierCode</td>
+            </tr>
+            <tr>
+                <td>Transport Mode</td>
+                <td>@Model.ManifestHeader.TransportMode</td>
+            </tr>
+            <tr>
+                <td>Country Code of Importing Conveyance</td>
+                <td>@Model.ManifestHeader.CountryCodeOfImportingConveyance</td>
+            </tr>
+            <tr>
+                <td>Importing Conveyance Name</td>
+                <td>@Model.ManifestHeader.ImportingConveyanceName</td>
+            </tr>
+            <tr>
+                <td>Manifest Sequence Number</td>
+                <td>@Model.ManifestHeader.ManifestSequenceNumber</td>
+            </tr>
+            <tr>
+                <td>AMS MIB Paperless Participant</td>
+                <td>@Model.ManifestHeader.AmsMibPaperlessParticipant</td>
+            </tr>
+            <tr>
+                <td>Manifest Type Code</td>
+                <td>@Model.ManifestHeader.ManifestTypeCode</td>
+            </tr>
+            <tr>
+                <td>Carrier Assigned Batch Number</td>
+                <td>@Model.ManifestHeader.CarrierAssignedBatchNumber</td>
+            </tr>
+            <tr>
+                <td>District Port of Unlading</td>
+                <td>@Model.ManifestHeader.DistrictPortOfUnlading</td>
+            </tr>
+            <tr>
+                <td>Estimated Arrival Date/Time</td>
+                <td>@Model.ManifestHeader.EstimatedArrivalDateTime.ToString("dd-MMM-yy HH:mm", CultureInfo.InvariantCulture)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Bill of lading details for @bol</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>Issuer SCAC Code</td>
+            <td>@Model.BillOfLading.IssuerScacCode</td>
+        </tr>
+        <tr>
+            <td>Foreign Port of Lading</td>
+            <td>@Model.BillOfLading.ForeignPortOfLading</td>
+        </tr>
+        <tr>
+            <td>Manifest Quantity</td>
+            <td>@Model.BillOfLading.ManifestQuantity @Model.BillOfLading.ManifestQuantityUnit</td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td>@Model.BillOfLading.Weight @Model.BillOfLading.WeightUnit</td>
+        </tr>
+        <tr>
+            <td>Bill of Lading Status</td>
+            <td>@Model.BillOfLading.BillOfLadingStatus</td>
+        </tr>
+        <tr>
+            <td>Master In-Bond Indicator</td>
+            <td>@Model.BillOfLading.MasterInBondIndicator</td>
+        </tr>
+        <tr>
+            <td>Measurement</td>
+            <td>@Model.BillOfLading.Measurement @Model.BillOfLading.MeasurementUnit</td>
+        </tr>
+        <tr>
+            <td>Place of Receipt by Pre-carrier</td>
+            <td>@Model.BillOfLading.PlaceOfReceiptByPreCarrier</td>
+        </tr>
+
+    </table>
+
+    @if (@Model.AdditionalReferences.Count > 0)
+    {
+        <p>Additional Reference Numbers for @bol</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Reference Type</th>
+                    <th>Reference Number</th>
+                </tr>
+            </thead>
+            @foreach (AdditionalReference additionalReference in @Model.AdditionalReferences)
+            {
+                <tr>
+                    <td>@additionalReference.ReferenceType</td>
+                    <td>@additionalReference.ReferenceNumber</td>
+                </tr>
+            }
+        </table>
+    }
+
+    <p>Entities Involved for @bol</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Entity Type</th>
+                <th>ID Code Qualifier</th>
+                <th>ID Code</th>
+                <th>Address</th>
+                <th>Contact Name</th>
+                <th>Contact Number</th>
+            </tr>
+        </thead>
+        @foreach (InvolvedEntity involvedEntity in @Model.InvolvedEntities)
+        {
+            <tr>
+                <td>@involvedEntity.Name</td>
+                <td>@involvedEntity.EntityType</td>
+                <td>@involvedEntity.CodeQualifierId</td>
+                <td>@involvedEntity.CodeId</td>
+                <td>@involvedEntity.Address</td>
+                <td>@involvedEntity.ContactName</td>
+                <td>@involvedEntity.ContactNumber</td>
+            </tr>
+        }
+    </table>
+
+    <p>Equipment Details for @bol</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Equipment Number</th>
+                <th>Seal Number 1</th>
+                <th>Seal Number 2</th>
+                <th>Container/Equipment Type Code</th>
+                <th>Load/Empty Status Code</th>
+            </tr>
+        </thead>
+        @foreach (EquipmentDetail equipmentDetail in @Model.EquipmentDetails)
+        {
+            <tr>
+                <td>@equipmentDetail.EquipmentNumber</td>
+                <td>@equipmentDetail.SealNumber1</td>
+                <td>@equipmentDetail.SealNumber2</td>
+                <td>@equipmentDetail.ContainerEquipmentTypeCode</td>
+                <td>@equipmentDetail.LoadEmptyStatusCode</td>
+            </tr>
+        }
+    </table>
+
+    @if (@Model.TariffDetails.Count > 0)
+    {
+        <p>Tariff Lines Details for @bol</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Harmonized Tariff Number</th>
+                    <th>Value</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            @foreach (TariffDetail tariffDetail in @Model.TariffDetails)
+            {
+                <tr>
+                    <td>@tariffDetail.HarmonizedTariffNumber</td>
+                    <td>@tariffDetail.Value</td>
+                    <td>@tariffDetail.Weight @tariffDetail.WeightUnit</td>
+                </tr>
+            }
+        </table>
+    }
+
+    <p>C4 Lines Details for @bol</p>
+    <table>
+        <thead>
+            <tr>
+                <th>C4 Number</th>
+                <th>Description</th>
+                <th>Piece Count</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        @foreach (C4Detail c4Detail in @Model.C4Details)
+        {
+            <tr>
+                <td>@c4Detail.C4Number</td>
+                <td>@c4Detail.Description</td>
+                <td>@c4Detail.PieceCount @c4Detail.PieceCountUnit</td>
+                <td>@c4Detail.Country</td>
+            </tr>
+        }
+    </table>
+
+    <p>Marks and Numbers for @bol</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Marks and Numbers</th>
+            </tr>
+        </thead>
+        @foreach (var value in @Model.MarksAndNumbers)
+        {
+            <tr>
+                <td>@value</td>
+            </tr>
+        }
+    </table>
+
+    @if (@Model.HazardousMaterials.Count > 0)
+    {
+        <p>Hazardous Materials for @bol</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Class</th>
+                    <th>Code Qualifier</th>
+                    <th>Description</th>
+                    <th>Contact Number</th>
+                    <th>Flash Point Temperature</th>
+                    <th>Detailed Description</th>
+                    <th>Classification or Division or Label Requirement</th>
+                </tr>
+            </thead>
+            @foreach (HazardousMaterial hazardousMaterial in @Model.HazardousMaterials)
+            {
+                <tr>
+                    <td>@hazardousMaterial.Code</td>
+                    <td>@hazardousMaterial.Class</td>
+                    <td>@hazardousMaterial.CodeQualifier</td>
+                    <td>@hazardousMaterial.Description</td>
+                    <td>@hazardousMaterial.ContactNumber</td>
+                    <td>@hazardousMaterial.FlashPointTemperature</td>
+                    <td>@hazardousMaterial.DetailedDescription</td>
+                    <td>@hazardousMaterial.ClassificationDivisionLabelRequirement</td>
+                </tr>
+            }
+        </table>
+    }
+</body>
+</html>

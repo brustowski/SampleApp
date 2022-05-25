@@ -1,0 +1,126 @@
+<lxft-filters-panel [gridName]="paginationOptions.filterConfigName"
+                    (onApply)="setFilters($event)"
+                    (onReset)="setFilters()">
+</lxft-filters-panel>
+<div class="grid-content"
+     *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <div class="grid-caption">
+      <h2 class="title">Daily audit rules</h2>
+    </div>
+    <ng-container *ngIf="availableActions['Import']">
+      <input type="file" ng2FileSelect [uploader]="uploader" class="hidden" #fileInput />
+    </ng-container>
+    <button class="btn btn-primary"
+            title="Add"
+            (click)="add()"
+            [disabled]="isEdit"
+            *ngIf="availableActions && availableActions['Add']">
+      <span class="icon-add"></span>Add
+    </button>
+  </div>
+  <ngx-datatable #gridTable
+                 class="material"
+                 [headerHeight]="40"
+                 [footerHeight]="0"
+                 [rowHeight]="40"
+                 [rows]="rows"
+                 [columns]="columns"
+                 [columnMode]="'force'"
+                 [externalPaging]="true"
+                 [externalSorting]="true"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+                 [count]="paginationOptions.rowsOnPage"
+                 [offset]="paginationOptions.pageNumber"
+                 [limit]="paginationOptions.size"
+                 [sorts]="defSortGrid"
+                 (sort)="setSort($event, !isEdit)"
+                 (resize)="onColumnResize($event)">
+  </ngx-datatable>
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [disabled]="isEdit"
+                       [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"></lxft-grid-toolbar>
+  </div>
+</div>
+
+<ng-template #actionsTmpl
+             let-row="row"
+             let-value="value">
+  <ng-container *ngIf="row.ViewMode; else editModeTemplate">
+    <button class="btn-small btn-primary"
+            title="Copy"
+            (click)="add(row)"
+            [disabled]="isEdit || !row.Actions?.Copy">
+      <span class="icon-copy"></span>
+    </button>
+    <button class="btn-small btn-primary"
+            title="Edit"
+            (click)="edit(row)"
+            [disabled]="isEdit || !row.Actions?.Edit">
+      <span class="icon-edit"></span>
+    </button>
+    <button class="btn-small btn-primary"
+            title="Delete"
+            (click)="delete(row.Id)"
+            [disabled]="isEdit || !row.Actions?.Delete">
+      <span class="icon-delete"></span>
+    </button>
+  </ng-container>
+
+  <ng-template #editModeTemplate>
+    <button class="btn-small btn-primary"
+            *ngIf="row.Id === 0"
+            title="Create"
+            (click)="create(row)">
+      <span class="icon-check"></span>
+    </button>
+    <button class="btn-small btn-primary"
+            *ngIf="row.Id > 0"
+            title="Save"
+            (click)="update(row)">
+      <span class="icon-check"></span>
+    </button>
+    <button class="btn-small btn-primary btn-remove"
+            title="Cancel"
+            (click)="cancel()">
+      <span class="icon-remove"></span>
+    </button>
+  </ng-template>
+</ng-template>
+
+<ng-template #editableColumnTmpl
+             let-row="row"
+             let-value="value"
+             let-column="column">
+  <div class="edit-grid-field">
+    <div *ngIf="row.ViewMode || !column.type"
+         class="ellipsis"
+         title="{{stringifyValue(value, column)}}">
+      <ng-container [ngSwitch]="column.type">
+        <div *ngSwitchCase="'boolean'">
+          <input type="checkbox"
+                 [id]="row.Id"
+                 [checked]="value"
+                 disabled />
+          <label [for]="row.Id"
+                 class="datatable-checkbox"></label>
+        </div>
+        <span *ngSwitchDefault>{{ stringifyValue(value, column) }}</span>
+      </ng-container>
+    </div>
+
+    <div *ngIf="!row.ViewMode && column.type"
+         [ngClass]="{
+        'edit-grid-field-error': row.options[column.prop]?.validationOn && row.options[column.prop]?.hasErrors()
+      }">
+      <lxft-column-field-selector [(value)]="row[column.updatedProperty]"
+                                  [options]="row.options[column.prop]"
+                                  [type]="column.type"></lxft-column-field-selector>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #hdrTpl let-column="column"><lxft-grid-header [column]="column"></lxft-grid-header></ng-template>

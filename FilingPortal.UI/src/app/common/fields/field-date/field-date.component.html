@@ -1,0 +1,35 @@
+<div class="data-item-readonly"
+     [attr.title]="value"
+     *ngIf="viewMode">
+  {{ value }}
+</div>
+<div class="data-field"
+     *ngIf="!viewMode"
+     [ngClass]="{ error: this.options.validationOn && this.options.hasErrors() }"
+     [ngbPopover]="popContent"
+     triggers="mouseenter:mouseleave"
+     container="body"
+     popoverClass="popover error-popover">
+  <input name="mydp"
+         type="text"
+         autocomplete="off"
+         [disabled]="options.isDisabled"
+         placeholder="MM/DD/YYYY"
+         [(ngModel)]="model"
+         [options]="settings"
+         ngx-mydatepicker
+         (dateChanged)="onDateCahge($event)"
+         (inputFieldChanged)="onInputChange($event)"
+         (blur)="onInputBlur($event)"
+         (focus)="onFocus($event)"
+         #dp="ngx-mydatepicker" />
+  <span *ngIf="this.options.validationOn && this.options.hasErrors()"
+        class="icon-error"></span>
+  <button type="button"
+          (click)="dp.toggleCalendar()"
+          class="btn-link"><i class="icon-calendar"></i></button>
+</div>
+<ng-template #popContent>
+  <span *ngFor="let e of options.errors"
+        class="error-message">{{ e }}</span>
+</ng-template>

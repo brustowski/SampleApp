@@ -1,0 +1,29 @@
+<div class="page-header">
+  <div class="flex">
+    <div class="left">
+      <a class="page-link" (click)="backToList()">Back to list</a>
+      <h1 class="page-title">Review and Create</h1>
+    </div>
+    <div>
+      <span class="info red">
+        Records with validation failed are not displayed
+      </span>
+    </div>
+    <div class="right page-action" *ngIf="!viewMode">
+      <button
+        class="btn"
+        *ngIf="(availableActions$ | async)?.Undo"
+        (click)="undo()"
+      >
+        <span class="icon-remove"></span>Undo
+      </button>
+      <button class="btn" (click)="save()">Save</button>
+      <button class="btn btn-primary" (click)="finish()">Create</button>
+    </div>
+  </div>
+</div>
+<div class="data-container single-filing-panel">
+  <div class="container-body" *ngIf="showScreen">
+    <lxft-expandable-grid-filing #grid (onExclude)="reload()"></lxft-expandable-grid-filing>
+  </div>
+</div>

@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F86952F8-6A1A-4A29-8E24-8A5F72F007C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.PluginEngine</RootNamespace>
+    <AssemblyName>FilingPortal.PluginEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Reinforced.Typings, Version=1.5.5.0, Culture=neutral, PublicKeyToken=e17b428d860a38ed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Reinforced.Typings.1.5.5\lib\net45\Reinforced.Typings.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authorization\PermissionRequiredAttribute.cs" />
+    <Compile Include="Autofac\PluginDomainModule.cs" />
+    <Compile Include="Autofac\PluginDataLayerModule.cs" />
+    <Compile Include="Autofac\Local.cs" />
+    <Compile Include="Autofac\PluginWebModule.cs" />
+    <Compile Include="Common\CompatibleDataTypeService.cs" />
+    <Compile Include="Common\Extensions\AutofacModuleExtension.cs" />
+    <Compile Include="Common\FilingResultBuilder.cs" />
+    <Compile Include="Controllers\FilingControllerBase.cs" />
+    <Compile Include="Controllers\AutoFileControllerBase.cs" />
+    <Compile Include="DataProviders\Cargowise\UnlocoDictionaryDataProvider.cs" />
+    <Compile Include="DataProviders\EntryDateElectionCodeDataProvider.cs" />
+    <Compile Include="DataProviders\EpaTscaDataProvider.cs" />
+    <Compile Include="DataProviders\ClientContactCodeDataProvider.cs" />
+    <Compile Include="DataProviders\FilterProviders\ClientCodeWithEinDataProvider.cs" />
+    <Compile Include="DataProviders\FilterProviders\ClientFullNameWithEinDataProvider.cs" />
+    <Compile Include="DataProviders\ShipmentTypeDataProvider.cs" />
+    <Compile Include="DataProviders\FieldTypeDataProvider.cs" />
+    <Compile Include="DataProviders\ClientCodeDataProvider.cs" />
+    <Compile Include="DataProviders\AllClientsDataProvider.cs" />
+    <Compile Include="DataProviders\Cargowise\FinalDestinationDataProvider.cs" />
+    <Compile Include="DataProviders\Cargowise\PacksUnitOfMeasureDataProvider.cs" />
+    <Compile Include="DataProviders\Cargowise\SubLocationDataProvider.cs" />
+    <Compile Include="DataProviders\Cargowise\FirstPortArrivalDataProvider.cs" />
+    <Compile Include="DataProviders\Cargowise\PortsOfClearanceDataProvider.cs" />
+    <Compile Include="DataProviders\ClientAddressCodeDataProvider.cs" />
+    <Compile Include="DataProviders\ContainerTypesDataProvider.cs" />
+    <Compile Include="DataProviders\FilterProviders\ClientFullNamesDataProvider.cs" />
+    <Compile Include="DataProviders\FilterProviders\ReconIssueDataProvider.cs" />
+    <Compile Include="DataProviders\HtsNumbersDataProvider.cs" />
+    <Compile Include="DataProviders\BaseTableColumnsDataProvider.cs" />
+    <Compile Include="DataProviders\BaseTableNamesDataProvider.cs" />
+    <Compile Include="DataProviders\TransportModeCodesDataProvider.cs" />
+    <Compile Include="DataProviders\CertifyingIndividualDataProvider.cs" />
+    <Compile Include="DataProviders\UnlocoDataProvider.cs" />
+    <Compile Include="DataProviders\EntryTypeDataProvider.cs" />
+    <Compile Include="DataProviders\StatesDataProvider.cs" />
+    <Compile Include="DataProviders\TransportModeNumberDataProvider.cs" />
+    <Compile Include="DataProviders\ErrorStatusDataProvider.cs" />
+    <Compile Include="FieldConfigurations\Common\AddressInboundRecordField.cs" />
+    <Compile Include="FieldConfigurations\IComplexFieldsRule.cs" />
+    <Compile Include="GridConfigurations\AgileGridConfiguration.cs" />
+    <Compile Include="Common\Grids\IGridConfigRegistry.cs" />
+    <Compile Include="Common\IPluginDatabaseInit.cs" />
+    <Compile Include="Common\Json\DateTimeConverter.cs" />
+    <Compile Include="Common\PluginsEngine.cs" />
+    <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\DefaultValuesControllerBase.cs" />
+    <Compile Include="Controllers\RuleControllerBase.cs" />
+    <Compile Include="Controllers\InboundControllerBase.cs" />
+    <Compile Include="DataProviders\Cargowise\CargowiseFirmsCodesDataProvider.cs" />
+    <Compile Include="DataProviders\DataProviderNames.cs" />
+    <Compile Include="DataProviders\DomesticPortDataProvider.cs" />
+    <Compile Include="DataProviders\FilterProviders\YesNoFilterDataProvider.cs" />
+    <Compile Include="DataProviders\HandbooksDataProvider.cs" />
+    <Compile Include="DataProviders\ImporterDataProvider.cs" />
+    <Compile Include="DataProviders\UnitsDataProvider.cs" />
+    <Compile Include="DataProviders\UOMDatProvider.cs" />
+    <Compile Include="FieldConfigurations\BaseFilingConfigurationFactory.cs" />
+    <Compile Include="FieldConfigurations\Common\ComplexInboundRecordField.cs" />
+    <Compile Include="FieldConfigurations\Common\DocumentTreeNode.cs" />
+    <Compile Include="FieldConfigurations\Common\DropdownInboundRecordField.cs" />
+    <Compile Include="FieldConfigurations\Common\FieldTreeNode.cs" />
+    <Compile Include="FieldConfigurations\Common\FilingConfiguration.cs" />
+    <Compile Include="FieldConfigurations\Common\FilingConfigurationField.cs" />
+    <Compile Include="FieldConfigurations\Common\FilingConfigurationSection.cs" />
+    <Compile Include="FieldConfigurations\Common\IFormConfigFactory.cs" />
+    <Compile Include="FieldConfigurations\Common\InboundRecordField.cs" />
+    <Compile Include="FieldConfigurations\Common\TreeNode.cs" />
+    <Compile Include="FieldConfigurations\FieldConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\FieldType.cs" />
+    <Compile Include="FieldConfigurations\IFieldConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\IFilingConfigurationFactory.cs" />
+    <Compile Include="FieldConfigurations\IInboundRecordFieldBuilder.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\BaseInboundRecordField.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\IInboundRecordConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\IInboundRecordFieldFactory.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\InboundRecordConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\InboundRecordFieldConfiguration.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\InboundRecordFieldFactory.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\InboundRecordFieldSection.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\IValueTypeConverter.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\UIValueTypes.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordParameters\ValueTypeConverter.cs" />
+    <Compile Include="GridConfigurations\Columns\ColumnAlign.cs" />
+    <Compile Include="GridConfigurations\Columns\ColumnBuilder.cs" />
+    <Compile Include="GridConfigurations\Columns\ColumnConfig.cs" />
+    <Compile Include="GridConfigurations\Columns\ColumnEditTypes.cs" />
+    <Compile Include="GridConfigurations\Columns\IColumnBuilder.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\ImportEntryStatusFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\FilingStatusFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\ExportEntryStatusFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\JobStatusFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\MappingStatusFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\Filters\FilterConfig.cs" />
+    <Compile Include="GridConfigurations\Filters\FilterConfigOptions.cs" />
+    <Compile Include="GridConfigurations\Filters\FilterDataProviderBase.cs" />
+    <Compile Include="GridConfigurations\Filters\IFilterConfigOptions.cs" />
+    <Compile Include="GridConfigurations\Filters\IFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\Filters\IFilterDataProviderRegistry.cs" />
+    <Compile Include="GridConfigurations\GridConfiguration.cs" />
+    <Compile Include="GridConfigurations\GridConfigurationWithUniqueFields.cs" />
+    <Compile Include="GridConfigurations\HighlightingType.cs" />
+    <Compile Include="GridConfigurations\IGridConfiguration.cs" />
+    <Compile Include="GridConfigurations\DefaultValuesGridConfigBase.cs" />
+    <Compile Include="GridConfigurations\RuleGridConfigurationWithUniqueFields.cs" />
+    <Compile Include="GridConfigurations\RuleGridConfiguration.cs" />
+    <Compile Include="Lookups\HandbookDataProviderBase.cs" />
+    <Compile Include="Common\IUiAvailable.cs" />
+    <Compile Include="Lookups\ILookupDataProvider.cs" />
+    <Compile Include="Lookups\IHandbookDataProviderRegistry.cs" />
+    <Compile Include="Lookups\HandbookDataProviderRegistry.cs" />
+    <Compile Include="Lookups\SearchInfo.cs" />
+    <Compile Include="Mapping\Converters\AddressFieldTypeValueResolver.cs" />
+    <Compile Include="Mapping\Converters\FieldTypeValueResolver.cs" />
+    <Compile Include="Models\Actions.cs" />
+    <Compile Include="Models\BaseFilingRecordModelWithActions.cs" />
+    <Compile Include="Models\DefValuesEditModel.cs" />
+    <Compile Include="Models\DefValuesViewModel.cs" />
+    <Compile Include="Models\FieldErrorViewModel.cs" />
+    <Compile Include="Models\Fields\AddressFieldEditModel.cs" />
+    <Compile Include="Models\Fields\FieldModel.cs" />
+    <Compile Include="Models\FileProcessingDetailedResultViewModel.cs" />
+    <Compile Include="Models\FileProcessingResultViewModel.cs" />
+    <Compile Include="Models\FilingRecordModelWithActionsNew.cs" />
+    <Compile Include="Models\FilingRecordModelWithActionsOld.cs" />
+    <Compile Include="Models\FormConfigModel.cs" />
+    <Compile Include="Models\HttpPostedData.cs" />
+    <Compile Include="Models\HttpPostedField.cs" />
+    <Compile Include="Models\HttpPostedFile.cs" />
+    <Compile Include="Models\IModelWithStringValidation.cs" />
+    <Compile Include="Models\IModelWithValidation.cs" />
+    <Compile Include="Models\InboundRecordModels\FilingResultViewModel.cs" />
+    <Compile Include="Models\InboundRecordModels\InboundRecordDocumentEditModel.cs" />
+    <Compile Include="Models\InboundRecordModels\InboundRecordDocumentViewModel.cs" />
+    <Compile Include="Models\InboundRecordModels\InboundRecordFileModel.cs" />
+    <Compile Include="Models\InboundRecordModels\InboundRecordParameterModel.cs" />
+    <Compile Include="Models\InboundRecordValidation\InboundRecordErrorViewModel.cs" />
+    <Compile Include="Models\InboundRecordValidation\InboundRecordValidationViewModel.cs" />
+    <Compile Include="Models\PageConfigurationModel.cs" />
+    <Compile Include="Models\RuleViewModelWithActions.cs" />
+    <Compile Include="Models\ValidationResultViewModel.cs" />
+    <Compile Include="Models\ValidationResultWithFieldsErrorsViewModel.cs" />
+    <Compile Include="Models\ViewModelWithActions.cs" />
+    <Compile Include="PageConfigs\ActionConfig.cs" />
+    <Compile Include="PageConfigs\ActionOptions.cs" />
+    <Compile Include="PageConfigs\IActionOptions.cs" />
+    <Compile Include="PageConfigs\IAvailableRule.cs" />
+    <Compile Include="PageConfigs\IPageConfigContainer.cs" />
+    <Compile Include="PageConfigs\IPageConfiguration.cs" />
+    <Compile Include="PageConfigs\PageConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AddressFilingParametersHandler.cs" />
+    <Compile Include="Services\AutofileServiceBase.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\BaseProcessor.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\ErrorHandler.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\IUpdateRecordsProcessor.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\LeftProcessor.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\MatchedProcessor.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\NoConfigProcessor.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\NoRulesProcessor.cs" />
+    <Compile Include="Services\Filing\Auto\AutoFilingProcessors\NotMatchedProcessor.cs" />
+    <Compile Include="Services\Filing\Auto\BaseRefileAssistant.cs" />
+    <Compile Include="Services\Filing\Auto\IRefileAssistant.cs" />
+    <Compile Include="Services\Filing\IAutoFileService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Cargowise.Domain\FilingPortal.Cargowise.Domain.csproj">
+      <Project>{0F14E876-6876-410D-B819-8D4912669376}</Project>
+      <Name>FilingPortal.Cargowise.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Domain\FilingPortal.Domain.csproj">
+      <Project>{c5756ca9-ce4b-4910-9790-f911796d74ff}</Project>
+      <Name>FilingPortal.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502e19b9-f26b-4a7a-89c9-e432a6e39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reinforced.Typings.settings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets" Condition="Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets'))" />
+  </Target>
+</Project>

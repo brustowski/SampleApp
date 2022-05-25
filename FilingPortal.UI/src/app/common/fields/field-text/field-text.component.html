@@ -1,0 +1,27 @@
+<div class="data-item-readonly"
+     [attr.title]="value"
+     *ngIf="viewMode">
+  {{ value }}
+</div>
+<div [ngClass]="{ error: options.validationOn && options.errors.length > 0 }"
+     *ngIf="!viewMode"
+     [ngbPopover]="popContent"
+     triggers="mouseenter:mouseleave"
+     container="body"
+     popoverClass="popover error-popover">
+  <input type="text"
+         [title]="value ? value : ''"
+         [attr.maxlength]="options.maxLength"
+         [disabled]="options.isDisabled"
+         [(ngModel)]="value"
+         (input)="onChange($event)"
+         (blur)="onInputBlur($event)"
+         (focus)="onFocus($event)" />
+  <span *ngIf="options.validationOn && options.errors.length > 0"
+        class="icon-error"></span>
+</div>
+<ng-template #popContent>
+  <span *ngFor="let e of options.errors"
+        class="error-message">{{ e }}
+  </span>
+</ng-template>

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{318252E8-27CA-479F-A4AC-76842D7E5423}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Parts.Inbond.Web</RootNamespace>
+    <AssemblyName>FilingPortal.Parts.Inbond.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.5.2\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Reinforced.Typings, Version=1.5.5.0, Culture=neutral, PublicKeyToken=e17b428d860a38ed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Reinforced.Typings.1.5.5\lib\net45\Reinforced.Typings.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.5\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.5\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Common\Providers\InBondEntryStatusFilterDataProvider.cs" />
+    <Compile Include="Common\Providers\FormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Providers\InBondCarrierDataProvider.cs" />
+    <Compile Include="Common\Providers\TableColumnsDataProvider.cs" />
+    <Compile Include="Common\Providers\MarksRemarksDataProvider.cs" />
+    <Compile Include="Common\Providers\TableNamesDataProvider.cs" />
+    <Compile Include="Configs\DataProviderNames.cs" />
+    <Compile Include="Configs\FilingConfigurationFactory.cs" />
+    <Compile Include="Configs\PageConfigNames.cs" />
+    <Compile Include="Controllers\InbondDefaultValuesController.cs" />
+    <Compile Include="Controllers\InbondDownloadDocumentsController.cs" />
+    <Compile Include="Controllers\InbondFilingActionsController.cs" />
+    <Compile Include="Controllers\InbondFilingGridController.cs" />
+    <Compile Include="Controllers\InbondFilingProcedureController.cs" />
+    <Compile Include="Controllers\InbondImportRuleEntryController.cs" />
+    <Compile Include="Controllers\InbondImportController.cs" />
+    <Compile Include="Controllers\InbondImportImportController.cs" />
+    <Compile Include="FieldConfigurations\ComplexFieldRule.cs" />
+    <Compile Include="GridConfigs\DefaultValuesGridConfig.cs" />
+    <Compile Include="GridConfigs\FilingGridConfig.cs" />
+    <Compile Include="GridConfigs\InbondImportGridConfig.cs" />
+    <Compile Include="GridConfigs\RuleEntryGridConfig.cs" />
+    <Compile Include="Mappings\DomainToViewModelProfile.cs" />
+    <Compile Include="Mappings\ViewModelToDomainProfile.cs" />
+    <Compile Include="Models\InbondViewModel.cs" />
+    <Compile Include="Models\RuleEntryEditModel.cs" />
+    <Compile Include="Models\RuleEntryViewModel.cs" />
+    <Compile Include="PageConfig\InbondActionsConfig.cs" />
+    <Compile Include="PageConfig\InbondDeleteRule.cs" />
+    <Compile Include="PageConfig\InbondEditRule.cs" />
+    <Compile Include="PageConfig\InbondListActionsConfig.cs" />
+    <Compile Include="PageConfig\InbondListCancelRule.cs" />
+    <Compile Include="PageConfig\InbondListDeleteRule.cs" />
+    <Compile Include="PageConfig\InbondListEditRule.cs" />
+    <Compile Include="PageConfig\InbondListReviewFileRule.cs" />
+    <Compile Include="PageConfig\InbondListViewRule.cs" />
+    <Compile Include="PageConfig\InbondSelectRule.cs" />
+    <Compile Include="PageConfig\InbondViewPageActionsConfig.cs" />
+    <Compile Include="PageConfig\InbondViewPageImportRule.cs" />
+    <Compile Include="PageConfig\InbondViewPageImportTemplateRule.cs" />
+    <Compile Include="PageConfig\Rules\PageActions\Configuration.cs" />
+    <Compile Include="PageConfig\Rules\PageActions\RulesPageAddRule.cs" />
+    <Compile Include="PageConfig\Rules\RecordActions\Configuration.cs" />
+    <Compile Include="PageConfig\Rules\RecordActions\RuleDeleteRule.cs" />
+    <Compile Include="PageConfig\Rules\RecordActions\RuleEditRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\RuleEntryEditModelValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <Content Include="App_Data\Templates\inbond_import_template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Cargowise.Domain\FilingPortal.Cargowise.Domain.csproj">
+      <Project>{0F14E876-6876-410D-B819-8D4912669376}</Project>
+      <Name>FilingPortal.Cargowise.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Domain\FilingPortal.Domain.csproj">
+      <Project>{c5756ca9-ce4b-4910-9790-f911796d74ff}</Project>
+      <Name>FilingPortal.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Infrastructure\FilingPortal.Infrastructure.csproj">
+      <Project>{B33DC68F-2B27-46B9-9327-9129F3E0EBE6}</Project>
+      <Name>FilingPortal.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Inbond.DataLayer\FilingPortal.Parts.Inbond.DataLayer.csproj">
+      <Project>{ec9b13d9-1887-4182-930b-e12801d8bfad}</Project>
+      <Name>FilingPortal.Parts.Inbond.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Inbond.Domain\FilingPortal.Parts.Inbond.Domain.csproj">
+      <Project>{25D5C1B7-8413-497A-B388-A2C17379C0C0}</Project>
+      <Name>FilingPortal.Parts.Inbond.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.PluginEngine\FilingPortal.PluginEngine.csproj">
+      <Project>{F86952F8-6A1A-4A29-8E24-8A5F72F007C3}</Project>
+      <Name>FilingPortal.PluginEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Web\FilingPortal.Web.csproj">
+      <Project>{52249045-1FF4-45C1-86DA-FC546BE9CF43}</Project>
+      <Name>FilingPortal.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reinforced.Typings.settings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(TargetDir)FilingPortal.Parts.Inbond.DataLayer.dll" "$(SolutionDir)FilingPortal.Web\bin\Plugins\"
+xcopy /y "$(TargetDir)FilingPortal.Parts.Inbond.Domain.dll" "$(SolutionDir)FilingPortal.Web\bin\Plugins\"
+xcopy /y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)FilingPortal.Web\bin\Plugins\"
+xcopy "$(ProjectDir)App_Data" "$(SolutionDir)FilingPortal.Web\bin\App_Data\" /s /y</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets" Condition="Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets'))" />
+  </Target>
+</Project>

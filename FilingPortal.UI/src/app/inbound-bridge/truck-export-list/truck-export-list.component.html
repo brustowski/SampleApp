@@ -1,0 +1,133 @@
+<div class="page-header">
+  <div class="right"
+       *ngIf="pageAvailableActions">
+    <lxft-button-file-uploader *ngIf="pageAvailableActions?.Import"
+                               title="Import from Excel"
+                               btnClass="btn btn-primary"
+                               iconClass="icon-import"
+                               [url]="importUrl"
+                               (success)="onUploadSuccess($event)"
+                               (error)="onUploadError($event)">
+    </lxft-button-file-uploader>
+    <button class="btn btn-primary"
+            *ngIf="pageAvailableActions?.Template"
+            (click)="downloadTemplate()">
+      <span class="icon-export"></span>Download Template
+    </button>
+    <button class="btn btn-primary"
+            (click)="exportList()">
+      <span class="icon-export"></span>Export to Excel
+    </button>
+  </div>
+  <h1 class="page-title">{{paginationOptions?.title}}</h1>
+</div>
+
+<lxft-filters-panel [gridName]="paginationOptions.filterConfigName"
+                    (onApply)="setFilters($event)"
+                    (onReset)="setFilters()">
+</lxft-filters-panel>
+
+<div class="grid-content"
+     *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <lxft-grid-selection-toolbar [selectedRows]="selectedRows"
+                                 (onClear)="clearSelected()">
+    </lxft-grid-selection-toolbar>
+    <button class="btn"
+            (click)="uploadDocuments()"><span class="icon-import"></span>Mass Upload...</button>
+    <button class="btn"
+            (click)="getJobNumber()"><span class="icon-loop2"></span>Pull Job No</button>
+    <button class="btn btn-primary"
+            (click)="createRecords()"><span class="icon-view"></span>Review & Create</button>
+    <button class="btn"
+            (click)="validateRecords()"><span class="icon-check"></span>Validate All</button>
+    <button class="btn"
+            (click)="delete()"><span class="icon-delete"></span>Delete</button>
+  </div>
+
+  <ngx-datatable #gridTable
+                 class="material"
+                 [headerHeight]="40"
+                 [footerHeight]="0"
+                 [rowHeight]="40"
+                 [rows]="rows"
+                 [rowClass]="getRowClass"
+                 [columns]="columns"
+                 [columnMode]="'force'"
+                 [reorderable]="true"
+                 [externalPaging]="true"
+                 [externalSorting]="true"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+                 [selected]="selectedRows"
+                 [rowIdentity]="getRowId"
+                 [displayCheck]="canBeChecked"
+                 [selectionType]="'checkbox'"
+                 [selectAllRowsOnPage]="false"
+                 [selectAllEnabled]="true"
+                 [count]="paginationOptions.rowsOnPage"
+                 [offset]="paginationOptions.pageNumber"
+                 [limit]="paginationOptions.size"
+                 [sorts]="defSortGrid"
+                 (sort)="setSort($event)"
+                 (resize)="onColumnResize($event)"
+                 (select)="onSelect($event)">
+  </ngx-datatable>
+
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"></lxft-grid-toolbar>
+  </div>
+</div>
+
+<ng-template #notificationIconTmpl
+             let-row="row"
+             let-value="value">
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row)"
+                     [messages]="row.Errors"></lxft-icon-tooltip>
+</ng-template>
+<ng-template #statusTmpl
+             let-row="row">
+  <app-colored-label *ngIf="isNotNil(row.JobStatus)"
+                     [css]="getJobLabelType(row.JobStatus)"
+                     [title]="row.JobStatusTitle"
+                     [value]="row.JobStatusCode">
+  </app-colored-label>
+  <app-colored-label *ngIf="isNotNil(row.EntryStatus)"
+                     [css]="'default'"
+                     [title]="row.EntryStatusDescription"
+                     [value]="row.EntryStatus">
+  </app-colored-label>
+</ng-template>
+<ng-template #actionsTmpl
+             let-row="row"
+             let-value="value">
+  <button class="btn-small btn-primary"
+          [disabled]="!row?.Actions?.View"
+          (click)="view([row.FilingHeaderId])"
+          title="View">
+    <span class="icon-view"></span>
+  </button>
+  <button class="btn-small btn-primary"
+          [disabled]="!row?.Actions?.Edit"
+          (click)="createRecords([row.Id])"
+          title="Review & Create">
+    <span class="icon-edit"></span>
+  </button>
+  <button class="btn-small btn-primary"
+          [disabled]="!row?.Actions?.Delete"
+          (click)="delete([row.Id])"
+          title="Delete">
+    <span class="icon-delete"></span>
+  </button>
+</ng-template>
+
+<ng-template #filingNumberTmpl
+             let-row="row"
+             let-value="value">
+  <a *ngIf="row.JobLink"
+     target="_blank"
+     [href]="sanitize(row.JobLink)">{{value}}</a>
+  <span *ngIf="!row.JobLink">{{value}}</span>
+</ng-template>

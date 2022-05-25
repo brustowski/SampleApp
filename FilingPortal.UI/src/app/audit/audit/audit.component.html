@@ -1,0 +1,33 @@
+<div class="page-header">
+  <div class="right">
+    <lxft-import-with-confirmation-button *ngIf="isRuleImportButtonVisible"
+                               title="Import"
+                               iconClass="icon-import"
+                               [url]="uploadUrl"
+                               [gridName]="currentComponent.paginationOptions.gridName"
+                               (success)="onUploadSuccess($event)"
+                               (error)="onUploadError($event)">
+    </lxft-import-with-confirmation-button>
+    <button *ngIf="IsGridWithExcelTemplate && currentComponent.availableActions?.Import && !isRuleImportButtonVisible"
+            class="btn btn-primary"
+            (click)="import()"
+            title="Import from Excel">
+      <span class="icon-import"></span>Import
+    </button>
+    <button *ngIf="IsGridWithExcelTemplate && currentComponent.availableActions?.Template"
+            class="btn-small"
+            (click)="downloadTemplate()"
+            title="Download Template">
+      <span class="icon-export"></span>
+    </button>
+    <button class="btn-small"
+            title="Export to Excel"
+            (click)="exportList()">
+      <span class="icon-excel"></span>
+    </button>
+  </div>
+  <h1 class="page-title">{{pageTitle}}</h1>
+</div>
+<lxft-navigation-tabs [navConfig]="navConfig"></lxft-navigation-tabs>
+<router-outlet (activate)='onActivate($event)'
+               (deactivate)='onDeactivate()'></router-outlet>

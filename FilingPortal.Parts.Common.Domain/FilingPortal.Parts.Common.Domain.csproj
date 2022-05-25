@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Parts.Common.Domain</RootNamespace>
+    <AssemblyName>FilingPortal.Parts.Common.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Reinforced.Typings, Version=1.5.5.0, Culture=neutral, PublicKeyToken=e17b428d860a38ed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Reinforced.Typings.1.5.5\lib\net45\Reinforced.Typings.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgileSettings\AgileField.cs" />
+    <Compile Include="AgileSettings\IAgileConfiguration.cs" />
+    <Compile Include="Commands\IPermissionChecker.cs" />
+    <Compile Include="Common\DefValuesUniqueData.cs" />
+    <Compile Include="Common\IFilingParametersHandler.cs" />
+    <Compile Include="Common\InboundTypes\IValidationRequiredEntity.cs" />
+    <Compile Include="Common\InboundTypes\IAutoFilingEntity.cs" />
+    <Compile Include="Common\InboundTypes\IInboundType.cs" />
+    <Compile Include="DTOs\ImportFormParameter.cs" />
+    <Compile Include="DTOs\InboundRecordFilingParameters.cs" />
+    <Compile Include="DTOs\InboundRecordParameter.cs" />
+    <Compile Include="Entities\AppSystem\AppAddress.cs" />
+    <Compile Include="Entities\AppSystem\AppAdmin.cs" />
+    <Compile Include="Entities\AppSystem\AppDocument.cs" />
+    <Compile Include="Entities\AppSystem\AppPermission.cs" />
+    <Compile Include="Entities\AppSystem\AppRole.cs" />
+    <Compile Include="Entities\AppSystem\AppSettings.cs" />
+    <Compile Include="Entities\AppSystem\AppUsersData.cs" />
+    <Compile Include="Entities\AppSystem\AppUsersModel.cs" />
+    <Compile Include="Entities\AppSystem\AppUsersStatusModel.cs" />
+    <Compile Include="Entities\Base\BaseDefValue.cs" />
+    <Compile Include="Entities\Base\BaseDefValueReadModel.cs" />
+    <Compile Include="Entities\Base\BaseDefValuesManual.cs" />
+    <Compile Include="Entities\Base\BaseDefValuesManualReadModel.cs" />
+    <Compile Include="Entities\Base\BaseDefValueWithSection.cs" />
+    <Compile Include="Entities\Base\BaseDocument.cs" />
+    <Compile Include="Entities\Base\BaseDocumentWithContent.cs" />
+    <Compile Include="Entities\Base\BaseFilingData.cs" />
+    <Compile Include="Entities\Base\BaseFilingHeader.cs" />
+    <Compile Include="Entities\Base\BaseInboundReadModel.cs" />
+    <Compile Include="Entities\Base\BaseSection.cs" />
+    <Compile Include="Entities\Base\BaseTable.cs" />
+    <Compile Include="Entities\Base\FilingHeaderNew.cs" />
+    <Compile Include="Entities\Base\FilingHeaderOld.cs" />
+    <Compile Include="Entities\Base\InboundEntityNew.cs" />
+    <Compile Include="Entities\Base\InboundEntity.cs" />
+    <Compile Include="Entities\Clients\Client.cs" />
+    <Compile Include="Entities\Clients\ClientAddress.cs" />
+    <Compile Include="Entities\Clients\ClientCode.cs" />
+    <Compile Include="Entities\Clients\ClientContact.cs" />
+    <Compile Include="Entities\Clients\ClientContactAdditionalPhone.cs" />
+    <Compile Include="Entities\HeaderFilingStatus.cs" />
+    <Compile Include="Entities\HeaderJobStatus.cs" />
+    <Compile Include="Entities\HeaderMappingStatus.cs" />
+    <Compile Include="Entities\IInboundRecordWithActions.cs" />
+    <Compile Include="Entities\Base\InboundReadModelNew.cs" />
+    <Compile Include="Entities\Base\InboundReadModelOld.cs" />
+    <Compile Include="Enums\ClientType.cs" />
+    <Compile Include="Enums\FilingStatus.cs" />
+    <Compile Include="Enums\JobStatus.cs" />
+    <Compile Include="Enums\MappingStatus.cs" />
+    <Compile Include="Mapping\MapperExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IValidationRepository.cs" />
+    <Compile Include="Repositories\IAutofileMethodsRepository.cs" />
+    <Compile Include="Repositories\IDataProviderEditableRepository.cs" />
+    <Compile Include="Repositories\IDataProviderRepository.cs" />
+    <Compile Include="Repositories\IDefValueRepository.cs" />
+    <Compile Include="Repositories\IDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\IDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\IDefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\IDocumentRepository.cs" />
+    <Compile Include="Repositories\IFilingHeaderRepository.cs" />
+    <Compile Include="Repositories\IFilingSectionRepository.cs" />
+    <Compile Include="Repositories\IInboundRecordsRepository.cs" />
+    <Compile Include="Repositories\IRuleRepository.cs" />
+    <Compile Include="Repositories\ITablesRepository.cs" />
+    <Compile Include="Services\DB\IDbStructureService.cs" />
+    <Compile Include="Services\DB\ISqlQueryExecutor.cs" />
+    <Compile Include="Services\DB\IUniqueConstraintsRegister.cs" />
+    <Compile Include="Validators\IListInboundValidator.cs" />
+    <Compile Include="Validators\InboundRecordError.cs" />
+    <Compile Include="Validators\InboundRecordValidationResult.cs" />
+    <Compile Include="Validators\ValidationMessages.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reinforced.Typings.settings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets" Condition="Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets'))" />
+  </Target>
+</Project>

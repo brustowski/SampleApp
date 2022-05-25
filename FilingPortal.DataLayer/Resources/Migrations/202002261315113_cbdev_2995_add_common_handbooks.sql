@@ -1,0 +1,48 @@
+﻿INSERT INTO dbo.handbook_entry_type (id, description) VALUES 
+ ('01', 'Consumption-Free and Dutiable' )
+,('02', 'Consumption-Quota/Visa' )
+,('03', 'Consumption-Antidumping/Countervailing Duty' )
+,('06', 'Consumption Foreign TradeZone (FTZ)' )
+,('07', 'Consumption Antidumping/Countervailing Duty and Quota/Visa Combination' )
+,('11', 'Informal-Free and Dutiable' )
+,('12', 'Informal-Quota/Visa (other then textile' )
+,('21', 'Warehouse' )
+,('22', 'Re-Warehouse' )
+,('23', 'Temporary Import Bond (TIB)' )
+,('31', 'Warehouse Withdrawal Consumption' )
+,('32', 'Warehouse Withdrawal Quota' )
+,('34', 'Warehouse Withdrawal Antidumping/Countervailing Duty' )
+,('38', 'Warehouse Withdrawal Antidumping/Countervailing Duty and Quota/Visa Combination' )
+,('51', 'Defense Contract Administration Service Region (DCASR)' )
+,('52', 'Government Dutiable' )
+,('61', 'Immediate Transport')
+,('62', 'Transport and Export')
+,('63', 'Immediate Export');
+GO
+
+INSERT INTO dbo.handbook_transport_mode (code_number, code, description, country) VALUES 
+ ('10', 'SEA', 'Vessel, Non-container', 'US')
+,('11', 'SEA', 'Vessel, Container', 'US')
+,('12', 'BWB', 'Border Water-borne', 'US')
+,('20', 'RAI', 'Rail, Non-container', 'US')
+,('21', 'RAI', 'Rail, Container', 'US')
+,('30', 'TRK', 'Truck, Non-container', 'US')
+,('31', 'TRK', 'Truck, Container', 'US')
+,('32', 'AUT', 'Auto', 'US')
+,('33', 'PED', 'Pedestrain', 'US')
+,('34', 'ROA', 'Road Other (Includes foot and animal borne)', 'US')
+,('40', 'AIR', 'Air, Non-container', 'US')
+,('41', 'AIR', 'Air, Container', 'US')
+,('50', 'MAI', 'Mail', 'US')
+,('60', 'PHC', 'Passenger, hand carried', 'US')
+,('70', 'FIX', 'Fixed Transport Installations(Includes pipeline and powerhouse)', 'US')
+,(NULL, 'AIR', 'Air Freight', 'CA')
+,(NULL, 'IWT', 'Inland Waterway Transport', 'CA')
+,(NULL, 'FIX', 'Fixed Transport Installations', 'CA')
+,(NULL, 'RAI', 'Rail Freight', 'CA')
+,(NULL, 'ROA', 'Road Freight', 'CA')
+,(NULL, 'SEA', 'Sea Freight', 'CA')
+,(NULL, 'MAI', 'Post/Mail', 'CA')
+,(NULL, 'NOC', 'No Carrier/Hand-Carried', 'CA');
+
+GO

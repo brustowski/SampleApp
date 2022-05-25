@@ -1,0 +1,17 @@
+<div class="row-icon"
+     *ngIf="getClass()"
+    triggers="manual"
+    [ngbPopover]="popoverTmplt"
+    placement="right-top"
+    container="body"
+    #p="ngbPopover"
+    (mouseenter)="mouseEnter()"
+    (mouseleave)="mouseLeave()">
+    <span class="icon-error" [ngClass]="getClass()"><span *ngIf="counterOn" class="row-icon-text">{{messages.length}}</span></span>
+</div>
+<span *ngIf="innerText"
+      (mouseenter)="mouseEnter()"
+      (mouseleave)="mouseLeave()">{{innerText}}</span>
+<ng-template #popoverTmplt>
+    <div class="row-icon-text" *ngFor="let message of messages">{{message}}</div>
+</ng-template>

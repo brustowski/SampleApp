@@ -1,0 +1,327 @@
+/* Buttons */
+.btn {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid #0d867a;
+  padding: 0 10px;
+  margin: 0 5px 0 0;
+  font: 10px/28px "LatoBold";
+  color: #0d867a;
+  cursor: pointer;
+  border-radius: 2px;
+  background: #fff;
+  position: relative;
+  text-decoration: none;
+  &-primary {
+    background: #0d867a;
+    color: #fff;
+  }
+  &-link {
+    background: none;
+    color: #0a5c8e;
+    border: 1px solid transparent;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  [class^="icon-"], [class*=" icon-"] {
+    margin-right: 4px;
+    font-size: 10px;
+    vertical-align: text-bottom;
+  }
+}
+.btn-remove {
+  background: #f5f5f5;
+  color: #697692;
+  [class^="icon-"], [class*=" icon-"] {
+    font-weight: bold;
+  }
+}
+// button[class*="ico"]{
+//   &:before {
+//     width: 25px;
+//     height: 25px;
+//     content: "";
+//     display: inline-block;
+//     vertical-align: top;
+//     margin: 0 7px 0 0;
+//   }
+// }
+.right {
+  .btn, .btn-small {
+    margin: 0 0 0 5px;
+  }
+}
+.btn-small {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 5px 0 0;
+  padding: 0;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 15px;
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  [class^="icon-"], [class*=" icon-"] {
+    padding-top: 2px;
+    display: inline-block;
+  }
+}
+.ngx-datatable .datatable-body-row .datatable-body-cell .btn-small {
+  vertical-align: top;
+}
+/* buttons end */
+/* status labels */
+.status-label {
+  min-width: 24px;
+  display: inline-block;
+  height: 24px;
+  border-radius: 3px;
+  color: #fff;
+  font: 12px/22px "SourceSansProSemibold", Arial, sans-serif;
+  text-transform: capitalize;
+  padding: 3px 0;
+  text-align: center;
+  vertical-align: top;
+  margin: 3px 0 0;
+  &.no-before {
+    &:before{
+      content: unset !important;
+    }
+  }
+  &.default {
+    background: #0d867a;
+  }
+  &.open {
+    background: #256496;
+    &:before{
+      content: 'O'
+    }
+  }
+  &.ready {
+    background: #644190;
+    &:before{
+      content: 'R'
+    }
+  }
+  &.saved {
+    background: #f7c85d;
+    &:before{
+      content: 'S'
+    }
+  }
+  &.inreview {
+    background: #f7c85d;
+    &:before{
+      content: 'R'
+    }
+  }
+  &.mapped {
+    background: #428937;
+    &:before{
+      content: 'M'
+    }
+  }
+  &.inprogress {
+    background: #ea930b;
+    &:before{
+      content: 'P'
+    }
+  }
+  &.processed {
+    background: #428937;
+    &:before{
+      content: 'P'
+    }
+  }
+  &.filed {
+    background: #428937;
+    &:before{
+      content: 'F'
+    }
+  }
+  &.created {
+    background: #428937;
+    &:before{
+      content: 'C'
+    }
+  }
+  &.entry-updated {
+    background: #428937;
+    &:before{
+      content: 'U'
+    }
+  }
+  &.error {
+    background: #d23408;
+    &:before{
+      content: 'E'
+    }
+  }
+  &.updated {
+    background: #f7c85d;
+    &:before{
+      content: 'U'
+    }
+  }
+  &.imported {
+    background: #256496;
+    &:before{
+      content: 'I'
+    }
+  }
+}
+
+/*================== Datepicker */
+.data-field {
+  position: relative;
+  .mydp {
+      border-color: #d7dee6;
+      min-height: 28px;
+      border-radius: 0;
+      .selection,
+      .selbtngroup {
+          height: 26px!important;
+      }
+      .selectiongroup,
+      .selection {
+          border-radius: 0;
+      }
+      .btnpicker {
+          background: transparent;
+      }
+  }
+  > .icon-error {
+    right: 32px !important;
+  }
+  > .btn-link {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color:#4a5668;
+      padding: 7px 9px;
+      border: none;
+      line-height: 18px;
+      &:focus {
+          background: #84a4c4;
+      }
+  }
+}
+
+.ngxmdp {
+  .selector {
+      .disabled {
+          background: #f5f5f5!important;
+      }
+  }
+  .selector {
+      * {
+          font-family: 'Lato', sans-serif;
+      }
+      .markcurrday,
+      .markcurrmonth,
+      .markcurryear {
+          color: indianred;
+          text-decoration: none;
+      }
+      .header,
+      .headerbtn,
+      .headerlabelbtn,
+      .yearchangebtn,
+      .headerbtncell,
+      .currmonth,
+      .weekdaytitle,
+      .yearchangebtncell{
+          background: #fff;
+      }
+      .caltable,
+      .daycell,
+      .monthcell,
+      .monthtable,
+      .weekdaytitle,
+      .yearcell,
+      .yeartable {
+          color: #333;
+          background: #fff;
+          padding: 0;
+      }
+      .daycell,
+      .monthcell,
+      .yearcell {
+          &:hover {
+              background: none;
+          }
+      }
+      .datevalue,
+      .yearvalue,
+      .monthvalue {
+          font-size: 12px;
+          padding: 8px;
+          &:hover {
+              background: #f5f8fb;
+          }
+      }
+      .selectedday,
+      .selectedmonth,
+      .selectedyear {
+          .datevalue,
+          .yearvalue,
+          .monthvalue {
+              border-radius: 3px;
+              color: #333;
+              background: none;
+              border:1px solid #d4d4d4;
+              box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+          }
+      }
+      .ngxmdpicon {
+          font: normal 12px "filing-icons"!important;
+          &.icon-ngxmydpright {
+              @extend .icon-next;
+          }
+          &.icon-ngxmydpleft {
+              @extend .icon-prev;
+          }
+          &.icon-ngxmydpup {
+              @extend .icon-prev;
+              transform: rotate(90deg);
+          }
+          &.icon-ngxmydpdown {
+              @extend .icon-next;
+              transform: rotate(90deg);
+          }
+      }
+  }
+}
+/*================== End Datepicker */
+
+/*================== Date range picker */
+
+.filter-item .mydrp .selection {
+  padding: 0 0px 0 6px;
+}
+
+/*================== End Date range picker */
+/*================== Dropdown button */
+.btn-group-dropdown {
+  display: inline-block;
+  body > .dropdown &-menu.dropdown-menu {
+    min-width: auto;
+    max-width: unset;
+    lxft-button-file-uploader.dropdown-item {
+      padding: unset;
+  }
+  }
+}
+/*================== End Dropdown button */

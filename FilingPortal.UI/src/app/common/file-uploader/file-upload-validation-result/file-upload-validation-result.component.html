@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h3 class="modal-title">Upload result</h3>
+</div>
+
+<div class="modal-body">
+  <div class="data-container">
+    <div>
+      The file <strong>{{uploadResult.fileName}}</strong> contains {{uploadResult.count}} records.<br />
+      {{uploadResult.updated}} records will be updated.<br />
+      {{uploadResult.inserted}} records will be added.<br />
+      The number of errors {{errorsCount}}.<br />
+      <a href="javascript:void(0);"
+         (click)="download()">Download result</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <div class="popup-btn-set">
+    <button *ngIf="isContinueButtonVisible"
+            type="button"
+            class="btn btn-primary btn-default"
+            data-dismiss="modal"
+            (click)="ok()">Continue</button>
+    <button type="button"
+            class="btn"
+            data-dismiss="modal"
+            (click)="cancel()">Cancel</button>
+  </div>
+</div>

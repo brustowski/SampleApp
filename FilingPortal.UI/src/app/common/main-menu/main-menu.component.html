@@ -1,0 +1,28 @@
+<ul class="main-nav">
+    <li title="Hide Menu">
+        <span class="main-nav-item" (click)="toggleSidebar()">
+            <span class="icon-menu"></span>
+            <span *ngIf="opened" class="main-nav-text">Hide Menu</span>
+        </span>
+    </li>
+    <li [ngClass]="{'dropmenu': !opened, 'show-children': opened && item.children && item.children.length, 'open': item.showChildren, 'collapsed': !item.showChildren}" *ngFor='let item of menuItems' title="{{item.title}}"
+        routerLinkActive="selected" [routerLinkActiveOptions]="{exact: item.notSelectOnChildActivation}">
+        <a class="main-nav-item" [routerLink]="[item.url]" *ngIf="!item.children || !item.children.length">
+            <span class="{{item.iconClass}}"></span>
+            <span *ngIf="opened" class="main-nav-text">{{item.title}}</span>
+        </a>
+        <a class="main-nav-item" (click)="item.showChildren = !item.showChildren" *ngIf="item.children && item.children.length">
+            <span class="{{item.iconClass}}"></span>
+            <span *ngIf="opened" class="main-nav-text">{{item.title}}</span>
+            <span class="icon-dropdown"></span>
+        </a>
+        <ul class="sub-nav" [ngClass]="{'dropmenu-content': !opened}">
+            <li *ngFor='let subItem of item.children' title="{{subItem.title}}" routerLinkActive="selected">
+                <a class="main-nav-item" [routerLink]="[subItem.url]">
+                    <span class="{{subItem.iconClass}}"></span>
+                    <span class="main-nav-text">{{subItem.title}}</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

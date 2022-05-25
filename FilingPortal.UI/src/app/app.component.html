@@ -1,0 +1,13 @@
+<div class="wrapper" [ngClass]="{'open-nav': !isClosedSidebar}">
+  <app-header *ngIf="headerIsVisible"></app-header>
+  <div class="main">
+    <div *ngIf="leftMenuIsVisible" class="sidebar">
+      <app-main-menu (toggle)="isClosedSidebar=!$event"></app-main-menu>
+    </div>
+    <router-outlet></router-outlet>
+    <lxft-loader></lxft-loader>
+    <app-version></app-version>
+  </div>
+</div>
+
+

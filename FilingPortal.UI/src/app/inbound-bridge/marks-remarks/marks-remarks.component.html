@@ -1,0 +1,33 @@
+<div class="marks-remarks modal-content">
+  <div class="data-container">
+    <div class="data-item long">
+      <label class="data-item-header"
+             [attr.title]="'Template'">Template</label>
+      <lxft-field-lookup class="data-item-textfield"
+                         [(value)]="templateName"
+                         [options]="options"
+                         [viewMode]="viewMode"
+                         placeholder="Select template"
+                         (valueChange)="onSelect()">
+      </lxft-field-lookup>
+    </div>
+    <div class="data-item long multiline">
+      <label class="data-item-header"
+             [attr.title]="'Description'">Description</label>
+      <lxft-field-multiline-text class="data-item-textfield"
+                                 [(value)]="description"
+                                 [viewMode]="viewMode"
+                                 (onBlur)="onBlur()">
+      </lxft-field-multiline-text>
+    </div>
+    <div class="data-item long multiline">
+      <label class="data-item-header"
+             [attr.title]="'Marks and Numbers'">Marks and Numbers</label>
+      <lxft-field-multiline-text class="data-item-textfield"
+                                 [(value)]="marksNumbers"
+                                 [viewMode]="viewMode"
+                                 (onBlur)="onBlur()">
+      </lxft-field-multiline-text>
+    </div>
+  </div>
+</div>

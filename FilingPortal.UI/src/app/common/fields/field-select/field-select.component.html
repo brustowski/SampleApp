@@ -1,0 +1,27 @@
+<div [ngClass]="{ error: hasErrors && isValidating }"
+     [ngbPopover]="popContent"
+     triggers="mouseenter:mouseleave"
+     container="body"
+     popoverClass="popover error-popover">
+  <ng-select appendTo='body'
+             [items]="settings.options"
+             [clearable]="false"
+             [typeahead]="typeahead"
+             [searchable]="settings.isSearch"
+             class="form-select"
+             bindLabel="DisplayValue"
+             bindValue="Value"
+             placeholder="{{settings.placeholder}}"
+             (change)="onChangeSelect()"
+             [(ngModel)]="model"
+             (keydown.delete)="clear()">
+    <ng-template ng-label-tmp
+                 let-item="item">
+      <span title="{{item?.DisplayValue}}">{{ item?.DisplayValue }}</span>
+    </ng-template>
+  </ng-select>
+</div>
+<ng-template #popContent>
+  <span *ngIf="hasErrors && isValidating"
+        class="error-message">Field is required</span>
+</ng-template>

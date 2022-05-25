@@ -1,0 +1,30 @@
+﻿body {
+    font-family: "Arial",sans-serif;
+    font-size: 9pt;
+    color: #666666;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+table {
+    border: solid #666666 1.0pt;
+    border-collapse: collapse;
+    font-size: 9pt;
+}
+
+th {
+    background-color: #005596;
+    border-top: 1pt inset;
+    border-right: 1pt inset;
+    border-bottom: #666666 1pt solid;
+    padding: 0.75pt;
+    border-left: 1pt inset;
+    color: white;
+}
+
+td {
+    padding: 0.75pt;
+    border: 1pt inset;
+}

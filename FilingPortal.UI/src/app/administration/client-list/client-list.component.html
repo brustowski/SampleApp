@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h1 class="page-title">Client Management</h1>
+</div>
+<lxft-filters-panel
+      [gridName]="paginationOptions.filterConfigName"
+      (onApply)="setFilters($event)"
+      (onReset)="setFilters()">
+</lxft-filters-panel>
+<div class="grid-content" *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+      <div class="grid-caption">
+        <h2 class="title">Clients</h2>
+      </div>
+  </div>
+  <ngx-datatable
+    #gridTable
+    class="material"
+    [headerHeight]="40"
+    [footerHeight]="0"
+    [rowHeight]="40"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [reorderable]="true"
+    [externalPaging]="true"
+    [externalSorting]="true"
+    [scrollbarH]="true"
+    [scrollbarV]="true"
+    [count]="paginationOptions.rowsOnPage"
+    [offset]="paginationOptions.pageNumber"
+    [limit]="paginationOptions.size"
+    [sorts]="defSortGrid"
+    (resize)="onColumnResize($event)"
+    (sort)="setSort($event)"
+  >
+  </ngx-datatable>
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"
+    ></lxft-grid-toolbar>
+  </div>
+</div>

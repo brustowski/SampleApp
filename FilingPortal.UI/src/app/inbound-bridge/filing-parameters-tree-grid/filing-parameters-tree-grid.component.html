@@ -1,0 +1,68 @@
+<div *ngIf="isNodeVisible(node)"
+     [ngClass]="{ empty: node.isEmpty }">
+  <div class="tree-node-header">
+    <span class="title">{{ node.title }}</span>
+    <lxft-filing-parameters-tree-grid-import [node]="node" [viewMode]="viewMode" [filingHeaderId]="filingHeaderId" (success)="success()"></lxft-filing-parameters-tree-grid-import>
+  </div>
+  <div>
+    <ngx-datatable #gridTable
+                   class="material"
+                   [headerHeight]="40"
+                   [footerHeight]="40"
+                   [rowHeight]="40"
+                   [columns]="columns"
+                   [rows]="rows"
+                   [columnMode]="'force'"
+                   [rowIdentity]="getRowId"
+                   [scrollbarH]="true"
+                   [limit]="10"
+                   [sortType]="SortType.single"
+                   [sorts]="defSort">
+    </ngx-datatable>
+  </div>
+</div>
+
+<ng-template #editableColumnTmpl
+             let-row="row"
+             let-field="value"
+             let-column="column">
+  <div class="data-item"
+       [ngClass]='field.options.uiClass'>
+    <div lxft-fields-selector
+         [hideBorder]="true"
+         [viewMode]="viewMode"
+         [field]="field"
+         (valueChange)="onNodeChange($event)"
+         (onBlur)="onBlur(field,$event)"></div>
+  </div>
+</ng-template>
+
+<ng-template #actionsTmpl
+             let-row="row">
+  <button *ngIf="!viewMode"
+          class="btn-small"
+          title="Delete"
+          (click)="remove(row, $event)"><span class="icon-delete"></span></button>
+</ng-template>
+<ng-template #hdrTpl
+             let-column="column">
+
+  <span class="container-header-additional node-actions"
+        *ngIf="!viewMode"
+        lxftStopClickPropagation>
+    <span class="clickable"
+          title="{{ action.name }}"
+          (click)="add(action.section, action.parentId)"
+          *ngFor="let action of actions"
+          class="node-action">
+      <i class="icon-plus-circle"></i>{{ action.name }}
+    </span>
+    <span class="clickable"
+          title="Delete"
+          (click)="delete(node.name, node.id)"
+          *ngIf="node.actions['Delete']"
+          class="delete node-action">
+      <i class="icon-delete"></i>
+    </span>
+  </span>
+</ng-template>

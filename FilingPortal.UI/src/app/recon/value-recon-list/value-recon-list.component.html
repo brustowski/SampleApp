@@ -1,0 +1,95 @@
+<lxft-filters-panel [gridName]="paginationOptions.filterConfigName"
+                    (onApply)="setFilters($event)"
+                    (onReset)="setFilters()">
+</lxft-filters-panel>
+<div class="grid-content"
+     *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <lxft-grid-selection-toolbar [selectedRows]="selectedRows"
+                                 (onClear)="clearSelected()"></lxft-grid-selection-toolbar>
+    <div class="right">
+      <lxft-button-file-uploader title="Upload Client Data"
+                                 iconClass="icon-import"
+                                 btnClass="btn btn-primary"
+                                 [disabled]="!(pageAvailableActions?.Upload && uploadUrl)"
+                                 [url]="uploadUrl"
+                                 (success)="onUploadSuccess($event)"
+                                 (error)="onUploadError($event)">
+      </lxft-button-file-uploader>
+      <button class="btn"
+              [disabled]="!availableActions?.Process"
+              (click)="process()">
+        <span class="icon-check"></span>Process
+      </button>
+      <lxft-column-management-button [columns]="columns"
+                                     (onApply)="updateColumnSettings($event)">
+      </lxft-column-management-button>
+    </div>
+  </div>
+  <ngx-datatable #gridTable
+                 class="material"
+                 [headerHeight]="40"
+                 [footerHeight]="0"
+                 [rowHeight]="40"
+                 [rows]="rows"
+                 [rowClass]="getRowClass"
+                 [columns]="visibleColumns"
+                 [columnMode]="'force'"
+                 [externalPaging]="true"
+                 [externalSorting]="true"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+                 [selected]="selectedRows"
+                 [rowIdentity]="getRowId"
+                 [displayCheck]="canBeChecked"
+                 [selectionType]="'checkbox'"
+                 [selectAllRowsOnPage]="false"
+                 [selectAllEnabled]="selectAllEnabled"
+                 [count]="paginationOptions.rowsOnPage"
+                 [offset]="paginationOptions.pageNumber"
+                 [limit]="paginationOptions.size"
+                 [sorts]="defSortGrid"
+                 (sort)="setSort($event)"
+                 (resize)="onColumnResize($event)"
+                 (select)="onSelect($event)">
+  </ngx-datatable>
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"></lxft-grid-toolbar>
+  </div>
+</div>
+
+<ng-template #columnTemplate
+             let-row="row"
+             let-value="value"
+             let-column="column">
+  {{row[column.prop]}}<span *ngIf="displayOriginal(row, column)"
+        class="red">({{row.cargoWiseData[column.prop] || 'empty'}})</span>
+</ng-template>
+
+<ng-template #notificationIconTmpl
+             let-row="row"
+             let-value="value">
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row)"
+                     [messages]="row.Errors"></lxft-icon-tooltip>
+</ng-template>
+
+<ng-template #actionsTmpl
+             let-row="row"
+             let-value="value">
+  <button class="btn btn-primary"
+          [disabled]="!row?.Actions?.Process"
+          (click)="process(row.Id)"
+          title="Process">
+    Process
+  </button>
+</ng-template>
+
+<ng-template #statusTmpl
+             let-row="row">
+  <app-colored-label [css]="getStatusType(row.Status)"
+                     [title]="row.StatusTitle"
+                     [value]="row.StatusCode">
+  </app-colored-label>
+</ng-template>

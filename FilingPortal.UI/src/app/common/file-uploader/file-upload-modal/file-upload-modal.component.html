@@ -1,0 +1,123 @@
+<div class="modal-header">
+  <h3 class="modal-title">Mass Upload</h3>
+  <button type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="cancel()"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-description">
+  Please be warned: documents with the same document type will be overwritten. This action can't be undone.
+</div>
+
+<div class="modal-body">
+  <div class="data-container">
+    <div class="drag-drop">
+      <div ng2FileDrop
+           [ngClass]="{'drop-file-over': hasBaseDropZoneOver}"
+           (fileOver)="fileOverBase($event)"
+           [uploader]="uploader"
+           class="drop-zone">
+        <span class="icon-cloud-in"></span>
+        Drag&Drop Files - or - <a (click)="fileInput.click()">Browse Files</a>
+      </div>
+      <input type="file"
+             ng2FileSelect
+             [uploader]="uploader"
+             multiple
+             class="hidden"
+             #fileInput />
+
+      <div class="drop-data">
+        <div class="drop-header">
+          <div class="drop-col name">Name</div>
+          <div class="drop-col type">Document Type*</div>
+          <div class="drop-col desc">Description</div>
+          <div class="drop-col status">Status</div>
+          <div class="drop-col actions"></div>
+        </div>
+        <div class="mass-upload-scroll-box">
+          <div class="drop-row"
+               *ngFor="let item of uploader.queue">
+            <ng-container>
+              <div class="drop-col name"
+                   title="{{item.file.name}}"><span class="icon-doc"></span>{{item.file.name}}</div>
+              <div class="drop-col type">
+                <lxft-field-lookup class="adjust-auto"
+                                   *ngIf="!item.isSuccess"
+                                   [value]="item.formData['docType']"
+                                   (valueChange)="onDocTypeChange(item, $event)"
+                                   [options]="item.formData['docTypeSettings']" #docTypeSelector></lxft-field-lookup>
+                <span *ngIf="item.isSuccess">{{item.formData['docType']}}</span>
+              </div>
+              <div class="drop-col desc"><span [title]="item.formData['description']">{{item.formData['description']}}</span></div>
+
+              <div class="drop-col status">
+                <div class="progress"
+                     style="margin-bottom: 0;"
+                     *ngIf="item.isUploading">
+                  <div class="progress-bar"
+                       role="progressbar"
+                       [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                </div>
+                <div class="text-center">
+                  <span *ngIf="item.isSuccess"><i class="icon-done"></i></span>
+                  <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                  <span *ngIf="item.isError"><i class="icon-error error"></i></span>
+                </div>
+              </div>
+              <div class="drop-col actions">
+                <button type="button"
+                        class="btn-small btn-primary"
+                        (click)="item.upload()"
+                        [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                  <span class="icon-import"></span>
+                </button>
+                <button type="button"
+                        class="btn-small"
+                        (click)="item.cancel()"
+                        [disabled]="!item.isUploading">
+                  <span class="icon-remove"></span>
+                </button>
+                <button type="button"
+                        class="btn-small"
+                        (click)="remove(item)">
+                  <span class="icon-delete"></span>
+                </button>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="button"
+              class="btn btn-success btn-s"
+              (click)="uploader.uploadAll()"
+              [disabled]="!uploader.getNotUploadedItems().length">
+        <span class="icon-import"></span> Upload all
+      </button>
+      <button type="button"
+              class="btn btn-warning btn-s"
+              (click)="uploader.cancelAll()"
+              [disabled]="!uploader.isUploading">
+        <span class="icon-remove"></span> Cancel all
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-s"
+              (click)="uploader.clearQueue()"
+              [disabled]="!uploader.queue.length">
+        <span class="icon-delete"></span> Remove all
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <div class="popup-btn-set">
+    <button type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            (click)="ok()">Close</button>
+  </div>
+</div>

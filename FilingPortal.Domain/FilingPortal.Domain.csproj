@@ -1,0 +1,715 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5756CA9-CE4B-4910-9790-F911796D74FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Domain</RootNamespace>
+    <AssemblyName>FilingPortal.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
+    <OutputPath>bin\DEV\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TST|AnyCPU'">
+    <OutputPath>bin\TST\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>bin\PROD\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT|AnyCPU'">
+    <OutputPath>bin\UAT\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.5.2\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Reinforced.Typings, Version=1.5.5.0, Culture=neutral, PublicKeyToken=e17b428d860a38ed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Reinforced.Typings.1.5.5\lib\net45\Reinforced.Typings.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSystem\Repositories\IAppUsersDataRepository.cs" />
+    <Compile Include="Commands\Handlers\RailInboundMassRestoreCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\RailInboundAddOrDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\VesselExportMassDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\TruckExportMassDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\VesselExportAddOrDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\VesselImportAddOrDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\VesselImportMassDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\TruckInboundMassDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\PipelineInboundMassDeleteCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\RailInboundMassDeleteCommandHandler.cs" />
+    <Compile Include="Commands\RailInboundMassRestoreCommand.cs" />
+    <Compile Include="Commands\RailImportAddOrUpdateCommand.cs" />
+    <Compile Include="Commands\VesselExportMassDeleteCommand.cs" />
+    <Compile Include="Commands\TruckExportMassDeleteCommand.cs" />
+    <Compile Include="Commands\VesselExportAddOrUpdateCommand.cs" />
+    <Compile Include="Commands\VesselImportAddOrUpdateCommand.cs" />
+    <Compile Include="Commands\VesselImportMassDeleteCommand.cs" />
+    <Compile Include="Commands\TruckInboundMassDeleteCommand.cs" />
+    <Compile Include="Commands\PipelineInboundMassDeleteCommand.cs" />
+    <Compile Include="Commands\RailInboundMassDeleteCommand.cs" />
+    <Compile Include="Common\FPDynObject.cs" />
+    <Compile Include="Common\GeneratorFileNames.cs" />
+    <Compile Include="Common\GridNames.cs" />
+    <Compile Include="Common\Import\DefaultFileImportService.cs" />
+    <Compile Include="Common\Import\FileImportService.cs" />
+    <Compile Include="Common\Import\IFormImportConfiguration.cs" />
+    <Compile Include="Common\Import\Models\FileProcessingDetailedResult.cs" />
+    <Compile Include="Common\Import\TemplateProcessingServiceFactory.cs" />
+    <Compile Include="Common\Parsing\ParsingDataModelDynamic.cs" />
+    <Compile Include="Common\Parsing\IParseModelMapFormData.cs" />
+    <Compile Include="Common\Parsing\XmlFileValidationError.cs" />
+    <Compile Include="Common\Parsing\ParseModelMap.cs" />
+    <Compile Include="Common\Parsing\ParseModelMapRegistry.cs" />
+    <Compile Include="Common\Parsing\PropertyMapInfo.cs" />
+    <Compile Include="Common\Parsing\PropertyMapOptions.cs" />
+    <Compile Include="Common\Import\IImportConfigurationRegistry.cs" />
+    <Compile Include="Common\Import\IImportConfiguration.cs" />
+    <Compile Include="Common\Import\TemplateEngine\ITemplateService.cs" />
+    <Compile Include="Common\Reporting\DynamicReportConfig.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\Admin\AutoCreateRecordsDataSource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\Audit\Rail\AuditRailDailyAuditSpiRulesRecordsDataSource.cs" />
+    <Compile Include="Common\SettingsNames.cs" />
+    <Compile Include="Common\Import\ImportConfigurationRegistry.cs" />
+    <Compile Include="Common\Validation\PreFilingValidationErrorType.cs" />
+    <Compile Include="Common\Validation\PreFilingValidationResult.cs" />
+    <Compile Include="DTOs\ReviewSectionModels\ReviewSection.cs" />
+    <Compile Include="DTOs\ReviewSectionModels\ReviewSectionExportModel.cs" />
+    <Compile Include="DTOs\ReviewSectionModels\ReviewSectionField.cs" />
+    <Compile Include="DTOs\ReviewSectionModels\ReviewSectionStaticConfiguration.cs" />
+    <Compile Include="DTOs\TruckExport\TruckExportUpdateModel.cs" />
+    <Compile Include="Entities\Admin\AutoCreateRecord.cs" />
+    <Compile Include="Entities\Audit\Rail\AuditRailDailySpiRule.cs" />
+    <Compile Include="Entities\Handbooks\EntryStatus.cs" />
+    <Compile Include="Enums\FreightType.cs" />
+    <Compile Include="Enums\Severity.cs" />
+    <Compile Include="Imports\Admin\AutoCreate\Configuration.cs" />
+    <Compile Include="Imports\Admin\AutoCreate\ImportModel.cs" />
+    <Compile Include="Imports\Admin\AutoCreate\ModelMap.cs" />
+    <Compile Include="Imports\Admin\AutoCreate\Validator.cs" />
+    <Compile Include="Imports\Audit\RuleSpi\Configuration.cs" />
+    <Compile Include="Imports\Audit\RuleSpi\DailyAuditSpiRuleImportModel.cs" />
+    <Compile Include="Imports\Audit\RuleSpi\ModelMap.cs" />
+    <Compile Include="Imports\Audit\RuleSpi\Validator.cs" />
+    <Compile Include="Imports\Audit\Rule\Configuration.cs" />
+    <Compile Include="Imports\Audit\Rule\DailyAuditRuleImportModel.cs" />
+    <Compile Include="Imports\Audit\Rule\ModelMap.cs" />
+    <Compile Include="Imports\Audit\Rule\Validator.cs" />
+    <Compile Include="Imports\Pipeline\PipelineInboundParseModelMap.cs" />
+    <Compile Include="Imports\Pipeline\RuleBatchCode\Validator.cs" />
+    <Compile Include="Imports\Pipeline\RuleConsigneeImporter\Validator.cs" />
+    <Compile Include="Imports\Pipeline\RuleFacility\Validator.cs" />
+    <Compile Include="Imports\Pipeline\RuleImporter\Validator.cs" />
+    <Compile Include="Imports\Pipeline\RuleBatchCode\Configuration.cs" />
+    <Compile Include="Imports\Pipeline\RuleBatchCode\ImportModel.cs" />
+    <Compile Include="Imports\Pipeline\RuleBatchCode\ModelMap.cs" />
+    <Compile Include="Imports\Pipeline\RulePrice\Configuration.cs" />
+    <Compile Include="Imports\Pipeline\RuleImporter\Configuration.cs" />
+    <Compile Include="Imports\Pipeline\RuleImporter\ImportModel.cs" />
+    <Compile Include="Imports\Pipeline\RuleImporter\ModelMap.cs" />
+    <Compile Include="Imports\Pipeline\RuleFacility\Configuration.cs" />
+    <Compile Include="Imports\Pipeline\RuleFacility\ImportModel.cs" />
+    <Compile Include="Imports\Pipeline\RuleFacility\ModelMap.cs" />
+    <Compile Include="Imports\Pipeline\RuleConsigneeImporter\Configuration.cs" />
+    <Compile Include="Imports\Pipeline\RuleConsigneeImporter\ImportModel.cs" />
+    <Compile Include="Imports\Pipeline\RuleConsigneeImporter\ModelMap.cs" />
+    <Compile Include="Imports\Pipeline\RulePrice\ModelMap.cs" />
+    <Compile Include="Imports\Rail\RailAuditTrainConsistSheetImportParsingModelMap.cs" />
+    <Compile Include="Imports\Rail\RuleDescription\Validator.cs" />
+    <Compile Include="Imports\Rail\RuleImporterSupplier\Validator.cs" />
+    <Compile Include="Imports\Rail\RulePort\Validator.cs" />
+    <Compile Include="Imports\Rail\RuleDescription\Configuration.cs" />
+    <Compile Include="Imports\Rail\RuleDescription\ImportModel.cs" />
+    <Compile Include="Imports\Rail\RuleDescription\ModelMap.cs" />
+    <Compile Include="Imports\Rail\RuleImporterSupplier\Configuration.cs" />
+    <Compile Include="Imports\Rail\RuleImporterSupplier\ImportModel.cs" />
+    <Compile Include="Imports\Rail\RuleImporterSupplier\ModelMap.cs" />
+    <Compile Include="Imports\Rail\RulePort\Configuration.cs" />
+    <Compile Include="Imports\Rail\RulePort\ImportModel.cs" />
+    <Compile Include="Imports\Rail\RulePort\ModelMap.cs" />
+    <Compile Include="Imports\TruckExport\Inbound\TruckExportUpdateModelValidator.cs" />
+    <Compile Include="Imports\TruckExport\Inbound\TruckExportUpdateParseModelMap.cs" />
+    <Compile Include="Imports\TruckExport\RuleConsignee\Configuration.cs" />
+    <Compile Include="Imports\TruckExport\RuleConsignee\ImportModel.cs" />
+    <Compile Include="Imports\TruckExport\RuleConsignee\ModelMap.cs" />
+    <Compile Include="Imports\TruckExport\RuleExporterConsignee\Configuration.cs" />
+    <Compile Include="Imports\TruckExport\RuleExporterConsignee\ImportModel.cs" />
+    <Compile Include="Imports\TruckExport\RuleExporterConsignee\ModelMap.cs" />
+    <Compile Include="Imports\TruckExport\Inbound\TruckExportParseModelMap.cs" />
+    <Compile Include="Imports\TruckExport\RuleConsignee\Validator.cs" />
+    <Compile Include="Imports\TruckExport\RuleExporterConsignee\Validator.cs" />
+    <Compile Include="Imports\Truck\RulePort\Configuration.cs" />
+    <Compile Include="Imports\Truck\RulePort\ImportModel.cs" />
+    <Compile Include="Imports\Truck\RulePort\ModelMap.cs" />
+    <Compile Include="Imports\Truck\RuleImporter\Configuration.cs" />
+    <Compile Include="Imports\Truck\RuleImporter\ImportModel.cs" />
+    <Compile Include="Imports\Truck\RuleImporter\ModelMap.cs" />
+    <Compile Include="Imports\Truck\Inbound\ModelMap.cs" />
+    <Compile Include="Imports\Truck\RuleImporter\Validator.cs" />
+    <Compile Include="Imports\Truck\RulePort\Validator.cs" />
+    <Compile Include="Imports\VesselExport\RuleUsppiConsignee\Configuration.cs" />
+    <Compile Include="Imports\VesselExport\RuleUsppiConsignee\ImportModel.cs" />
+    <Compile Include="Imports\VesselExport\RuleUsppiConsignee\ModelMap.cs" />
+    <Compile Include="Imports\VesselExport\RuleUsppiConsignee\Validator.cs" />
+    <Compile Include="Imports\Vessel\RuleProduct\Configuration.cs" />
+    <Compile Include="Imports\Vessel\RuleProduct\ImportModel.cs" />
+    <Compile Include="Imports\Vessel\RuleProduct\ModelMap.cs" />
+    <Compile Include="Imports\Vessel\RulePort\Configuration.cs" />
+    <Compile Include="Imports\Vessel\RulePort\ImportModel.cs" />
+    <Compile Include="Imports\Vessel\RulePort\ModelMap.cs" />
+    <Compile Include="Imports\Vessel\RulePort\Validator.cs" />
+    <Compile Include="Imports\Vessel\RuleProduct\Validator.cs" />
+    <Compile Include="Mapping\Converters\ClientIdByCodeNullableResolver.cs" />
+    <Compile Include="Mapping\Converters\ClientAddressIdByCodeNullableResolver.cs" />
+    <Compile Include="Mapping\Converters\ClientIdByClientNumberResolver.cs" />
+    <Compile Include="Mapping\Converters\FirmsIdByCodeResolver.cs" />
+    <Compile Include="Mapping\Converters\ClientIdByCodeResolver.cs" />
+    <Compile Include="Mapping\Converters\ImportStringToBoolResolver.cs" />
+    <Compile Include="Mapping\Converters\RailAuditValidationWarningsResolver.cs" />
+    <Compile Include="Mapping\Converters\RailAuditValidationErrorsResolver.cs" />
+    <Compile Include="Mapping\LocalProfile.cs" />
+    <Compile Include="Repositories\AppSystem\IAppAddressesRepository.cs" />
+    <Compile Include="Repositories\AppSystem\IAppSettingsRepository.cs" />
+    <Compile Include="Repositories\Audit\Rail\IRailDailyAuditSpiRulesRepository.cs" />
+    <Compile Include="Repositories\Common\IEntryStatusRepository.cs" />
+    <Compile Include="Repositories\IAppDocumentRepository.cs" />
+    <Compile Include="Repositories\IHtsNumbersRepository.cs" />
+    <Compile Include="Repositories\Rail\IRailRuleImporterSupplierRepository.cs" />
+    <Compile Include="Services\AppSystem\ISettingsService.cs" />
+    <Compile Include="Services\AppSystem\SettingsService.cs" />
+    <Compile Include="Common\IDataComparisonService.cs" />
+    <Compile Include="Services\FormDataTemplateProcessingService.cs" />
+    <Compile Include="Services\GridExport\Maps\Audit\Rail\AuditRailDailyAuditSpiRulesModelMap.cs" />
+    <Compile Include="Services\IAutofilingService.cs" />
+    <Compile Include="Services\ICompatibleDataTypeService.cs" />
+    <Compile Include="Common\Import\ITemplateProcessingServiceFactory.cs" />
+    <Compile Include="Services\IFormDataTemplateProcessingService.cs" />
+    <Compile Include="Services\ITemplateProcessingService.cs" />
+    <Compile Include="Services\TemplateValidationService.cs" />
+    <Compile Include="Services\TemplateProcessingService.cs" />
+    <Compile Include="Common\Refile\BaseRefileAssistant.cs" />
+    <Compile Include="Common\Refile\IRefileAssistant.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\BaseProcessor.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\ErrorHandler.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\IUpdateRecordsProcessor.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\LeftProcessor.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\MatchedProcessor.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\NoConfigProcessor.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\NoRulesProcessor.cs" />
+    <Compile Include="Services\TruckExport\AutoFilingProcessors\NotMatchedProcessor.cs" />
+    <Compile Include="Services\TruckExport\ITruckExportAutoRefileService.cs" />
+    <Compile Include="Services\TruckExport\ITruckExportJobNumberService.cs" />
+    <Compile Include="Services\TruckExport\TruckExportAutoRefileService.cs" />
+    <Compile Include="Common\Refile\TruckExport\TruckExportRefileAssistant.cs" />
+    <Compile Include="Services\GridExport\Models\Audit\Rail\AuditRailDailyAuditSpiRulesReportModel.cs" />
+    <Compile Include="Services\IKeyFieldsService.cs" />
+    <Compile Include="Common\KeyFieldsService.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\Audit\Rail\AuditRailDailyAuditRulesRecordsDataSource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\Audit\Rail\AuditRailDailyAuditRecordsDataSource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\Audit\Rail\AuditRailTrainConsistSheetRecordsDataSource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\PipelineInboundRecordsDatasource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\Pipeline\PipelineRulePriceRecordsDataSource.cs" />
+    <Compile Include="Common\Reporting\ReportDatasource\RuleRecordsDataSource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\TruckExportRecordsDatasource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\TruckInboundRecordsDatasource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\VesselExportRecordsDatasource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\VesselExport\VesselExportUsppiConsigneeRuleRecordsDataSource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\VesselImportRecordsDatasource.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\Vessel\VesselRulePortsRecordsDataSource.cs" />
+    <Compile Include="Common\Validation\TypeExtension.cs" />
+    <Compile Include="DTOs\Audit\Rail\RailAuditTrainConsistSheetImportParsingModel.cs" />
+    <Compile Include="DTOs\EntityDto.cs" />
+    <Compile Include="DTOs\FieldsValidationResult.cs" />
+    <Compile Include="DTOs\Pipeline\PipelineDocumentDto.cs" />
+    <Compile Include="Imports\Pipeline\RulePrice\ImportModel.cs" />
+    <Compile Include="DTOs\Rail\Manifest\AdditionalReference.cs" />
+    <Compile Include="DTOs\Rail\Manifest\BillOfLading.cs" />
+    <Compile Include="DTOs\Rail\Manifest\EquipmentDetail.cs" />
+    <Compile Include="DTOs\Rail\Manifest\HazardousMaterial.cs" />
+    <Compile Include="DTOs\Rail\Manifest\InvolvedEntity.cs" />
+    <Compile Include="DTOs\Rail\Manifest\C4Detail.cs" />
+    <Compile Include="DTOs\Rail\Manifest\Manifest.cs" />
+    <Compile Include="DTOs\Rail\Manifest\ManifestHeader.cs" />
+    <Compile Include="DTOs\Rail\Manifest\TariffDetail.cs" />
+    <Compile Include="DTOs\VesselExport\VesselExportDocumentDto.cs" />
+    <Compile Include="DTOs\Vessel\VesselDocumentDto.cs" />
+    <Compile Include="DTOs\TruckExport\TruckExportDocumentDto.cs" />
+    <Compile Include="DTOs\TruckExport\TruckExportImportModel.cs" />
+    <Compile Include="DTOs\TruckExport\TruckExportStorageValidationModel.cs" />
+    <Compile Include="Entities\Audit\Rail\AuditRailDailyRule.cs" />
+    <Compile Include="Entities\Audit\Rail\AuditRailDaily.cs" />
+    <Compile Include="Entities\Audit\Rail\AuditRailTrainConsistSheet.cs" />
+    <Compile Include="Entities\Handbooks\EntryType.cs" />
+    <Compile Include="Entities\Handbooks\IssuerCode.cs" />
+    <Compile Include="Entities\Handbooks\SchbTariff.cs" />
+    <Compile Include="Entities\Handbooks\HtsTariff.cs" />
+    <Compile Include="Entities\Handbooks\TransportMode.cs" />
+    <Compile Include="Entities\IConfigurationEntity.cs" />
+    <Compile Include="Entities\IRuleEntity.cs" />
+    <Compile Include="AppSystem\Helpers\AppUsersStatusHelper.cs" />
+    <Compile Include="AppSystem\Repositories\IAppAdminRepository.cs" />
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Entities\Pipeline\PipelineRulePrice.cs" />
+    <Compile Include="Entities\Pipeline\PipelineRuleFacility.cs" />
+    <Compile Include="Entities\Pipeline\PipelineRuleConsigneeImporter.cs" />
+    <Compile Include="Entities\Pipeline\PipelineSection.cs" />
+    <Compile Include="Entities\Rail\RailSection.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportDefValueReadModel.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportDefValue.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportDefValueManual.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportDefValuesManualReadModel.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportDocument.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportFilingHeader.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportReadModel.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportRecord.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportRuleUsppiConsignee.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportSection.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportTable.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportRuleConsignee.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportRuleExporterConsignee.cs" />
+    <Compile Include="Entities\Rail\RailDefValues.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportDefValuesManualReadModel.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportDocument.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportDefValueManual.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportDefValue.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportTable.cs" />
+    <Compile Include="Entities\Truck\TruckDefValue.cs" />
+    <Compile Include="Entities\Truck\TruckDefValueManual.cs" />
+    <Compile Include="Entities\Truck\TruckDefValueManualReadModel.cs" />
+    <Compile Include="Entities\Truck\TruckDefValueReadModel.cs" />
+    <Compile Include="Entities\Truck\TruckSection.cs" />
+    <Compile Include="Entities\VesselExport\VesselExportDefValueReadModel.cs" />
+    <Compile Include="Entities\Vessel\VesselImportDefValueReadModel.cs" />
+    <Compile Include="Entities\Vessel\VesselImportDefValue.cs" />
+    <Compile Include="Entities\Vessel\VesselImportDefValueManual.cs" />
+    <Compile Include="Entities\Vessel\VesselImportDefValuesManualReadModel.cs" />
+    <Compile Include="Entities\Vessel\VesselImportDocument.cs" />
+    <Compile Include="Entities\Vessel\VesselImportSection.cs" />
+    <Compile Include="Entities\Vessel\VesselImportTable.cs" />
+    <Compile Include="Entities\Handbooks\ProductDescriptionHandbookRecord.cs" />
+    <Compile Include="Entities\Handbooks\VesselHandbookRecord.cs" />
+    <Compile Include="Entities\Vessel\VesselImportReadModel.cs" />
+    <Compile Include="Entities\Vessel\VesselImportFilingHeader.cs" />
+    <Compile Include="Entities\Vessel\VesselImportRecord.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportRecord.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportFilingHeader.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportReadModel.cs" />
+    <Compile Include="Entities\TruckExport\TruckExportSection.cs" />
+    <Compile Include="Entities\Vessel\VesselRuleImporter.cs" />
+    <Compile Include="Entities\Vessel\VesselRulePort.cs" />
+    <Compile Include="Entities\Vessel\VesselRuleProduct.cs" />
+    <Compile Include="Infrastructure\Helpers\DateTimeExtension.cs" />
+    <Compile Include="Infrastructure\Helpers\DecimalExtension.cs" />
+    <Compile Include="Infrastructure\Helpers\ObjectExtensions.cs" />
+    <Compile Include="Infrastructure\Helpers\SearchRequestModelExtension.cs" />
+    <Compile Include="Mapping\Converters\RailEdiMessageToManifestConverter.cs" />
+    <Compile Include="Mapping\Converters\RailBdParsedToManifestConverter.cs" />
+    <Compile Include="Mapping\Resolvers\FacilityIdResolver.cs" />
+    <Compile Include="Repositories\Common\ITransportModeRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineRuleFacilityRepository.cs" />
+    <Compile Include="Services\FilingParametersService.cs" />
+    <Compile Include="Services\IExcelDocumentBuilder.cs" />
+    <Compile Include="Services\IFilingParametersService.cs" />
+    <Compile Include="Services\Pipeline\IPipelineFilingHeaderDcoumentUpdateService.cs" />
+    <Compile Include="Services\DefValueService.cs" />
+    <Compile Include="Services\Rail\IManifestFormatter.cs" />
+    <Compile Include="Mapping\Resolvers\CrudeTypeIdResolver.cs" />
+    <Compile Include="Mapping\Resolvers\ImporterIdResolver.cs" />
+    <Compile Include="Repositories\Audit\Rail\IRailDailyAuditRulesRepository.cs" />
+    <Compile Include="Repositories\Audit\Rail\IRailDailyAuditRepository.cs" />
+    <Compile Include="Repositories\Audit\Rail\IAuditTrainConsistSheetRepository.cs" />
+    <Compile Include="Repositories\Clients\IClientContactsRepository.cs" />
+    <Compile Include="Enums\RailInboundRecordStatus.cs" />
+    <Compile Include="Repositories\Clients\IClientAddressRepository.cs" />
+    <Compile Include="Repositories\Common\IHandbookRepository.cs" />
+    <Compile Include="Repositories\IFilingDataRepository.cs" />
+    <Compile Include="Repositories\IResultingSectionRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineRuleBatchCodeRepository.cs" />
+    <Compile Include="Repositories\Rail\IRailRuleProductDescriptionsRepository.cs" />
+    <Compile Include="Repositories\TruckExport\ITruckExportDefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselExport\IVesselExportDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselExport\IVesselExportDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\VesselExport\IVesselExportFilingHeadersRepository.cs" />
+    <Compile Include="Repositories\VesselExport\IVesselExportReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselExport\IVesselExportRepository.cs" />
+    <Compile Include="Repositories\VesselExport\IVesselExportSectionRepository.cs" />
+    <Compile Include="Repositories\TruckExport\ITruckExportDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\TruckExport\ITruckExportDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\TruckExport\ITruckExportSectionRepository.cs" />
+    <Compile Include="Repositories\TruckExport\ITruckExportFilingHeadersRepository.cs" />
+    <Compile Include="Repositories\ITariffRepository.cs" />
+    <Compile Include="Repositories\Truck\ITruckDefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselExport\IVesselExportDefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselImport\IVesselImportDefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselImport\IVesselImportDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselImport\IVesselImportDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\VesselImport\IVesselImportSectionRepository.cs" />
+    <Compile Include="Repositories\VesselImport\IVesselImportReadModelRepository.cs" />
+    <Compile Include="Repositories\VesselImport\IVesselImportFilingHeadersRepository.cs" />
+    <Compile Include="Repositories\VesselImport\IVesselImportRepository.cs" />
+    <Compile Include="Repositories\Common\IProductDescriptionsRepository.cs" />
+    <Compile Include="Repositories\TruckExport\ITruckExportReadModelRepository.cs" />
+    <Compile Include="Repositories\TruckExport\ITruckExportRepository.cs" />
+    <Compile Include="Repositories\Common\IVesselRepository.cs" />
+    <Compile Include="Services\Audit\Rail\IRailAuditExcelFileImportService.cs" />
+    <Compile Include="Services\Audit\Rail\RailAuditTrainConsistSheetFileValidationService.cs" />
+    <Compile Include="Services\Audit\Rail\RailAuditExcelFileImportService.cs" />
+    <Compile Include="Services\ConsolidatedFilingWorkflow.cs" />
+    <Compile Include="Services\GridExport\Maps\Audit\Rail\AuditRailDailyAuditRulesModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\Audit\Rail\AuditRailDailyAuditModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\Audit\Rail\AuditRailTrainConsistSheetModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\PipelineInboundRecordsModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\DefaultModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\Pipeline\PipelinePriceRuleReportModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\Pipeline\PipelineBatchRuleReportModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\RailRulePortModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\RailRuleDescriptionModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\RailRuleImporterSupplierModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\TruckExport\TruckExportUsppiConsigneeRuleReportModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\VesselExport\VesselExportUsppiConsigneeRuleReportModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\VesselExport\VesselExportRecordsModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\VesselImportRecordsModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\TruckInboundRecordsModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\TruckExportRecordsModelMap.cs" />
+    <Compile Include="Services\GridExport\Maps\Vessel\VesselRulePortsReportModelMap.cs" />
+    <Compile Include="Services\GridExport\Models\Audit\Rail\AuditRailDailyAuditRulesReportModel.cs" />
+    <Compile Include="Services\GridExport\Models\Audit\Rail\AuditRailDailyAuditReportModel.cs" />
+    <Compile Include="Services\GridExport\Models\Audit\Rail\AuditRailTrainConsistSheetReportModel.cs" />
+    <Compile Include="Services\GridExport\Models\Pipeline\PipelineRulePriceReportModel.cs" />
+    <Compile Include="Services\GridExport\Models\VesselExport\VesselExportUsppiConsigneeReportModel.cs" />
+    <Compile Include="Services\GridExport\Models\Vessel\VesselRulePortsReportModel.cs" />
+    <Compile Include="Services\IConsolidatedFilingWorkflow.cs" />
+    <Compile Include="Services\IFileGenerator.cs" />
+    <Compile Include="Services\ISingleFilingGridService.cs" />
+    <Compile Include="Services\ISingleFilingGridWorker.cs" />
+    <Compile Include="Services\IDefValueService.cs" />
+    <Compile Include="Services\ITemplatesProviderService.cs" />
+    <Compile Include="Services\Pipeline\ApiCalculatorFileGenerator.cs" />
+    <Compile Include="Services\Pipeline\IPipelineDocumentFactory.cs" />
+    <Compile Include="Services\Pipeline\PipelineFilingHeaderDocumentUpdateService.cs" />
+    <Compile Include="Services\Pipeline\IPipelineSingleFilingGridService.cs" />
+    <Compile Include="Services\Pipeline\PipelineRulePriceFileValidationService.cs" />
+    <Compile Include="Services\Pipeline\PipelineSingleFilingGridService.cs" />
+    <Compile Include="Services\Rail\IRailSingleFilingGridService.cs" />
+    <Compile Include="Services\SingleFilingGridWorker.cs" />
+    <Compile Include="Services\Rail\RailSingleFilingGridService.cs" />
+    <Compile Include="Services\TruckExport\TruckExportJobNumberService.cs" />
+    <Compile Include="Services\VesselExport\IVesselExportFilingService.cs" />
+    <Compile Include="Services\VesselExport\VesselExportDocumentFactory.cs" />
+    <Compile Include="Services\VesselExport\VesselExportFilingService.cs" />
+    <Compile Include="Services\VesselExport\VesselExportSingleFilingGridService.cs" />
+    <Compile Include="Services\TruckExport\ITruckExportExcelFileImportService.cs" />
+    <Compile Include="Services\TruckExport\ITruckExportFilingService.cs" />
+    <Compile Include="Services\TruckExport\TruckExportDocumentFactory.cs" />
+    <Compile Include="Services\TruckExport\TruckExportFilingService.cs" />
+    <Compile Include="Services\TruckExport\TruckExportSingleFilingGridService.cs" />
+    <Compile Include="Services\Truck\ITruckSingleFilingGridService.cs" />
+    <Compile Include="Services\TruckExport\TruckExportExcelFileImportService.cs" />
+    <Compile Include="Services\TruckExport\TruckExportFileValidationService.cs" />
+    <Compile Include="Services\Truck\TruckSingleFilingGridService.cs" />
+    <Compile Include="Services\Vessel\IVesselFilingService.cs" />
+    <Compile Include="Services\Vessel\VesselDocumentFactory.cs" />
+    <Compile Include="Services\Vessel\VesselSingleFilingGridService.cs" />
+    <Compile Include="Services\Vessel\VesselFilingService.cs" />
+    <Compile Include="Specifications\Clients\ClientTypeSpecification.cs" />
+    <Compile Include="Common\FilingPortalBusinnessException.cs" />
+    <Compile Include="Entities\LookupMaster.cs" />
+    <Compile Include="Entities\Pipeline\PipelineInboundReadModel.cs" />
+    <Compile Include="Entities\Pipeline\PipelineRuleBatchCode.cs" />
+    <Compile Include="Entities\Pipeline\PipelineRuleImporter.cs" />
+    <Compile Include="Entities\Pipeline\PipelineDefValue.cs" />
+    <Compile Include="Entities\Pipeline\PipelineDefValueManual.cs" />
+    <Compile Include="Entities\Pipeline\PipelineDefValueManualReadModel.cs" />
+    <Compile Include="Entities\Pipeline\PipelineDefValueReadModel.cs" />
+    <Compile Include="Entities\Pipeline\PipelineFilingHeader.cs" />
+    <Compile Include="Entities\Pipeline\PipelineDocument.cs" />
+    <Compile Include="Entities\Pipeline\PipelineTable.cs" />
+    <Compile Include="Entities\Pipeline\PipelineFilingData.cs" />
+    <Compile Include="Entities\Rail\RailDefValuesReadModel.cs" />
+    <Compile Include="Entities\Rail\RailFilingData.cs" />
+    <Compile Include="Entities\Truck\TruckTable.cs" />
+    <Compile Include="Enums\Permissions.cs" />
+    <Compile Include="DTOs\BaseDocumentDto.cs" />
+    <Compile Include="Repositories\Clients\IClientRepository.cs" />
+    <Compile Include="Repositories\ILookupMasterRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineFilingHeaderRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineInboundReadModelRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineDefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineFilingDataRepository.cs" />
+    <Compile Include="Repositories\Rail\IRailDefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\Rail\IRailFilingDataRepository.cs" />
+    <Compile Include="Services\FilingWorkflow.cs" />
+    <Compile Include="Services\FilingHeaderDocumentUpdateService.cs" />
+    <Compile Include="Services\IDocumentFactory.cs" />
+    <Compile Include="DTOs\Truck\TruckDocumentDto.cs" />
+    <Compile Include="Services\IFilingHeaderDocumentUpdateService.cs" />
+    <Compile Include="Services\IFilingService.cs" />
+    <Compile Include="Services\IFilingWorkflow.cs" />
+    <Compile Include="Services\Pipeline\IPipelineFilingService.cs" />
+    <Compile Include="Services\Pipeline\PipelineDocumentFactory.cs" />
+    <Compile Include="Services\Pipeline\PipelineFilingService.cs" />
+    <Compile Include="Services\Truck\ITruckFilingService.cs" />
+    <Compile Include="Services\Truck\TruckDocumentFactory.cs" />
+    <Compile Include="Entities\Truck\TruckDocument.cs" />
+    <Compile Include="Entities\Truck\TruckInboundReadModel.cs" />
+    <Compile Include="Common\Parsing\IParsingDataValidationService.cs" />
+    <Compile Include="Common\Import\IFileImportService.cs" />
+    <Compile Include="Common\Import\Models\FileProcessingResult.cs" />
+    <Compile Include="Common\Parsing\IParsingDataModelValidatorFactory.cs" />
+    <Compile Include="Common\Parsing\IPropertyMapOptions.cs" />
+    <Compile Include="Common\Parsing\ParsingModelValidatorFactory.cs" />
+    <Compile Include="Common\Validation\ValidationExtensions.cs" />
+    <Compile Include="Common\Validation\ValidatorConstants.cs" />
+    <Compile Include="Entities\Truck\TruckFilingHeader.cs" />
+    <Compile Include="DTOs\Pipeline\PipelineInboundStorageValidationModel.cs" />
+    <Compile Include="DTOs\Pipeline\PipelineInboundImportParsingModel.cs" />
+    <Compile Include="Common\OperationResult\OperationResult.cs" />
+    <Compile Include="Common\OperationResult\OperationResultWithValue.cs" />
+    <Compile Include="Common\Parsing\FileParserException.cs" />
+    <Compile Include="Common\Parsing\ExcelFileValidationError.cs" />
+    <Compile Include="Common\Reporting\IReportConfigRegistry.cs" />
+    <Compile Include="Common\Reporting\IReportDatasource.cs" />
+    <Compile Include="Common\Reporting\IReportDataSourceResolver.cs" />
+    <Compile Include="Common\Reporting\ReportConfig.cs" />
+    <Compile Include="Common\Reporting\ReportConfigRegistry.cs" />
+    <Compile Include="Common\Reporting\ReportDataSourceResolver.cs" />
+    <Compile Include="Common\Reporting\ReportDataSource\RailInboundRecordsDataSource.cs" />
+    <Compile Include="DTOs\Manifest.cs" />
+    <Compile Include="Entities\Pipeline\PipelineInbound.cs" />
+    <Compile Include="Entities\Rail\RailTables.cs" />
+    <Compile Include="Services\Pipeline\IPipelineInboundExcelFileImportService.cs" />
+    <Compile Include="Services\Pipeline\PipelineInboundFileValidationService.cs" />
+    <Compile Include="Specifications\Rail\RailTypeSpecification.cs" />
+    <Compile Include="Specifications\TruckExport\TruckExportHasUpdatedSpecification.cs" />
+    <Compile Include="Validators\FieldsValidationResultBuilder.cs" />
+    <Compile Include="Validators\IFieldsValidationResultBuilder.cs" />
+    <Compile Include="Validators\Audit\Rail\RailDailyAuditSpiRuleInboundValidator.cs" />
+    <Compile Include="Validators\Audit\Rail\RailDailyAuditRuleInboundValidator.cs" />
+    <Compile Include="Validators\Audit\Rail\RailDailyAuditInboundValidator.cs" />
+    <Compile Include="Validators\Audit\Rail\RailAuditTrainConsistSheetImportParsingModelValidator.cs" />
+    <Compile Include="Validators\Audit\Rail\RailAuditConsistSheetInboundValidator.cs" />
+    <Compile Include="Validators\BaseSingleRecordValidator.cs" />
+    <Compile Include="Validators\Common\DetailedValidationResult.cs" />
+    <Compile Include="Validators\Common\IValidationResult.cs" />
+    <Compile Include="Validators\Common\ValidationResult.cs" />
+    <Compile Include="Validators\DefValuesManualValidator.cs" />
+    <Compile Include="Validators\IDefValuesManualValidator.cs" />
+    <Compile Include="Validators\IFilteredRecordsValidator.cs" />
+    <Compile Include="Validators\ISingleRecordTypedValidator.cs" />
+    <Compile Include="Imports\Pipeline\RulePrice\Validator.cs" />
+    <Compile Include="Imports\Pipeline\PipelineInboundParsingDataModelValidator.cs" />
+    <Compile Include="Repositories\Pipeline\IPipelineInboundRepository.cs" />
+    <Compile Include="Entities\Rail\RailRuleDescription.cs" />
+    <Compile Include="Entities\Rail\RailRuleImporterSupplier.cs" />
+    <Compile Include="Mapping\AutoMappingConfigurationContainer.cs" />
+    <Compile Include="Mapping\DomainToDTOProfile.cs" />
+    <Compile Include="Mapping\DTOToDomainProfile.cs" />
+    <Compile Include="Common\CommandDispatcher.cs" />
+    <Compile Include="Common\CustomSpecificationsRegistry.cs" />
+    <Compile Include="Common\FileExportResult.cs" />
+    <Compile Include="Common\ICustomSpecificationsRegistry.cs" />
+    <Compile Include="Common\ISearchRequestFactory.cs" />
+    <Compile Include="Common\ISpecificationBuilder.cs" />
+    <Compile Include="Common\ISpecificationFactory.cs" />
+    <Compile Include="Common\Reporting\IReportBodyBuilder.cs" />
+    <Compile Include="Common\Reporting\IReportConfig.cs" />
+    <Compile Include="Common\Reporting\IReportFiltersBuilder.cs" />
+    <Compile Include="Common\Reporting\Model\Cell.cs" />
+    <Compile Include="Common\Reporting\Model\CellStyle.cs" />
+    <Compile Include="Common\Reporting\IReporterFactory.cs" />
+    <Compile Include="Common\Reporting\IReportFilenameProvider.cs" />
+    <Compile Include="Common\Reporting\Model\Row.cs" />
+    <Compile Include="Mapping\FormatsContainer.cs" />
+    <Compile Include="Repositories\Truck\ITruckInboundReadModelRepository.cs" />
+    <Compile Include="Repositories\Truck\ITruckFilingHeadersRepository.cs" />
+    <Compile Include="Repositories\Truck\ITruckDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\Truck\ITruckDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Entities\Rail\RailRulePort.cs" />
+    <Compile Include="Services\Truck\TruckFilingService.cs" />
+    <Compile Include="Services\Rail\IFileProcedureService.cs" />
+    <Compile Include="Validators\IRuleValidator.cs" />
+    <Compile Include="DTOs\Rail\RailImportFilingValidationModel.cs" />
+    <Compile Include="Validators\Pipeline\PipelineInboundValidator.cs" />
+    <Compile Include="Validators\Pipeline\PipelineListInboundValidator.cs" />
+    <Compile Include="Validators\Rail\IRailImportRecordsFilingValidator.cs" />
+    <Compile Include="Validators\RuleValidator.cs" />
+    <Compile Include="Services\GridExport\Configuration\ColumnMapInfo.cs" />
+    <Compile Include="Services\GridExport\Configuration\ColumnMapOptions.cs" />
+    <Compile Include="Services\GridExport\Configuration\DefaultFormattersRegistry.cs" />
+    <Compile Include="Services\GridExport\Configuration\IColumnMapInfo.cs" />
+    <Compile Include="Services\GridExport\Configuration\IColumnMapOptions.cs" />
+    <Compile Include="Services\GridExport\Configuration\IDefaultFormattersRegistry.cs" />
+    <Compile Include="Services\GridExport\Configuration\IReportModelMap.cs" />
+    <Compile Include="Services\GridExport\Configuration\IReportModelMapContainer.cs" />
+    <Compile Include="Services\GridExport\Configuration\PropertyToColumnNameConverter.cs" />
+    <Compile Include="Services\GridExport\Configuration\ReportModelMap.cs" />
+    <Compile Include="Services\GridExport\Configuration\ReportModelMapContainer.cs" />
+    <Compile Include="Services\GridExport\Formatters\BoolFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\BoolNullableFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\DateTimeFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\DateTimeNullableFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\DecimalFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\DecimalNullableFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\EnumFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\IValueFormatter.cs" />
+    <Compile Include="Services\GridExport\Formatters\ValueFormatter.cs" />
+    <Compile Include="Services\GridExport\Maps\RailInboundRecordsModelMap.cs" />
+    <Compile Include="Services\GridExport\Models\RailInboundRecordsReportModel.cs" />
+    <Compile Include="Services\GridExport\ReportBodyBuilder.cs" />
+    <Compile Include="Services\GridExport\ReportFiltersBuilder.cs" />
+    <Compile Include="Common\SearchRequestFactory.cs" />
+    <Compile Include="Common\Reporting\IReportExportingService.cs" />
+    <Compile Include="Common\Reporting\ReportExportingService.cs" />
+    <Compile Include="Common\SpecificationBuilder.cs" />
+    <Compile Include="Common\SpecificationFactory.cs" />
+    <Compile Include="DocumentTypes\Entities\DocumentType.cs" />
+    <Compile Include="DocumentTypes\IDocumentTypesRepository.cs" />
+    <Compile Include="DocumentTypes\IFilterDataRepository.cs" />
+    <Compile Include="Entities\Rail\RailDefValuesManualReadModel.cs" />
+    <Compile Include="Entities\Rail\RailInboundReadModel.cs" />
+    <Compile Include="Entities\Rail\RailBdParsed.cs" />
+    <Compile Include="Entities\Rail\RailDefValuesManual.cs" />
+    <Compile Include="Common\Reporting\IReporter.cs" />
+    <Compile Include="Common\Reporting\IReportingService.cs" />
+    <Compile Include="Enums\InboundRecordDocumentStatus.cs" />
+    <Compile Include="Entities\Rail\RailDocument.cs" />
+    <Compile Include="Entities\Rail\RailEdiMessage.cs" />
+    <Compile Include="Entities\Rail\RailFilingHeader.cs" />
+    <Compile Include="Repositories\Rail\IRailFilingHeadersRepository.cs" />
+    <Compile Include="Services\Rail\FileProcedureService.cs" />
+    <Compile Include="Validators\ISingleRecordValidator.cs" />
+    <Compile Include="Validators\Rail\RailListInboundValidator.cs" />
+    <Compile Include="Validators\Rail\RailInboundValidator.cs" />
+    <Compile Include="Common\BinaryFileModel.cs" />
+    <Compile Include="Services\Rail\ManifestPdfGenerator.cs" />
+    <Compile Include="Services\IPdfBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DTOs\Rail\RailDocumentDto.cs" />
+    <Compile Include="Services\Rail\IRailDocumentFactory.cs" />
+    <Compile Include="Services\Rail\RailDocumentFactory.cs" />
+    <Compile Include="Repositories\Rail\IBdParsedRepository.cs" />
+    <Compile Include="Repositories\Rail\IRailDefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\Rail\IRailDefValuesManualRepository.cs" />
+    <Compile Include="Repositories\Rail\IRailInboundReadModelRepository.cs" />
+    <Compile Include="ErrorMessages.cs" />
+    <Compile Include="Common\Parsing\IFileParser.cs" />
+    <Compile Include="Common\Parsing\ErrorLevel.cs" />
+    <Compile Include="Common\Parsing\IParseModelMap.cs" />
+    <Compile Include="Common\Parsing\IParseModelMapRegistry.cs" />
+    <Compile Include="Common\Parsing\IParsingDataModel.cs" />
+    <Compile Include="Common\Parsing\IPropertyMapInfo.cs" />
+    <Compile Include="Common\Parsing\ParsingDataModel.cs" />
+    <Compile Include="Common\Parsing\ParsingResult.cs" />
+    <Compile Include="Common\Parsing\RowError.cs" />
+    <Compile Include="Common\Parsing\ParsedDataValidationResult.cs" />
+    <Compile Include="Services\Pipeline\PipelineInboundExcelFileImportService.cs" />
+    <Compile Include="AppSystem\Repositories\IAppUsersRepository.cs" />
+    <Compile Include="Services\IEmailNotificationService.cs" />
+    <Compile Include="Entities\Truck\TruckInbound.cs" />
+    <Compile Include="Entities\Truck\TruckRuleImporter.cs" />
+    <Compile Include="Entities\Truck\TruckRulePort.cs" />
+    <Compile Include="Services\IRuleService.cs" />
+    <Compile Include="DTOs\Truck\TruckInboudStorageValidationModel.cs" />
+    <Compile Include="Imports\Truck\Inbound\ImportModel.cs" />
+    <Compile Include="Repositories\Truck\ITruckInboundRepository.cs" />
+    <Compile Include="Services\Truck\ITruckInboundExcelFileImportService.cs" />
+    <Compile Include="Services\Truck\TruckInboundExcelFileImportService.cs" />
+    <Compile Include="Services\RuleService.cs" />
+    <Compile Include="Validators\VesselExport\VesselExportListValidator.cs" />
+    <Compile Include="Validators\VesselExport\VesselExportValidator.cs" />
+    <Compile Include="Imports\TruckExport\Inbound\TruckExportImportModelValidator.cs" />
+    <Compile Include="Imports\Truck\Inbound\Validator.cs" />
+    <Compile Include="Validators\TruckExport\TruckExportValidator.cs" />
+    <Compile Include="Validators\TruckExport\TruckExportListValidator.cs" />
+    <Compile Include="Validators\Truck\TruckListInboundValidator.cs" />
+    <Compile Include="Validators\Truck\TruckInboundValidator.cs" />
+    <Compile Include="Validators\Vessel\VesselListImportValidator.cs" />
+    <Compile Include="Validators\Vessel\VesselImportValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Cargowise.Domain\FilingPortal.Cargowise.Domain.csproj">
+      <Project>{0F14E876-6876-410D-B819-8D4912669376}</Project>
+      <Name>FilingPortal.Cargowise.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reinforced.Typings.settings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\Cargowise\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets" Condition="Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets'))" />
+  </Target>
+</Project>

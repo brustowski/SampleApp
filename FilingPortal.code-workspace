@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "FilingPortal.UI"
+		},
+		{
+			"path": "FilingPortal.UI.ngx-datatable"
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "node_modules\\typescript\\lib",
+		"git.ignoreLimitWarning": true
+	}
+}

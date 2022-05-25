@@ -1,0 +1,51 @@
+<div class="data-item-readonly" [attr.title]="displayValue" *ngIf="viewMode">
+  {{ displayValue }}
+</div>
+<div *ngIf="loaded && !viewMode" class="data-field" [ngClass]="{ error: options?.validationOn && options?.errors.length > 0 }"
+  [ngbPopover]="popContent"
+     triggers="mouseenter:mouseleave"
+     container="body"
+     popoverClass="popover error-popover">
+  <ng-select
+    class="form-select"
+    appendTo="body"
+    placeholder="{{placeholder}}"
+    bindLabel="DisplayValue"
+    bindValue="Value"
+    [clearable]="isClearable()"
+    [searchable]="options?.isSearchable"
+    [disabled]="options?.isDisabled"
+    [loading]="isLoading"
+    [typeahead]="typeahead$"
+    [items]="values"
+    [(ngModel)]="value"
+    [addTag]="options?.source?.canAdd"
+    (change)="onChange($event)"
+    (keydown.delete)="clear()"
+    (keydown.backspace)="clear()"
+    [clearOnBackspace]="false"
+    (blur)="onInputBlur($event)"
+    (focus)="onFocus($event)"
+    #select
+  >
+    <ng-template ng-label-tmp let-item="item">
+      <span title="{{ item.DisplayValue }}">{{ item.DisplayValue }}</span>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+      <span class="ng-option-label" title="{{ item.DisplayValue }}">{{ item.DisplayValue }}</span>
+    </ng-template>
+    <ng-template ng-notfound-tmp let-searchTerm="searchTerm">
+      <div class="ng-option disabled">
+        No items found
+      </div>
+    </ng-template>
+    <ng-template ng-tag-tmp let-search="searchTerm">
+      No items found <br />
+      <b>Add new item</b>: {{ search }}
+    </ng-template>
+  </ng-select>
+  <span *ngIf="options?.validationOn && options.errors.length > 0" class="icon-error"></span>
+</div>
+<ng-template #popContent>
+  <span *ngFor="let e of options.errors" class="error-message">{{ e }}</span>
+</ng-template>

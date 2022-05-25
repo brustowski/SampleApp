@@ -1,0 +1,199 @@
+@import "../variables";
+@font-face {
+  font-family: 'Lato';
+  src: url($fontPath + 'Lato-Regular.woff2') format('woff2'); /* Modern Browsers */
+  src: url($fontPath + 'Lato-Regular.woff') format('woff'); /* Modern Browsers */
+}
+@font-face {
+  font-family: 'LatoBold';
+  src: url($fontPath + 'Lato-Bold.woff2') format('woff2'), /* Modern Browsers */
+  url($fontPath + 'Lato-Bold.woff') format('woff'), /* Modern Browsers */
+}
+@font-face {
+  font-family: 'LatoLight';
+  src: url($fontPath +  'Lato-Light.woff2') format('woff2'), /* Modern Browsers */
+  url($fontPath +  'Lato-Light.woff') format('woff'), /* Modern Browsers */
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url($fontPath + 'sourcesanspro-regular-webfont.woff2') format('woff2'); /* Modern Browsers */
+  src: url($fontPath + 'sourcesanspro-regular-webfont.woff') format('woff'); /* Modern Browsers */
+}
+@font-face {
+  font-family: 'SourceSansProBold';
+  src: url($fontPath + 'sourcesanspro-bold-webfont.woff2') format('woff2'), /* Modern Browsers */
+  url($fontPath + 'sourcesanspro-bold-webfont.woff') format('woff'), /* Modern Browsers */
+}
+@font-face {
+  font-family: 'SourceSansProLight';
+  src: url($fontPath +  'sourcesanspro-light-webfont.woff2') format('woff2'), /* Modern Browsers */
+  url($fontPath +  'sourcesanspro-light-webfont.woff') format('woff'), /* Modern Browsers */
+}
+@font-face {
+  font-family: 'SourceSansProSemibold';
+  src: url($fontPath +  'sourcesanspro-semibold-webfont.woff2') format('woff2'), /* Modern Browsers */
+  url($fontPath +  'sourcesanspro-semibold-webfont.woff') format('woff'), /* Modern Browsers */
+}
+/* Filing Icons */
+@font-face {
+  font-family: 'filing-icons';
+  src:
+    url($fontPath + 'filing-icons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mydrp .mydrpicon{
+  font-family: mydaterangepicker !important;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'filing-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-plus-circle:before {
+  content: "\41";
+}
+.icon-vessel:before {
+  content: "\e900";
+}
+.icon-view:before {
+  content: "\e901";
+}
+.icon-export:before {
+  content: "\e902";
+}
+.icon-dropdown:before {
+  content: "\e903";
+}
+.icon-prev:before {
+  content: "\e904";
+}
+.icon-next:before {
+  content: "\e905";
+}
+.icon-warning:before {
+  content: "\e906";
+}
+.icon-add:before {
+  content: "\e907";
+}
+.icon-settings:before {
+  content: "\e908";
+}
+.icon-dashboard:before {
+  content: "\e909";
+}
+.icon-delete:before {
+  content: "\e90a";
+}
+.icon-doc:before {
+  content: "\e90b";
+}
+.icon-cloud-in:before {
+  content: "\e90c";
+}
+.icon-edit:before {
+  content: "\e90d";
+}
+.icon-error:before {
+  content: "\e90e";
+}
+.icon-done:before {
+  content: "\e90f";
+}
+.icon-locked:before {
+  content: "\e910";
+}
+.icon-menu:before {
+  content: "\e911";
+}
+.icon-pipeline:before {
+  content: "\e912";
+}
+.icon-check:before {
+  content: "\e913";
+}
+.icon-search:before {
+  content: "\e914";
+}
+.icon-sorting-descending:before {
+  content: "\e915";
+}
+.icon-import:before {
+  content: "\e916";
+}
+.icon-remove:before {
+  content: "\e917";
+}
+.icon-unlocked:before {
+  content: "\e918";
+}
+.icon-rules:before {
+  content: "\e919";
+}
+.icon-rail:before {
+  content: "\e91a";
+}
+.icon-copy:before {
+  content: "\e91b";
+}
+.icon-truck:before {
+  content: "\e91c";
+}
+.icon-radio_button_checked:before {
+  content: "\e91d";
+}
+.icon-radio_button_unchecked:before {
+  content: "\e91e";
+}
+.icon-table:before {
+  content: "\e91f";
+}
+.icon-clipboard:before {
+  content: "\e920";
+}
+.icon-cloud-out:before {
+  content: "\e921";
+}
+.icon-plus-circle-solid:before {
+  content: "\e922";
+}
+.icon-minus-circle-solid:before {
+  content: "\e923";
+}
+.icon-excel:before {
+  content: "\e924";
+}
+.icon-toggle-on:before {
+  content: "\e925";
+}
+.icon-toggle-off:before {
+  content: "\e926";
+}
+.icon-calendar:before {
+  content: "\e953";
+}
+.icon-user-tie:before {
+  content: "\e976";
+}
+.icon-loop2:before {
+  content: "\ea2e";
+}
+.icon-backward:before {
+  content: "\e927";
+}
+.icon-forward:before {
+  content: "\e928";
+}
+/* End Filing Icons */

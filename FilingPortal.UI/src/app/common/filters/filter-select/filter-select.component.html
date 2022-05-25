@@ -1,0 +1,42 @@
+<ng-select [items]="filter.options"
+           [clearable]="filter.isMultiSelect"
+           [typeahead]="typeahead"
+           [searchable]="filter.search"
+           [selectOnTab]="true"
+           [multiple]="filter.isMultiSelect"
+           [closeOnSelect]="!filter.isMultiSelect"
+           class="form-select"
+           bindLabel="DisplayValue"
+           placeholder="{{getSelectPlaceholder(filter.search)}}"
+           (change)="onChangeSelect(filter)"
+           [(ngModel)]="filter.value"
+           (keydown.delete)="clear()"
+           #slct>
+  <ng-template *ngIf="filter.isMultiSelect"
+               ng-option-tmp
+               let-item="item"
+               let-item$="item$"
+               let-index="index">
+    <div class="with-checkbox" title="{{item.DisplayValue}}">
+      <input id="item-{{index}}"
+             type="checkbox"
+             [ngModel]="item$.selected" />
+      <label for="item-{{index}}"
+             class="datatable-checkbox"
+             (click)="slct.toggleItem(item$)"> </label>
+      {{item.DisplayValue}}
+    </div>
+  </ng-template>
+  <ng-template *ngIf="!filter.isMultiSelect"
+               ng-option-tmp
+               let-item="item">
+    <div title="{{item.DisplayValue}}">
+      {{item.DisplayValue}}
+    </div>
+  </ng-template>
+  <ng-template *ngIf="filter.isMultiSelect"
+               ng-multi-label-tmp
+               let-items="items">
+    <div class="ng-lable-tmp-custom">Items Selected: {{items.length}}</div>
+  </ng-template>
+</ng-select>

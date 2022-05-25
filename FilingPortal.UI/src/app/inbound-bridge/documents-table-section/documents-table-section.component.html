@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Document Type</th>
+      <th class="desc-col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let document of documents">
+      <td><span class="document-name-link" (click)="downloadFile(document)">{{document.name}}</span></td>
+      <td>{{document.type}}</td>
+      <td>{{document.description}}</td>
+    </tr>    
+  </tbody>
+</table>

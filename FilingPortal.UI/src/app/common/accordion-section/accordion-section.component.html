@@ -1,0 +1,11 @@
+<div
+  class="data-container"
+  [ngClass]="{ 'visibility-full': opened, 'visibility-compact': !opened }"
+>
+  <div class="container-header" (click)="toggleSection()">
+    <i class="container-header-icon" [ngClass]="getClass()"></i>{{ title }}
+    <ng-content select=".container-header-additional"></ng-content>
+
+  </div>
+  <div class="container-body"><ng-content></ng-content></div>
+</div>

@@ -1,0 +1,24 @@
+<div class="tree">
+  <div class="tree-content">
+    <div class="tree-nodes" *ngIf="node.children?.length">
+      <div class="tree-node" *ngFor="let childNode of node.children">
+        <lxft-filing-parameters-tree-node
+          [node]="childNode"
+          [filterSettings]="filterSettings"
+          [viewMode]="viewMode"
+          *ngIf="childNode.name !== 'documents'"
+          (onChange)="onNodeChange($event)"
+          (onResize)="onChildSizeChange()"
+        ></lxft-filing-parameters-tree-node>
+        <lxft-filing-parameters-tree-document-tab
+          [node]="childNode"
+          [viewMode]="viewMode"
+          *ngIf="childNode.name === 'documents'"
+          (onChange)="onNodeChange($event)"
+          (onResize)="onChildSizeChange()"
+        >
+        </lxft-filing-parameters-tree-document-tab>
+      </div>
+    </div>
+  </div>
+</div>

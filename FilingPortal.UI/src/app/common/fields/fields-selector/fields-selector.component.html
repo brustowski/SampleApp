@@ -1,0 +1,75 @@
+<div [ngSwitch]="field.type">
+  <lxft-field-float-number *ngSwitchCase="'Number'"
+                           [(value)]="field.value"
+                           [options]="field.options"
+                           [viewMode]="viewMode"
+                           (valueChange)="onChildChange($event)"
+                           (onBlur)="onInputBlur($event)"
+                           lxftDependsOn></lxft-field-float-number>
+  <lxft-field-date *ngSwitchCase="'Date'"
+                   [(value)]="field.value"
+                   [options]="field.options"
+                   [viewMode]="viewMode"
+                   (valueChange)="onChildChange($event)"
+                   (onBlur)="onInputBlur($event)"
+                   lxftDependsOn>
+  </lxft-field-date>
+  <lxft-field-complex *ngSwitchCase="'Complex'"
+                      [field]="field"
+                      [viewMode]="viewMode"
+                      (valueChange)="onChildChange($event)"
+                      (onBlur)="onInputBlur($event)">
+  </lxft-field-complex>
+  <lxft-field-lookup *ngSwitchCase="'Lookup'"
+                     [(value)]="field.value"
+                     [options]="field.options"
+                     [viewMode]="viewMode"
+                     lxftDependsOn
+                     (valueChange)="onChildChange($event)"
+                     (onBlur)="onInputBlur($event)"></lxft-field-lookup>
+  <lxft-field-multiline-text *ngSwitchCase="'MultilineText'"
+                             [(value)]="field.value"
+                             [options]="field.options"
+                             [viewMode]="viewMode"
+                             lxftDependsOn
+                             (valueChange)="onChildChange($event)"
+                             (onBlur)="onInputBlur($event)">
+  </lxft-field-multiline-text>
+  <lxft-field-table *ngSwitchCase="'Table'"
+                    [(value)]="field.value"
+                    [config]="field.additionalFields"
+                    [options]="field.options"
+                    [viewMode]="viewMode"
+                    lxftDependsOn
+                    (valueChange)="onChildChange($event)"
+                    (onBlur)="onInputBlur($event)">
+  </lxft-field-table>
+  <lxft-field-address *ngSwitchCase="'Address'"
+                      [(value)]="field.value"
+                      [options]="field.options"
+                      [viewMode]="viewMode"
+                      lxftDependsOn
+                      (valueChange)="onChildChange($event)"
+                      (onBlur)="onInputBlur($event)">
+  </lxft-field-address>
+  <lxft-field-boolean *ngSwitchCase="'Boolean'"
+                      [(value)]="field.value"
+                      [options]="field.options"
+                      [viewMode]="viewMode"
+                      (valueChange)="onChildChange($event)"
+                      (onBlur)="onInputBlur($event)"></lxft-field-boolean>
+  <lxft-field-confirmation *ngSwitchCase="'Confirmation'"
+                      [(value)]="field.value"
+                      [options]="field.options"
+                      [viewMode]="viewMode"
+                      (valueChange)="onChildChange($event)"
+                      (onBlur)="onInputBlur($event)"></lxft-field-confirmation>
+  <lxft-field-text *ngSwitchDefault=""
+                   [(value)]="field.value"
+                   [options]="field.options"
+                   [viewMode]="viewMode"
+                   lxftDependsOn
+                   (valueChange)="onChildChange($event)"
+                   (onBlur)="onInputBlur($event)">
+  </lxft-field-text>
+</div>

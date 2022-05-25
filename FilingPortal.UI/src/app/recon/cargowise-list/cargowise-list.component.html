@@ -1,0 +1,86 @@
+<lxft-recon-filters-panel [gridName]="paginationOptions.filterConfigName"
+                          (onApply)="setFilters($event)"
+                          (onReset)="setFilters()"
+                          (onReport)="report($event)">
+</lxft-recon-filters-panel>
+<div class="grid-content"
+     *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <lxft-grid-selection-toolbar [selectedRows]="selectedRows"
+                                 (onClear)="clearSelected()"></lxft-grid-selection-toolbar>
+    <div class="right">
+      <lxft-button-file-uploader title="Import ACE report"
+                                 iconClass="icon-export"
+                                 btnClass="btn"
+                                 [disabled]="!(pageAvailableActions?.Import && uploadUrl)"
+                                 [url]="uploadUrl"
+                                 (success)="importAceReport($event)"
+                                 (error)="onUploadError($event)">
+      </lxft-button-file-uploader>
+      <button class="btn"
+              title="Export Result"
+              [disabled]="!pageAvailableActions?.CargowiseExport"
+              (click)="exportRecon()">
+        <span class="icon-excel"></span>
+        Export Result
+      </button>
+      <button class="btn"
+              [disabled]="!pageAvailableActions?.Import"
+              (click)="resetReport()">
+        <span class="icon-loop2"></span>Reset Entries
+      </button>
+      <lxft-column-management-button [columns]="columns"
+                                     (onApply)="updateColumnSettings($event)">
+      </lxft-column-management-button>
+    </div>
+  </div>
+  <ngx-datatable #gridTable
+                 class="material"
+                 [headerHeight]="40"
+                 [footerHeight]="0"
+                 [rowHeight]="40"
+                 [rows]="rows"
+                 [rowClass]="getRowClass"
+                 [columns]="visibleColumns"
+                 [columnMode]="'force'"
+                 [externalPaging]="true"
+                 [externalSorting]="true"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+                 [selected]="selectedRows"
+                 [rowIdentity]="getRowId"
+                 [displayCheck]="canBeChecked"
+                 [selectionType]="'checkbox'"
+                 [selectAllRowsOnPage]="false"
+                 [selectAllEnabled]="selectAllEnabled"
+                 [count]="paginationOptions.rowsOnPage"
+                 [offset]="paginationOptions.pageNumber"
+                 [limit]="paginationOptions.size"
+                 [sorts]="defSortGrid"
+                 (sort)="setSort($event)"
+                 (resize)="onColumnResize($event)"
+                 (select)='onSelect($event)'>
+  </ngx-datatable>
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"></lxft-grid-toolbar>
+  </div>
+</div>
+
+<ng-template #columnTemplate
+             let-row="row"
+             let-value="value"
+             let-column="column">
+  <span [class.red]="highlightCell(row, column)">{{getRequiredValue(row, column)}} {{row[column.prop]}}</span>
+</ng-template>
+<ng-template #notificationIconTmpl
+             let-row="row"
+             let-value="value">
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row)"
+                     [messages]="row.Errors"></lxft-icon-tooltip>
+</ng-template>
+<ng-template #actionsTmpl
+             let-row="row"
+             let-value="value">
+</ng-template>

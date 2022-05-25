@@ -1,0 +1,35 @@
+<div class="toolbar">
+    <div class="toolbar-pager">
+        <div id="dropdown-page-sizes" ngbDropdown>
+            <span>Rows per page:</span>
+            <button type="button" class="btn-dropdown" id="pageSizes" [disabled]="isDisabledDropButton" ngbDropdownToggle>
+                {{pageOptions.size}}
+            </button>
+
+            <ul ngbDropdownMenu aria-labelledby="pageSizes" class="dropdown-menu">
+                <li *ngFor="let size of pageOptions.sizes" (click)="setSize(size)">
+                    <span>{{size}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <lxft-grid-count-results [pageOptions]="pageOptions" class="items-count"></lxft-grid-count-results>
+
+    <nav class="toolbar-nav">
+        <button type="button"
+                id="grid-prev"
+                class="btn-small"
+                [disabled]="isDisabledPrevButton"
+                (click)="previousPage()">
+            <span class="icon-prev"></span>
+        </button>
+
+        <button type="button"
+                class="btn-small"
+                id="grid-next"
+                [disabled]="isDisabledNextButton"
+                (click)="nextPage()">
+            <span class="icon-next"></span>
+        </button>
+    </nav>
+</div>

@@ -1,0 +1,2 @@
+﻿DROP PROCEDURE zones_entry.sp_cw_update_job_hyperlink
+GO

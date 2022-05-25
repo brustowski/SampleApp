@@ -1,0 +1,126 @@
+<div class="page-header">
+  <div class="right">
+    <button class="btn btn-primary"
+            (click)="exportList()">
+      <span class="icon-export"></span>Export to Excel
+    </button>
+  </div>
+  <h1 class="page-title">{{paginationOptions?.title}}</h1>
+</div>
+
+<lxft-filters-panel [gridName]="paginationOptions?.filterConfigName"
+                    (onApply)="setFilters($event)"
+                    (onReset)="setFilters()">
+</lxft-filters-panel>
+
+<div class="grid-content"
+     *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <lxft-grid-selection-toolbar [selectedRows]="selectedRows"
+                                 (onClear)="clearSelected()">
+    </lxft-grid-selection-toolbar>
+    <button class="btn btn-primary"
+            *ngIf="pageAvailableActions['Add']"
+            (click)="add()"><span class="icon-add"></span>Add</button>
+    <button class="btn btn-primary"
+            *ngIf="availableActions?.Edit"
+            (click)="edit()"><span class="icon-edit"></span>Edit</button>
+    <button class="btn btn-primary"
+            *ngIf="availableActions?.View"
+            (click)="view()"><span class="icon-view"></span>View</button>
+    <button class="btn btn-primary"
+            *ngIf="availableActions?.ReviewFile"
+            (click)="createRecords()"><span class="icon-view"></span>Review & File</button>
+    <button class="btn"
+            *ngIf="availableActions?.Delete"
+            (click)="delete()"><span class="icon-delete"></span>Delete</button>
+  </div>
+
+  <ngx-datatable #gridTable
+                 class="material"
+                 [headerHeight]="40"
+                 [footerHeight]="0"
+                 [rowHeight]="40"
+                 [rows]="rows"
+                 [rowClass]="getRowClass"
+                 [columns]="columns"
+                 [columnMode]="'force'"
+                 [reorderable]="true"
+                 [externalPaging]="true"
+                 [externalSorting]="true"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+                 [selected]="selectedRows"
+                 [rowIdentity]="getRowId"
+                 [displayCheck]="canBeChecked"
+                 [selectionType]="'checkbox'"
+                 [selectAllRowsOnPage]="false"
+                 [selectAllEnabled]="selectAllEnabled"
+                 [count]="paginationOptions.rowsOnPage"
+                 [offset]="paginationOptions.pageNumber"
+                 [limit]="paginationOptions.size"
+                 [sorts]="defSortGrid"
+                 (sort)="setSort($event)"
+                 (select)='onSelect($event)'
+                 (resize)="onColumnResize($event)">
+  </ngx-datatable>
+
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"></lxft-grid-toolbar>
+  </div>
+</div>
+
+<ng-template #notificationIconTmpl
+             let-row="row"
+             let-value="value">
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row)"
+                     [messages]="row.Errors"></lxft-icon-tooltip>
+</ng-template>
+<ng-template #statusTmpl
+             let-row="row">
+  <app-colored-label *ngIf="isNotNil(row.MappingStatus)"
+                     [css]="getMappingLabelType(row.MappingStatus)"
+                     [title]="row.MappingStatusTitle">
+  </app-colored-label>
+  <app-colored-label *ngIf="isNotNil(row.FilingStatus)"
+                     [css]="getFilingLabelType(row.FilingStatus)"
+                     [title]="row.FilingStatusTitle">
+  </app-colored-label>
+  <app-colored-label *ngIf="isNotNil(row.EntryStatus)"
+                     [css]="'default'"
+                     [title]="row.EntryStatusDescription"
+                     [value]="row.EntryStatus">
+  </app-colored-label>
+</ng-template>
+<ng-template #actionsTmpl
+             let-row="row"
+             let-value="value">
+     <button class="btn-small btn-primary"
+             [disabled]="!row?.Actions?.ViewInitial"
+             (click)="openInitial(row, true)"
+             title="View record data">
+       <span class="icon-view"></span>
+     </button>
+             <button class="btn-small btn-primary"
+          [disabled]="!row?.Actions?.EditInitial"
+          (click)="openInitial(row)"
+          title="Edit record data">
+    <span class="icon-edit"></span>
+  </button>
+  <button class="btn-small btn-primary"
+          [disabled]="!row?.Actions?.Delete"
+          (click)="delete([row.Id])"
+          title="Delete">
+    <span class="icon-delete"></span>
+  </button>
+</ng-template>
+<ng-template #filingNumberTmpl
+             let-row="row"
+             let-value="value">
+  <a *ngIf="row.JobLink"
+     target="_blank"
+     [href]="sanitize(row.JobLink)">{{value}}</a>
+  <span *ngIf="!row.JobLink">{{value}}</span>
+</ng-template>

@@ -1,0 +1,77 @@
+<div class="tree-node">
+  <ng-container *ngIf="viewMode">
+    <table class="table documents-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Document Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of node.data">
+          <td>
+            <span class="document-name-link" (click)="downloadFile(document)">{{ document.name }}</span>
+          </td>
+          <td>{{ document.type }}</td>
+          <td>{{ document.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="!viewMode">
+    <div class="drag-drop">
+      <div
+        ng2FileDrop
+        [ngClass]="{ 'drop-file-over': hasBaseDropZoneOver }"
+        (fileOver)="fileOverBase($event)"
+        [uploader]="uploader"
+        class="drop-zone"
+      >
+        <div class="drag-drop-title">
+          <span class="icon-cloud-in"></span>
+          Drag&Drop Files - or - <a (click)="fileInput.click()">Browse Files</a>
+        </div>
+        <input type="file" ng2FileSelect [uploader]="uploader" multiple class="hidden" #fileInput />
+      </div>
+      <div class="drop-data" *ngIf="undeletedDocuments.length > 0">
+        <div class="drop-header">
+          <div class="drop-col name">Name</div>
+          <div class="drop-col type">Document Type*</div>
+          <div class="drop-col desc">Description</div>
+          <div class="drop-col action"></div>
+        </div>
+        <div class="drop-row" *ngFor="let doc of undeletedDocuments">
+          <ng-container *ngIf="!doc.id">
+            <div class="drop-col name" title="{{ doc.name }}"><span class="icon-doc"></span>{{ doc.name }}</div>
+            <div class="drop-col type">
+              <lxft-field-lookup class="adjust-auto"
+                                   [value]="doc.type"
+                                   (valueChange)="onTypeChanged($event, doc)"
+                                   [options]="documentTypeSettings"></lxft-field-lookup>
+            </div>
+            <div class="drop-col desc"><input type="text" [(ngModel)]="doc.description" (change)="markAsUpdated(doc)"></div>
+            <div class="drop-col action">
+              <button class="btn-small" (click)="removeDocument(doc)">
+                <span class="icon-delete"></span>
+              </button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="doc.id > 0">
+            <div class="drop-col name" title="{{ doc.name }}" (click)="downloadFile(doc)">
+              <span class="icon-doc"></span>
+              <span class="doc-name">{{ doc.name }}</span>
+            </div>
+            <div class="drop-col type">{{ doc.type }}</div>
+            <div class="drop-col desc" title="{{doc.description ? doc.description : '' }}">{{doc.description ? doc.description : '&nbsp;' }}</div>
+            <div class="drop-col action">
+              <button class="btn-small" (click)="removeDocument(doc)">
+                <span class="icon-delete"></span>
+              </button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

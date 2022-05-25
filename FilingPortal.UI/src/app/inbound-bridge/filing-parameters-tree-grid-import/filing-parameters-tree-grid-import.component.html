@@ -1,0 +1,5 @@
+<div class="right">
+  <button class="btn" (click)="export()">Export</button>
+  <button class="btn" *ngIf="!viewMode" (click)="fileInput.click()">Import</button>
+  <input class="hidden" name="file1" id="file1" type="file" ng2FileSelect [uploader]="uploader" #fileInput/>
+</div>

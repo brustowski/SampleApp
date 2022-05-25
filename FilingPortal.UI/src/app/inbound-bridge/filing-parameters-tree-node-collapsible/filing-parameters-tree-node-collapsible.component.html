@@ -1,0 +1,50 @@
+<lxft-accordion-section [opened]="index == 0"
+                        openedIcon="icon-minus-circle-solid"
+                        minimizedIcon="icon-plus-circle-solid"
+                        title="{{ node.title }} # {{ index + 1 }}"
+                        *ngIf="isNodeVisible(node)"
+                        (onResize)='onChildSizeChange()'>
+  <span class="container-header-additional node-actions"
+        *ngIf="!viewMode"
+        lxftStopClickPropagation>
+    <span class="clickable"
+          title="{{ action.name }}"
+          (click)="add(action.section, action.parentId)"
+          *ngFor="let action of actions"
+          class="node-action">
+      <i class="icon-plus-circle"></i>{{ action.name }}
+    </span>
+    <span class="clickable"
+          title="Delete"
+          (click)="delete(node.name, node.id)"
+          *ngIf="node.actions['Delete']"
+          class="delete node-action">
+      <i class="icon-delete"></i>
+    </span>
+  </span>
+  <lxft-filing-parameters-tree-node-fields [data]="node.data"
+                                           [filterSettings]="filterSettings"
+                                           [viewMode]="viewMode"
+                                           *ngIf="node.data.length > 0"
+                                           (onChange)="onNodeChange($event)"
+                                           (onFieldBlur)="onFieldBlur($event)">
+  </lxft-filing-parameters-tree-node-fields>
+  <lxft-filing-parameters-tree-grid *ngIf="node.displayAsGrid"
+                                    [node]="node"
+                                    [filterSettings]="filterSettings"
+                                    [viewMode]="viewMode"
+                                    (onChange)="onNodeChange($event)"></lxft-filing-parameters-tree-grid>
+  <div class="tree-nodes"
+       *ngIf="!node.displayAsGrid">
+
+    <div class="tree-node"
+         *ngFor="let childNode of node.children; let i = index">
+      <lxft-filing-parameters-tree-node-collapsible [node]="childNode"
+                                                    [filterSettings]="filterSettings"
+                                                    [viewMode]="viewMode"
+                                                    [index]="i"
+                                                    (onChange)="onNodeChange($event)">
+      </lxft-filing-parameters-tree-node-collapsible>
+    </div>
+  </div>
+</lxft-accordion-section>

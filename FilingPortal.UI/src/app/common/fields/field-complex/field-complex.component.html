@@ -1,0 +1,15 @@
+<div class="complex-field"
+     [ngClass]="{short: paired.type === 'Confirmation'}">
+  <div *ngIf="main"
+       lxft-fields-selector
+       [viewMode]="viewMode"
+       [field]="main"
+       (valueChange)="onChildChange($event)"
+       (onBlur)="onInputBlur($event)"></div>
+  <div *ngIf="paired"
+       lxft-fields-selector
+       [viewMode]="viewMode"
+       [field]="paired"
+       (valueChange)="onChildChange($event)"
+       (onBlur)="onInputBlur($event)"></div>
+</div>

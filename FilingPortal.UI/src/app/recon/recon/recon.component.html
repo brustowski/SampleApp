@@ -1,0 +1,11 @@
+<div class="page-header">
+  <div class="right">
+    <lxft-cargowise-list-export *ngIf="isCargowiseExportVisible$ | async"></lxft-cargowise-list-export>
+    <lxft-fta-recon-export-button *ngIf="isFtaExportVisible$ | async"></lxft-fta-recon-export-button>
+    <lxft-value-recon-export-button *ngIf="isValueExportVisible$ | async"></lxft-value-recon-export-button>
+  </div>
+  <h1 class="page-title">{{pageTitle}}</h1>
+</div>
+<lxft-navigation-tabs [navConfig]="navConfig"></lxft-navigation-tabs>
+<router-outlet (activate)='onActivate($event)'
+               (deactivate)='onDeactivate()'></router-outlet>

@@ -1,0 +1,11 @@
+<ng-container>
+  <button class="{{btnClass}}"
+          (click)="fileInput.click()">
+    <span class="{{iconClass}}"></span>{{title}}
+  </button>
+  <input type="file"
+         ng2FileSelect
+         [uploader]="uploader"
+         class="hidden"
+         #fileInput />
+</ng-container>

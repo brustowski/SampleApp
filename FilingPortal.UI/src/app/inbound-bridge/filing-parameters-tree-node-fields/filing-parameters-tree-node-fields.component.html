@@ -1,0 +1,6 @@
+<div class="tree-node-fields">
+  <div class="data-item" [ngClass]='p.options.uiClass' *ngFor="let p of data | filter: filterSettings.searchText:filterSettings.markedForReviewEnabled">
+    <label class="data-item-header" [attr.title]="p.title">{{ p.title }}</label>
+    <div lxft-fields-selector [viewMode]="viewMode" [field]="p" (valueChange)="onFieldChange($event)" (onBlur)="onBlur(p,$event)"></div>
+  </div>
+</div>

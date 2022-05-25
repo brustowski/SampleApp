@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h3 class="modal-title">File Upload Result</h3>
+</div>
+
+<div class="modal-body">
+  <div class="data-container">
+      <div *ngFor="let model of models">
+        Import of data from the <strong>{{model.serverModel.fileName}}</strong> file is completed.
+        Number of imported records: {{model.serverModel.count}}.
+        Number of errors: {{model.errorsCount}} <span *ngIf="model.errorsCount">(<a href="javascript:void(0);" (click)="download(model.serverModel)">errors</a>)</span>
+      </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <div class="popup-btn-set">
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="ok()">Close</button>
+  </div>
+</div>

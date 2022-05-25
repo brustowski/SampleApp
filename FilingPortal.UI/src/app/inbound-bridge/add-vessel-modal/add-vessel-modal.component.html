@@ -1,0 +1,29 @@
+<div class="add-vessel-form">
+  <div class="modal-header">
+    <h3 class="modal-title">
+      <button class="btn-small" [disabled]="index === 0" (click)="index=index-1"><i class="icon-prev"></i></button>
+      <button class="btn-small" [disabled]="index === allConfigs.length - 1" (click)="index=index+1"><i
+          class="icon-next"></i></button>
+      Add Vessel Nomination
+    </h3>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()"><span
+        aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="modal-body">
+    <div class="data-container" *ngIf="config && config.fields">
+      <div *ngFor="let field of config.fields"
+        [ngClass]="{'data-item': true, 'long': field.options.long, 'separator': field.options.separator, 'multiline': field.options.multiline}">
+        <label class="data-item-header" [attr.title]="field.title">{{field.title}}</label>
+        <div lxft-fields-selector [field]="field" (onBlur)="onBlur(field)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="popup-btn-set">
+      <button type="button" class="btn btn-link" (click)="cancel()">Close</button>
+      <button type="button" class="btn btn-primary btn-default" (click)="save(true)">Save</button>
+      <button type="button" class="btn" (click)="save()">Save & Clone</button>
+    </div>
+  </div>
+</div>

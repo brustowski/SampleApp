@@ -1,0 +1,3 @@
+<ul class="nav-tabs" [ngClass]="navClass">
+  <li *ngFor="let tab of tabs" routerLinkActive="active"><a [routerLink]="tab.url" data-toggle="tab">{{tab.title}}</a></li>  
+</ul>

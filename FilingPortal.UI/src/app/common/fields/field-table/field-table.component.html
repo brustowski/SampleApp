@@ -1,0 +1,64 @@
+<div
+  class="grid-content"
+  [ngClass]="{
+    'table-error': options?.validationOn && options?.errors.length > 0
+  }"
+>
+  <ngx-datatable
+    #gridTable
+    class="material"
+    [headerHeight]="40"
+    [footerHeight]="0"
+    [rowHeight]="40"
+    [columns]="columns"
+    [rows]="rows"
+    [columnMode]="'force'"
+    [rowIdentity]="getRowId"
+  >
+  </ngx-datatable>
+
+  <div *ngIf="options?.validationOn">
+    <ul class="error">
+      <li *ngFor="let e of options.errors">{{ e }}</li>
+    </ul>
+  </div>
+</div>
+<ng-template
+  #editableColumnTmpl
+  let-row="row"
+  let-value="value"
+  let-column="column"
+>
+  <div
+    *ngIf="!row.isRemoved"
+    lxft-fields-selector
+    [field]="getConfig(row, column.prop)"
+    [hideBorder]="viewMode"
+    [viewMode]="viewMode"
+    (valueChange)="onValueChange()"
+  ></div>
+</ng-template>
+
+<ng-template #actionsTmpl let-row="row">
+  <button
+    *ngIf="!viewMode"
+    class="btn-small"
+    title="Delete"
+    (click)="remove(row)"
+  >
+    <span class="icon-delete"></span>
+  </button>
+  <button *ngIf="!viewMode" class="btn-small" title="Copy" (click)="copy(row)">
+    <span class="icon-copy"></span>
+  </button>
+</ng-template>
+<ng-template #hdrTpl let-column="column"
+  ><button
+    *ngIf="!viewMode"
+    class="btn-small btn-primary"
+    title="Add new row"
+    (click)="add()"
+  >
+    <span class="icon-add"></span>
+  </button>
+</ng-template>

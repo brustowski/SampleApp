@@ -1,0 +1,7 @@
+<div class="access-container">
+    <form *ngIf="requestModel" class="access-form">
+        <p>{{messageBank[requestModel.mode]}}</p>
+        <textarea maxlength="4000" name="requestInfo" *ngIf="requestModel.mode == 0" [(ngModel)]="requestModel.requestInfo" rows="4" placeholder="Send additional information to Administrator"></textarea>
+        <button *ngIf="requestModel.mode == 0" class="btn" type="button" (click)="SaveUserModel()">Submit</button>
+    </form>
+</div>

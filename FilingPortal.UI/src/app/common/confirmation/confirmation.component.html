@@ -1,0 +1,19 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()"><span aria-hidden="true">&times;</span></button>
+  </div>
+
+  <div class="modal-body">
+    <div class="modal-text" [innerHTML]="modalInfo.text"></div>
+    <div class="modal-additional" [innerHTML]="modalInfo.additionalText" *ngIf="modalInfo.additionalText"></div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="popup-btn-set">
+      <button type="button" class="btn btn-default" data-dismiss="modal"
+              (click)="cancel()"> {{modalInfo.cancelButtonTitle || "Cancel"}}</button>
+      <button type="button" class="btn btn-primary"
+              (click)="ok()">{{modalInfo.okButtonTitle || "Ok"}}</button>
+    </div>
+  </div>
+</div>

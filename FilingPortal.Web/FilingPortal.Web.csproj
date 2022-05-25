@@ -1,0 +1,868 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{52249045-1FF4-45C1-86DA-FC546BE9CF43}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Web</RootNamespace>
+    <AssemblyName>FilingPortal.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.Owin.4.0.1\lib\net45\Autofac.Integration.Mvc.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Owin.4.2.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.Owin.4.0.0\lib\net45\Autofac.Integration.WebApi.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Extensions.Microsoft.DependencyInjection, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.Extensions.Microsoft.DependencyInjection.2.0.1\lib\net451\AutoMapper.Extensions.Microsoft.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.5.2\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.Mvc5.7.5.2\lib\net45\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.WebApi, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.WebApi.7.5.2\lib\net45\FluentValidation.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.DotNet.PlatformAbstractions.1.1.1\lib\net451\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyModel, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyModel.1.1.1\lib\net451\Microsoft.Extensions.DependencyModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.Web.4.5.3\lib\net35\NLog.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Reinforced.Typings, Version=1.5.5.0, Culture=neutral, PublicKeyToken=e17b428d860a38ed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Reinforced.Typings.1.5.5\lib\net45\Reinforced.Typings.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.4\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\FilingPortalApi.xml" />
+    <Content Include="App_Data\Templates\Razor\manifest.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reinforced.Typings.settings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\InheritanceDirectRouteProvider.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\TemplatesProviderService.cs" />
+    <Compile Include="App_Start\ViewEngineConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Common\Grids\Filters\FilterDataProviderRegistry.cs" />
+    <Compile Include="Common\Lookups\ILookupDataProviderRegistry.cs" />
+    <Compile Include="Common\Lookups\LookupDataProviderRegistry.cs" />
+    <Compile Include="Common\Lookups\Providers\AppUserDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\AppUserInfoProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ClientAddressDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ClientContactsPhonesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ClientContactsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\IssuerCodeDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\DischargePortCountryDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\CountryDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\CountryNameDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ContainersDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\HandbookDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\IHandbookDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ImporterLongTitlesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\PipelineFacilitiesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\RailSuppliersFromRuleDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\RailImportersFromRuleDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselExportFormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselFormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TruckExportFormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TruckFormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\PipelineFormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\RailProductDescriptionsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\PipelineBatchCodesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\RailFormConfigurationDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\SupplierLongTitlesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TariffTypeProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\DischargePortDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\InBondDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ExportAdjustmentValueDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselExportTableColumnsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselExportTableNamesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselTableColumnsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselTableNamesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\StatesIdDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\SupplierDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TariffIdDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TruckExportTableColumnsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TruckExportTableNamesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\CountryCodeDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\DestinationDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\OriginDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ImporterCodeDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\FIRMsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\PortDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TariffDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\SupplierCodeDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ValueReconDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\PaymentTypeDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\PipelineTableColumnsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TruckTableColumnsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\RailTableColumnsDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\PipelineTableNamesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\TruckTableNamesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\RailTableNamesDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselIdDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\VesselProductDescriptionDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\OriginIndicatorDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\ConsigneeTypeLookupDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\FreightTypeDataProvider.cs" />
+    <Compile Include="Common\Lookups\Providers\YesNoLookUpDataProvider.cs" />
+    <Compile Include="Common\Grids\GridConfigRegistry.cs" />
+    <Compile Include="Controllers\Admin\AutoFilingGridController.cs" />
+    <Compile Include="Controllers\Audit\Rail\RailAuditDailyAuditSpiRulesController.cs" />
+    <Compile Include="Controllers\Audit\Rail\RailAuditDailyAuditRulesController.cs" />
+    <Compile Include="Controllers\Audit\Rail\RailAuditDailyAuditController.cs" />
+    <Compile Include="Controllers\Audit\Rail\RailAuditTrainConsistSheetImportingController.cs" />
+    <Compile Include="Controllers\Audit\Rail\RailAuditTrainConsistSheetController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\FileTemplateController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineRulePriceController.cs" />
+    <Compile Include="Controllers\Rail\RailFormConfigController.cs" />
+    <Compile Include="Controllers\ImportsController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportDefaultValuesController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportDownloadDocumentsController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportFilingActionsController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportFilingController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportRuleUsppiConsigneeController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportSingleFilingGridController.cs" />
+    <Compile Include="Controllers\VesselExport\VesselExportFormConfigController.cs" />
+    <Compile Include="Controllers\Vessel\VesselDownloadDocumentsController.cs" />
+    <Compile Include="Controllers\Vessel\VesselFilingActionsController.cs" />
+    <Compile Include="Controllers\Vessel\VesselFilingController.cs" />
+    <Compile Include="Controllers\Vessel\VesselSingleFilingGridController.cs" />
+    <Compile Include="Controllers\Vessel\VesselDefaultValuesController.cs" />
+    <Compile Include="FieldConfigurations\Pipeline\PipelineRecordFieldBuilder.cs" />
+    <Compile Include="FieldConfigurations\Rail\RailInboundFormConfigFactory.cs" />
+    <Compile Include="FieldConfigurations\VesselExport\VesselExportFilingConfigurationFactory.cs" />
+    <Compile Include="FieldConfigurations\VesselExport\VesselExportFormConfigFactory.cs" />
+    <Compile Include="FieldConfigurations\Vessel\VesselFilingConfigurationFactory.cs" />
+    <Compile Include="GridConfigurations\Admin\AutoCreateRecordsGridConfig.cs" />
+    <Compile Include="GridConfigurations\Audit\Rail\DailyAuditSpiRulesGridConfig.cs" />
+    <Compile Include="GridConfigurations\Audit\Rail\DailyAuditRulesGridConfig.cs" />
+    <Compile Include="GridConfigurations\Audit\Rail\DailyAuditGridConfig.cs" />
+    <Compile Include="GridConfigurations\Audit\Rail\TrainConsistSheetGridConfig.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\AuditRailTrainConsistSheetStatusDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\UpdatedByUserTruckExportFilterDataProvide.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\ValidationPassedFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\FileUploadMethodFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineRulePriceGridConfig.cs" />
+    <Compile Include="GridConfigurations\VesselExport\VesselExportDefaultValuesGridConfig.cs" />
+    <Compile Include="GridConfigurations\VesselExport\VesselExportGridConfig.cs" />
+    <Compile Include="GridConfigurations\VesselExport\VesselExportRuleUsppiConsigneeGridConfig.cs" />
+    <Compile Include="GridConfigurations\VesselExport\VesselExportSingleFilingGridConfig.cs" />
+    <Compile Include="GridConfigurations\Vessel\SingleFilingGridConfig.cs" />
+    <Compile Include="GridConfigurations\Vessel\VesselDefaultValuesGridConfig.cs" />
+    <Compile Include="Helpers\HttpConfigurationExtensions.cs" />
+    <Compile Include="Mapping\Converters\Int64ToJobStatusConverter.cs" />
+    <Compile Include="Mapping\Converters\LongToEnumConverter.cs" />
+    <Compile Include="Mapping\Converters\LongToJobStatusConverter.cs" />
+    <Compile Include="Mapping\Converters\LongToNullableEnumConverter.cs" />
+    <Compile Include="Mapping\Converters\StringToAddressConverter.cs" />
+    <Compile Include="Models\Admin\AutoCreateRecordEditModel.cs" />
+    <Compile Include="Models\Admin\AutoCreateRecordViewModel.cs" />
+    <Compile Include="Models\Audit\Rail\DailyAuditSpiRuleEditModel.cs" />
+    <Compile Include="Models\Audit\Rail\DailyAuditRuleEditModel.cs" />
+    <Compile Include="Models\Audit\Rail\DailyAuditSpiRuleViewModel.cs" />
+    <Compile Include="Models\Audit\Rail\DailyAuditRuleViewModel.cs" />
+    <Compile Include="Models\Audit\Rail\DailyAuditViewModel.cs" />
+    <Compile Include="Models\Audit\Rail\TrainConsistSheetViewModel.cs" />
+    <Compile Include="Models\LookupItemEditModel.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineRuleConsigneeImporterController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineRuleImporterController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineRuleFacilityController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineRuleBatchCodeController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineInboundFilingController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineFilingController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineInboundUniqueDataController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineDownloadDocumentsController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineInboundConfigurationController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineSingleFilingGridController.cs" />
+    <Compile Include="Controllers\Rail\DownloadDocumentsController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineInboundImportController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineInboundRecordsController.cs" />
+    <Compile Include="Controllers\Rail\RailSingleFilingGridController.cs" />
+    <Compile Include="Controllers\Rail\ManifestController.cs" />
+    <Compile Include="Controllers\LookupDataController.cs" />
+    <Compile Include="Controllers\Rail\RailDefaultValuesController.cs" />
+    <Compile Include="Controllers\Rail\RailRulePortController.cs" />
+    <Compile Include="Controllers\Rail\RailRuleDescriptionController.cs" />
+    <Compile Include="Controllers\Rail\RailRuleImporterSupplierController.cs" />
+    <Compile Include="Controllers\Pipeline\PipelineDefaultValuesController.cs" />
+    <Compile Include="Controllers\ReportExportController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportDownloadDocumentsController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportRuleExporterConsigneeController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportRuleConsigneeController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportDefaultValuesController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportImportController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportFilingController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportSingleFilingGridController.cs" />
+    <Compile Include="Controllers\TruckExport\TruckExportFilingActionsController.cs" />
+    <Compile Include="Controllers\Truck\TruckSingleFilingGridController.cs" />
+    <Compile Include="Controllers\Truck\TruckDownloadDocumentsController.cs" />
+    <Compile Include="Controllers\Truck\TruckFilingController.cs" />
+    <Compile Include="Controllers\Truck\TruckInboundFilingController.cs" />
+    <Compile Include="Controllers\Truck\TruckInboundConfigurationController.cs" />
+    <Compile Include="Controllers\Truck\TruckRulePortController.cs" />
+    <Compile Include="Controllers\Truck\TruckRuleImporterController.cs" />
+    <Compile Include="Controllers\Truck\TruckDefaultValuesController.cs" />
+    <Compile Include="Controllers\Truck\TruckInboundImportController.cs" />
+    <Compile Include="Controllers\Truck\TruckInboundRecordsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\Vessel\VesselFormConfigController.cs" />
+    <Compile Include="Controllers\Vessel\VesselImportRecordsController.cs" />
+    <Compile Include="Controllers\Vessel\VesselRuleProductController.cs" />
+    <Compile Include="Controllers\Vessel\VesselRulePortController.cs" />
+    <Compile Include="Controllers\Vessel\VesselRuleImporterController.cs" />
+    <Compile Include="FieldConfigurations\AgileDropdownFieldRule.cs" />
+    <Compile Include="FieldConfigurations\AgileComplexFieldRule.cs" />
+    <Compile Include="FieldConfigurations\BaseComplexFieldsRule.cs" />
+    <Compile Include="FieldConfigurations\BaseDropdownFieldRule.cs" />
+    <Compile Include="FieldConfigurations\IFieldModelConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\IDropdownFieldRule.cs" />
+    <Compile Include="FieldConfigurations\InboundRecordFieldBuilder.cs" />
+    <Compile Include="FieldConfigurations\Rail\RailManifestFactory.cs" />
+    <Compile Include="FieldConfigurations\IManifestFactory.cs" />
+    <Compile Include="FieldConfigurations\Pipeline\IPipelineInboundFieldFactory.cs" />
+    <Compile Include="FieldConfigurations\Pipeline\IPipelineInboundFiledsConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\Pipeline\PipelineInboundFieldFactory.cs" />
+    <Compile Include="FieldConfigurations\Pipeline\PipelineInboundFiledsConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\Pipeline\PipelineFilingConfigurationFactory.cs" />
+    <Compile Include="FieldConfigurations\Rail\RailFilingConfigurationFactory.cs" />
+    <Compile Include="FieldConfigurations\TruckExport\TruckExportFilingConfigurationFactory.cs" />
+    <Compile Include="FieldConfigurations\Truck\TruckFilingConfigurationFactory.cs" />
+    <Compile Include="FieldConfigurations\Truck\TruckInboundFieldFactory.cs" />
+    <Compile Include="FieldConfigurations\Truck\ITruckInboundFieldFactory.cs" />
+    <Compile Include="FieldConfigurations\Truck\ITruckInboundFieldsConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\Truck\TruckInboundFieldsConfigurationBuilder.cs" />
+    <Compile Include="FieldConfigurations\Vessel\VesselFormConfigFactory.cs" />
+    <Compile Include="GridConfigurations\ClientManagement\ClientsGridConfig.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\RailInboundStatusFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\YesNoTextFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\ClientTypeFilterDataProvider.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\ClientStatusFilterDataProvider.cs" />
+    <Compile Include="Common\NLogExceptionLogger.cs" />
+    <Compile Include="Controllers\AppVersionController.cs" />
+    <Compile Include="Controllers\Rail\FilingController.cs" />
+    <Compile Include="Controllers\FilterDataController.cs" />
+    <Compile Include="Controllers\Rail\InboundRecordConfigurationController.cs" />
+    <Compile Include="Controllers\Rail\InboundRecordsController.cs" />
+    <Compile Include="Controllers\Rail\InboundUniqueDataController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\Rail\FilingProcedureController.cs" />
+    <Compile Include="GridConfigurations\FilterProviders\DocumentTypeDataProvider.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineRuleFacilityGridConfig.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineRuleConsigneeImporterGridConfig.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineSingleFilingGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\InboundRecordsGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\InboundUniqueDataGridConfig.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineInboundRecordsGridConfig.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineRuleImporterGridConfig.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineRuleBatchCodeGridConfig.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineDefaultValuesGridConfig.cs" />
+    <Compile Include="GridConfigurations\Pipeline\PipelineInboundUniqueDataGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\ManifestDataGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\SingleFilingGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\RailRulePortGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\RailDefaultValuesGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\RailRuleDescriptionGridConfig.cs" />
+    <Compile Include="GridConfigurations\Rail\RailRuleImporterSupplierGridConfig.cs" />
+    <Compile Include="GridConfigurations\TruckExport\TruckExportRuleExporterConsigneeGridConfig.cs" />
+    <Compile Include="GridConfigurations\TruckExport\TruckExportRuleConsigneeGridConfig.cs" />
+    <Compile Include="GridConfigurations\TruckExport\TruckExportGridConfig.cs" />
+    <Compile Include="GridConfigurations\TruckExport\TruckExportDefaultValuesGridConfig.cs" />
+    <Compile Include="GridConfigurations\TruckExport\TruckExportSingleFilingGridConfig.cs" />
+    <Compile Include="GridConfigurations\Truck\TruckSingleFilingGridConfig.cs" />
+    <Compile Include="GridConfigurations\Truck\TruckDefaultValuesGridConfig.cs" />
+    <Compile Include="GridConfigurations\Truck\TruckInboundUniqueDataGridConfig.cs" />
+    <Compile Include="GridConfigurations\Truck\TruckRulePortGridConfig.cs" />
+    <Compile Include="GridConfigurations\Truck\TruckRuleImporterGridConfig.cs" />
+    <Compile Include="GridConfigurations\Truck\TruckInboundGridConfig.cs" />
+    <Compile Include="GridConfigurations\Vessel\VesselImportGridConfig.cs" />
+    <Compile Include="GridConfigurations\Vessel\VesselRuleProductGridConfiguration.cs" />
+    <Compile Include="GridConfigurations\Vessel\VesselRulePortGridConfiguration.cs" />
+    <Compile Include="GridConfigurations\Vessel\VesselRuleImporterGridConfiguration.cs" />
+    <Compile Include="Mapping\Converters\ByteToBooleanConverter.cs" />
+    <Compile Include="Mapping\Converters\ConvertersProfile.cs" />
+    <Compile Include="Mapping\Converters\DecimalToStringConverter.cs" />
+    <Compile Include="Mapping\Converters\LongToFilingStatusConverter.cs" />
+    <Compile Include="Mapping\Converters\LongToMappingStatusConverter.cs" />
+    <Compile Include="Mapping\Converters\NullableDecimalToStringConverter.cs" />
+    <Compile Include="Mapping\Converters\StringToGuidConverter.cs" />
+    <Compile Include="Mapping\Converters\StringToNullableByteConverter.cs" />
+    <Compile Include="Mapping\Converters\StringToDecimalConverter.cs" />
+    <Compile Include="Mapping\Converters\StringToNullableDecimalConverter.cs" />
+    <Compile Include="Mapping\Converters\NullableIntToStringConverter.cs" />
+    <Compile Include="Mapping\Converters\StringToNullableGuidConverter.cs" />
+    <Compile Include="Mapping\Converters\StringToNullableIntConverter.cs" />
+    <Compile Include="Mapping\Converters\Int64ToFilingStatusConverter.cs" />
+    <Compile Include="Mapping\Converters\Int64ToMappingStatusConverter.cs" />
+    <Compile Include="Mapping\LocalProfile.cs" />
+    <Compile Include="Mapping\ViewModelToDtoProfile.cs" />
+    <Compile Include="Models\AppSystem\AppUserViewModel.cs" />
+    <Compile Include="Models\AppSystem\RequestInfoViewModel.cs" />
+    <Compile Include="Models\ClientManagement\ClientViewModel.cs" />
+    <Compile Include="Models\DocumentTypeModels\DocumentTypeFilterItem.cs" />
+    <Compile Include="Models\Enums\FilingType.cs" />
+    <Compile Include="Models\FilterSetWithExludedRecordsId.cs" />
+    <Compile Include="Models\Pipeline\PipelineRulePriceEditModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRulePriceViewModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleImporterEditModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleFacilityEditModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleConsigneeImporterEditModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleBatchCodeEditModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleImporterViewModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleFacilityViewModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleConsigneeImporterViewModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineRuleBatchCodeViewModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineInboundUniqueDataViewModel.cs" />
+    <Compile Include="Models\Rail\InboundUniqueDataItemViewModel.cs" />
+    <Compile Include="Models\Pipeline\PipelineViewModel.cs" />
+    <Compile Include="Models\Rail\ManifestModel.cs" />
+    <Compile Include="Models\Rail\RailDefValuesEditModel.cs" />
+    <Compile Include="Models\Rail\RailInboundEditModel.cs" />
+    <Compile Include="Models\Rail\RailRuleDescriptionEditModel.cs" />
+    <Compile Include="Models\Rail\RailRuleDescriptionViewModel.cs" />
+    <Compile Include="Models\Rail\RailRuleFreightComposite.cs" />
+    <Compile Include="Models\Rail\RailRuleImporterSupplierEditModel.cs" />
+    <Compile Include="Models\Rail\RailRuleImporterSupplierViewModel.cs" />
+    <Compile Include="Models\Rail\RailRulePortEditModel.cs" />
+    <Compile Include="Models\Rail\RailRulePortViewModel.cs" />
+    <Compile Include="Models\VesselExport\VesselExportRuleUsppiConsigneeEditModel.cs" />
+    <Compile Include="Models\VesselExport\VesselExportRuleUsppiConsigneeViewModel.cs" />
+    <Compile Include="Models\VesselExport\VesselExportViewModel.cs" />
+    <Compile Include="Models\TruckExport\TruckExportRuleExporterConsigneeEditModel.cs" />
+    <Compile Include="Models\TruckExport\TruckExportRuleConsigneeEditModel.cs" />
+    <Compile Include="Models\TruckExport\TruckExportRuleExporterConsigneeViewModel.cs" />
+    <Compile Include="Models\TruckExport\TruckExportRuleConsigneeViewModel.cs" />
+    <Compile Include="Models\TruckExport\TruckExportViewModel.cs" />
+    <Compile Include="Models\Truck\TruckRulePortEditModel.cs" />
+    <Compile Include="Models\Truck\TruckRuleImporterEditModel.cs" />
+    <Compile Include="Models\Truck\TruckRulePortViewModel.cs" />
+    <Compile Include="Models\Truck\TruckRuleImporterViewModel.cs" />
+    <Compile Include="Models\Truck\TruckInboundUniqueDataViewModel.cs" />
+    <Compile Include="Models\Truck\TruckInboundViewModel.cs" />
+    <Compile Include="Models\VesselExport\VesselExportEditModel.cs" />
+    <Compile Include="Models\Vessel\VesselDefValuesEditModel.cs" />
+    <Compile Include="Models\Vessel\VesselImportEditModel.cs" />
+    <Compile Include="Models\Vessel\VesselImportViewModel.cs" />
+    <Compile Include="Models\Vessel\VesselRuleImporterEditModel.cs" />
+    <Compile Include="Models\Vessel\VesselRulePortEditModel.cs" />
+    <Compile Include="Models\Vessel\VesselRuleProductEditModel.cs" />
+    <Compile Include="Models\Vessel\VesselRuleProductViewModel.cs" />
+    <Compile Include="Models\Vessel\VesselRuleImporterViewModel.cs" />
+    <Compile Include="Models\Vessel\VesselRulePortViewModel.cs" />
+    <Compile Include="PageConfigs\Admin\RecordActions\Configuration.cs" />
+    <Compile Include="PageConfigs\Admin\RecordActions\RuleDeleteRule.cs" />
+    <Compile Include="PageConfigs\Admin\RecordActions\RuleEditRule.cs" />
+    <Compile Include="PageConfigs\Audit\Rail\AuditRailTrainConsistSheetPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Audit\Rail\AuditRailTrainConsistSheetPageImport.cs" />
+    <Compile Include="PageConfigs\Audit\Rail\DailyAuditActionsConfig.cs" />
+    <Compile Include="PageConfigs\Audit\Rail\DailyAuditDeleteRule.cs" />
+    <Compile Include="PageConfigs\Audit\Rail\DailyAuditEditRule.cs" />
+    <Compile Include="PageConfigs\Audit\Rail\DailyAuditPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Audit\Rail\DailyAuditPageAddRule.cs" />
+    <Compile Include="PageConfigs\Common\PageConfigNames.cs" />
+    <Compile Include="PageConfigs\Configuration\DefValuesActionsConfig.cs" />
+    <Compile Include="PageConfigs\Configuration\DefValuesDeleteRule.cs" />
+    <Compile Include="PageConfigs\Configuration\DefValuesEditRule.cs" />
+    <Compile Include="PageConfigs\Configuration\ConfigurationPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Configuration\ConfigurationPageAddRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundDeleteRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineViewPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineViewPageImportTemplateRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineViewPageImportRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineRuleActionsConfig.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineRuleDeleteRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineRuleEditRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineRulesPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineRulesPageAddRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundActionsConfig.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundEditRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundListActionsConfig.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundListEditRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundListReviewFileRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundListCancelRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundListViewRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineInboundSelectRule.cs" />
+    <Compile Include="PageConfigs\Pipeline\PipelineListDeleteRule.cs" />
+    <Compile Include="PageConfigs\Rail\FilteredRailRecordsActionsConfig.cs" />
+    <Compile Include="PageConfigs\Rail\InboundRecordListActionsConfig.cs" />
+    <Compile Include="PageConfigs\Rail\FilteredRailRecordsSelectAllRule.cs" />
+    <Compile Include="PageConfigs\Rail\InboundRecordListEditRule.cs" />
+    <Compile Include="PageConfigs\Rail\InboundRecordListAddNewRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailBdParsedEditInboundRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailBdParsedDeleteRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailBdParsedRestoreRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailListRestoreRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailListDeleteRule.cs" />
+    <Compile Include="PageConfigs\Rail\InboundRecordListSingleFilingRule.cs" />
+    <Compile Include="PageConfigs\Rail\InboundRecordListCancelRule.cs" />
+    <Compile Include="PageConfigs\Rail\InboundRecordListReviewFileRule.cs" />
+    <Compile Include="PageConfigs\Rail\InboundRecordListViewRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailRuleActionsConfig.cs" />
+    <Compile Include="PageConfigs\Common\PageConfigContainer.cs" />
+    <Compile Include="PageConfigs\Rail\RailBdParsedActionsConfig.cs" />
+    <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Mapping\DomainToViewModelProfile.cs" />
+    <Compile Include="Mapping\ViewModelToDomainProfile.cs" />
+    <Compile Include="Models\AppVersionViewModel.cs" />
+    <Compile Include="Models\Rail\InboundRecordItemViewModel.cs" />
+    <Compile Include="PageConfigs\Rail\RailRuleDeleteRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailRuleEditRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailBdParsedViewManifestRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailBdParsedEditRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailBdParsedSelectRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailRulesPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Rail\RailRulesPageAddRule.cs" />
+    <Compile Include="PageConfigs\Rail\RailViewPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportViewRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportViewPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportViewPageImportRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportViewPageImportTemplateRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportRuleDeleteRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportRuleEditRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportRulesPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportRulesPageAddRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportActionsConfig.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportDeleteRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportEditRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportListActionsConfig.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportListCancelRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportListDeleteRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportListEditRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportListReviewFileRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportListViewRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportSelectRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportActionsConfig.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportDeleteRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportRuleActionsConfig.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundDeleteRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportEditRule.cs" />
+    <Compile Include="PageConfigs\TruckExport\TruckExportSelectRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundListDeleteRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckRuleDeleteRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckViewPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Truck\TruckRulesPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Truck\TruckViewPageImportTemplateRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckViewPageImportRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckRulesPageAddRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckRuleActionsConfig.cs" />
+    <Compile Include="PageConfigs\Truck\TruckRuleEditRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundListActionsConfig.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundListEditRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundListReviewFileRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundListCancelRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundListViewRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundActionsConfig.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundEditRule.cs" />
+    <Compile Include="PageConfigs\Truck\TruckInboundSelectRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportEditInboundRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportViewPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportViewPageAddImportRecord.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportRuleActionsConfig.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportRuleDeleteRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportRuleEditRule.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportRulesPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\VesselExport\VesselExportRulesPageAddRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportEditInboundRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselViewPageAddImportRecord.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselViewPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportListActionsConfig.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportListCancelRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportListEditRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportListReviewFileRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportListViewRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportListDeleteRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportDeleteRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportEditRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportSelectRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselImportActionsConfig.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselRuleActionsConfig.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselRuleDeleteRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselRuleEditRule.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselRulesPageActionsConfig.cs" />
+    <Compile Include="PageConfigs\Vessel\VesselRulesPageAddRule.cs" />
+    <Compile Include="Common\Plugins\PluginNameComparer.cs" />
+    <Compile Include="Common\Plugins\PluginsConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App_Start\AutofacContainerFactory.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Validators\Audit\Rail\DailyAuditSpiRuleEditModelValidator.cs" />
+    <Compile Include="Validators\Audit\Rail\DailyAuditRuleEditModelValidator.cs" />
+    <Compile Include="Validators\AutofacValidatorFactory.cs" />
+    <Compile Include="Validators\InboundRecordDocumentEditModelValidator.cs" />
+    <Compile Include="Validators\InboundRecordFileModelValidator.cs" />
+    <Compile Include="Validators\DefValuesEditModelValidator.cs" />
+    <Compile Include="Validators\Pipeline\PipelineRuleImporterEditModelValidator.cs" />
+    <Compile Include="Validators\Pipeline\PipelineRuleConsigneeImporterEditModelValidator.cs" />
+    <Compile Include="Validators\Pipeline\PipelineRuleFacilityEditModelValidator.cs" />
+    <Compile Include="Validators\Rail\RailDefValuesEditModelValidator.cs" />
+    <Compile Include="Validators\Rail\RailRuleDescriptionEditModelValidator.cs" />
+    <Compile Include="Validators\Pipeline\PipelineRuleBatchCodeEditModelValidator.cs" />
+    <Compile Include="Validators\Rail\RailInboundEditModelValidator.cs" />
+    <Compile Include="Validators\TruckExport\TruckExportViewModelValidator.cs" />
+    <Compile Include="Validators\VesselExport\VesselExportRuleUsppiConsigneeEditModelValidator.cs" />
+    <Compile Include="Validators\TruckExport\TruckExportRuleExporterConsigneeEditModelValidator.cs" />
+    <Compile Include="Validators\TruckExport\TruckExportRuleConsigneeEditModelValidator.cs" />
+    <Compile Include="Validators\Truck\TruckRulePortEditModelValidator.cs" />
+    <Compile Include="Validators\Truck\TruckRuleImporterEditModelValidator.cs" />
+    <Compile Include="Validators\Rail\RailRuleImporterSupplierEditModelValidator.cs" />
+    <Compile Include="Validators\Rail\RailRulePortEditModelValidator.cs" />
+    <Compile Include="Validators\VesselExport\VesselExportEditModelValidator.cs" />
+    <Compile Include="Validators\Vessel\VesselDefValuesEditModelValidator.cs" />
+    <Compile Include="Validators\Vessel\VesselImportEditModelValidator.cs" />
+    <Compile Include="Validators\Vessel\VesselRuleImporterEditModelValidator.cs" />
+    <Compile Include="Validators\Vessel\VesselRulePortEditModelValidator.cs" />
+    <Compile Include="Validators\Vessel\VesselRuleProductEditModelValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config" />
+    <Content Include="App_Data\Templates\pipeline_import_template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Templates\truck_import_template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Templates\truck_export_template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Templates\pipeline_rule_price.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Templates\consist_sheet_import_template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Templates\Razor\manifest.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Templates\pipeline_api_calculator_template.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\DEV.pubxml" />
+    <None Include="Properties\PublishProfiles\PROD.pubxml" />
+    <None Include="Properties\PublishProfiles\TST.pubxml" />
+    <None Include="Properties\PublishProfiles\UAT.pubxml" />
+    <None Include="Web.DEV.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.PROD.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.TST.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.UAT.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Cargowise.DataLayer\FilingPortal.Cargowise.DataLayer.csproj">
+      <Project>{90affdf9-3c95-4784-b910-2cd46a003ee0}</Project>
+      <Name>FilingPortal.Cargowise.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Cargowise.Domain\FilingPortal.Cargowise.Domain.csproj">
+      <Project>{0F14E876-6876-410D-B819-8D4912669376}</Project>
+      <Name>FilingPortal.Cargowise.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.DataLayer\FilingPortal.DataLayer.csproj">
+      <Project>{61c9408b-65fc-4358-b2e8-285b06893d22}</Project>
+      <Name>FilingPortal.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Domain\FilingPortal.Domain.csproj">
+      <Project>{C5756CA9-CE4B-4910-9790-F911796D74FF}</Project>
+      <Name>FilingPortal.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Infrastructure\FilingPortal.Infrastructure.csproj">
+      <Project>{b33dc68f-2b27-46b9-9327-9129f3e0ebe6}</Project>
+      <Name>FilingPortal.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.DataLayer\FilingPortal.Parts.Common.DataLayer.csproj">
+      <Project>{04F1A1D6-5F20-4FB1-9CDF-50FD1F2EECC8}</Project>
+      <Name>FilingPortal.Parts.Common.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.PluginEngine\FilingPortal.PluginEngine.csproj">
+      <Project>{f86952f8-6a1a-4a29-8e24-8a5f72f007c3}</Project>
+      <Name>FilingPortal.PluginEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.DataLayer\Framework.DataLayer.csproj">
+      <Project>{40e2f1e2-0f84-4436-9352-d76a6b6a2fc7}</Project>
+      <Name>Framework.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{acfa8188-4733-4142-8a02-53861b9a3e37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>App_Data\FilingPortalApi.xml</DocumentationFile>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TST|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>App_Data\FilingPortalApi.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <Optimize>true</Optimize>
+    <DocumentationFile>App_Data\FilingPortalApi.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>App_Data\FilingPortalApi.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2074</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2074/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+  </PropertyGroup>
+  <Target Name="CustomCollectFiles">
+    <!-- Copy Plagin files -->
+    <ItemGroup>
+      <_PluginFiles Include=".\bin\Plugins\**\*" />
+      <FilesForPackagingFromProject Include="%(_PluginFiles.Identity)">
+        <DestinationRelativePath>bin\Plugins\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <!-- Copy migration files -->
+    <ItemGroup>
+      <_MigrationFiles Include=".\bin\Resources\**\*" />
+      <FilesForPackagingFromProject Include="%(_MigrationFiles.Identity)">
+        <DestinationRelativePath>bin\Resources\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <!-- Copy Template files -->
+    <ItemGroup>
+      <_TemplateFiles Include=".\bin\App_Data\**\*" />
+      <FilesForPackagingFromProject Include="%(_TemplateFiles.Identity)">
+        <DestinationRelativePath>bin\App_Data\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <!-- Copy UI files -->
+    <ItemGroup>
+      <_UIFiles Include="..\FilingPortal.UI\dist\**\*" />
+      <FilesForPackagingFromProject Include="%(_UIFiles.Identity)">
+        <DestinationRelativePath>ui\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+  <Import Project="..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets" Condition="Exists('..\packages\Reinforced.Typings.1.5.5\build\Reinforced.Typings.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h3 class="modal-title">Manifest</h3>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()"><span aria-hidden="true">&times;</span></button>
+  <div *ngIf="manifest?.rawManifest" class="manifest-toggle right" (click)="parsedView = !parsedView">
+    <span class="raw-manifest" [ngClass]="{active: !parsedView}"><i class="icon-menu"></i></span>
+    <span [ngClass]="{active: parsedView}"><i class="icon-table"></i></span>
+  </div>
+</div>
+
+<div *ngIf="parsedView && manifest" class="modal-body ">
+  <div class="data-container manifest-data">
+    <div *ngFor="let field of manifest.fields" [ngClass]="{'data-item': true, 'long': field.options.long, 'separator': field.options.separator, 'multiline': field.options.multiline}">
+      <label class="data-item-header" [attr.title]="field.title">{{field.title}}</label>
+      <div class="data-item-textfield">
+        <div lxftCopyToClipboard [ctcValue]="field.value" class="data-item-readonly show-all-spaces" [attr.title]="field.value">{{field.value}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!parsedView && manifest" class="modal-body">
+  <div class="raw-manifest-data">
+    <p *ngFor="let line of manifest.rawManifest | lineBreak:80">{{line}}</p>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <div class="popup-btn-set">
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cancel()">Close</button>
+  </div>
+</div>

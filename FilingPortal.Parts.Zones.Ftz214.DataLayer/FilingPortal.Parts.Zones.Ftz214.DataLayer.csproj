@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{623ACB82-6F35-4FC3-A93A-72E4EE479AE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Parts.Zones.Ftz214.DataLayer</RootNamespace>
+    <AssemblyName>FilingPortal.Parts.Zones.Ftz214.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Configuration\DefValueConfiguration.cs" />
+    <Compile Include="Configuration\DefValueReadModelConfiguration.cs" />
+    <Compile Include="Configuration\DocumentConfiguration.cs" />
+    <Compile Include="Configuration\FilingHeaderConfiguration.cs" />
+    <Compile Include="Configuration\InboundParsedLineConfiguration.cs" />
+    <Compile Include="Configuration\InboundParsedDataConfiguration.cs" />
+    <Compile Include="Configuration\InboundReadModelConfiguration.cs" />
+    <Compile Include="Configuration\InboundRecordConfiguration.cs" />
+    <Compile Include="Configuration\InboundXmlConfiguration.cs" />
+    <Compile Include="Configuration\SectionConfiguration.cs" />
+    <Compile Include="Configuration\TablesConfiguration.cs" />
+    <Compile Include="Mapping\DtoToDomainProfile.cs" />
+    <Compile Include="Migrations\202102022159502_init.cs" />
+    <Compile Include="Migrations\202102022159502_init.Designer.cs">
+      <DependentUpon>202102022159502_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102031012500_csfp_17_add_inbound_tables.cs" />
+    <Compile Include="Migrations\202102031012500_csfp_17_add_inbound_tables.Designer.cs">
+      <DependentUpon>202102031012500_csfp_17_add_inbound_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103241548269_csfp_31_add_review_and_create_structure.cs" />
+    <Compile Include="Migrations\202103241548269_csfp_31_add_review_and_create_structure.Designer.cs">
+      <DependentUpon>202103241548269_csfp_31_add_review_and_create_structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103311311057_csfp_33_final_configuration_seed.cs" />
+    <Compile Include="Migrations\202103311311057_csfp_33_final_configuration_seed.Designer.cs">
+      <DependentUpon>202103311311057_csfp_33_final_configuration_seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104011555342_csfp_32_change_validation_length.cs" />
+    <Compile Include="Migrations\202104011555342_csfp_32_change_validation_length.Designer.cs">
+      <DependentUpon>202104011555342_csfp_32_change_validation_length.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104061036566_csfp_34_invoice_line_number_not_editable.cs" />
+    <Compile Include="Migrations\202104061036566_csfp_34_invoice_line_number_not_editable.Designer.cs">
+      <DependentUpon>202104061036566_csfp_34_invoice_line_number_not_editable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104071454155_csfp_50_sp_add_packing_removed_join.cs" />
+    <Compile Include="Migrations\202104071454155_csfp_50_sp_add_packing_removed_join.Designer.cs">
+      <DependentUpon>202104071454155_csfp_50_sp_add_packing_removed_join.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104090914060_csfp_56_add_xml_and_status_cols.cs" />
+    <Compile Include="Migrations\202104090914060_csfp_56_add_xml_and_status_cols.Designer.cs">
+      <DependentUpon>202104090914060_csfp_56_add_xml_and_status_cols.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104121017020_csfp_58_add_missing_columns.cs" />
+    <Compile Include="Migrations\202104121017020_csfp_58_add_missing_columns.Designer.cs">
+      <DependentUpon>202104121017020_csfp_58_add_missing_columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151013553_csfp_62_add_proper_mapping_transportmode.cs" />
+    <Compile Include="Migrations\202104151013553_csfp_62_add_proper_mapping_transportmode.Designer.cs">
+      <DependentUpon>202104151013553_csfp_62_add_proper_mapping_transportmode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151024449_csfp_62_add_service_code_to_misc.cs" />
+    <Compile Include="Migrations\202104151024449_csfp_62_add_service_code_to_misc.Designer.cs">
+      <DependentUpon>202104151024449_csfp_62_add_service_code_to_misc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151153195_csfp_62_sp_add_declaration_new_structure.cs" />
+    <Compile Include="Migrations\202104151153195_csfp_62_sp_add_declaration_new_structure.Designer.cs">
+      <DependentUpon>202104151153195_csfp_62_sp_add_declaration_new_structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151206119_csfp_62_packing_sp_structure.cs" />
+    <Compile Include="Migrations\202104151206119_csfp_62_packing_sp_structure.Designer.cs">
+      <DependentUpon>202104151206119_csfp_62_packing_sp_structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151216199_csfp_62_invoiceheader_sp_structure.cs" />
+    <Compile Include="Migrations\202104151216199_csfp_62_invoiceheader_sp_structure.Designer.cs">
+      <DependentUpon>202104151216199_csfp_62_invoiceheader_sp_structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151233236_csfp_62_invoiceline_sp_structure.cs" />
+    <Compile Include="Migrations\202104151233236_csfp_62_invoiceline_sp_structure.Designer.cs">
+      <DependentUpon>202104151233236_csfp_62_invoiceline_sp_structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151249147_csfp_62_misc_sp_structure.cs" />
+    <Compile Include="Migrations\202104151249147_csfp_62_misc_sp_structure.Designer.cs">
+      <DependentUpon>202104151249147_csfp_62_misc_sp_structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160722096_csfp_62_add_default_grossweightunit_invline.cs" />
+    <Compile Include="Migrations\202104160722096_csfp_62_add_default_grossweightunit_invline.Designer.cs">
+      <DependentUpon>202104160722096_csfp_62_add_default_grossweightunit_invline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160730415_csfp_62_remove_grosswunit.cs" />
+    <Compile Include="Migrations\202104160730415_csfp_62_remove_grosswunit.Designer.cs">
+      <DependentUpon>202104160730415_csfp_62_remove_grosswunit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160738238_csfp_62_manufacturer_invline.cs" />
+    <Compile Include="Migrations\202104160738238_csfp_62_manufacturer_invline.Designer.cs">
+      <DependentUpon>202104160738238_csfp_62_manufacturer_invline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160745480_csfp_62_invoice_qty_uq.cs" />
+    <Compile Include="Migrations\202104160745480_csfp_62_invoice_qty_uq.Designer.cs">
+      <DependentUpon>202104160745480_csfp_62_invoice_qty_uq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160802085_csfp_62_packing_manifest_uq_condition.cs" />
+    <Compile Include="Migrations\202104160802085_csfp_62_packing_manifest_uq_condition.Designer.cs">
+      <DependentUpon>202104160802085_csfp_62_packing_manifest_uq_condition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160809227_csfp_62_invoice_no_altercolumn.cs" />
+    <Compile Include="Migrations\202104160809227_csfp_62_invoice_no_altercolumn.Designer.cs">
+      <DependentUpon>202104160809227_csfp_62_invoice_no_altercolumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160814026_csfp_62_invoice_no_fix.cs" />
+    <Compile Include="Migrations\202104160814026_csfp_62_invoice_no_fix.Designer.cs">
+      <DependentUpon>202104160814026_csfp_62_invoice_no_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104211827463_csfp_66_fixed_sp_add_declaration.cs" />
+    <Compile Include="Migrations\202104211827463_csfp_66_fixed_sp_add_declaration.Designer.cs">
+      <DependentUpon>202104211827463_csfp_66_fixed_sp_add_declaration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104211843090_csfp_66_fixed_sp_add_misc.cs" />
+    <Compile Include="Migrations\202104211843090_csfp_66_fixed_sp_add_misc.Designer.cs">
+      <DependentUpon>202104211843090_csfp_66_fixed_sp_add_misc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104220935076_csfp_67_v_inbound_grid_ftzoperatorid.cs" />
+    <Compile Include="Migrations\202104220935076_csfp_67_v_inbound_grid_ftzoperatorid.Designer.cs">
+      <DependentUpon>202104220935076_csfp_67_v_inbound_grid_ftzoperatorid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104200815036_csfp_55_bugfixes_declaration.cs" />
+    <Compile Include="Migrations\202104200815036_csfp_55_bugfixes_declaration.Designer.cs">
+      <DependentUpon>202104200815036_csfp_55_bugfixes_declaration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104200823505_csfp_55_bugfixes_packing.cs" />
+    <Compile Include="Migrations\202104200823505_csfp_55_bugfixes_packing.Designer.cs">
+      <DependentUpon>202104200823505_csfp_55_bugfixes_packing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104200903062_csfp_55_bugfixes_inv_line.cs" />
+    <Compile Include="Migrations\202104200903062_csfp_55_bugfixes_inv_line.Designer.cs">
+      <DependentUpon>202104200903062_csfp_55_bugfixes_inv_line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104210730163_csfp_55_bugfixes_misc_submitterirsno.cs" />
+    <Compile Include="Migrations\202104210730163_csfp_55_bugfixes_misc_submitterirsno.Designer.cs">
+      <DependentUpon>202104210730163_csfp_55_bugfixes_misc_submitterirsno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104210809425_csfp_55_change_inbound_parsed_line_entity_hmf_type.cs" />
+    <Compile Include="Migrations\202104210809425_csfp_55_change_inbound_parsed_line_entity_hmf_type.Designer.cs">
+      <DependentUpon>202104210809425_csfp_55_change_inbound_parsed_line_entity_hmf_type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104221339393_csfp_55_declaration_sp_description_map.cs" />
+    <Compile Include="Migrations\202104221339393_csfp_55_declaration_sp_description_map.Designer.cs">
+      <DependentUpon>202104221339393_csfp_55_declaration_sp_description_map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PluginContextFactory.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PluginDatabaseInit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\DefValuesManualRepository.cs" />
+    <Compile Include="Repositories\DefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\DefValuesRepository.cs" />
+    <Compile Include="Repositories\DocumentsRepository.cs" />
+    <Compile Include="Repositories\FilingHeadersRepository.cs" />
+    <Compile Include="Repositories\ImportXmlRepository.cs" />
+    <Compile Include="Repositories\InboundReadModelRepository.cs" />
+    <Compile Include="Repositories\InboundRecordsRepository.cs" />
+    <Compile Include="Repositories\InboundXmlRepository.cs" />
+    <Compile Include="Repositories\SectionRepository.cs" />
+    <Compile Include="Repositories\TablesRepository.cs" />
+    <Compile Include="Services\DbStructureService.cs" />
+    <Compile Include="UnitOfWorkContext.cs" />
+    <Compile Include="PluginContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Domain\FilingPortal.Domain.csproj">
+      <Project>{C5756CA9-CE4B-4910-9790-F911796D74FF}</Project>
+      <Name>FilingPortal.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.DataLayer\FilingPortal.Parts.Common.DataLayer.csproj">
+      <Project>{04F1A1D6-5F20-4FB1-9CDF-50FD1F2EECC8}</Project>
+      <Name>FilingPortal.Parts.Common.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Zones.Ftz214.Domain\FilingPortal.Parts.Zones.Ftz214.Domain.csproj">
+      <Project>{282B56C4-E582-4381-B8F6-AA9A19275F57}</Project>
+      <Name>FilingPortal.Parts.Zones.Ftz214.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.PluginEngine\FilingPortal.PluginEngine.csproj">
+      <Project>{F86952F8-6A1A-4A29-8E24-8A5F72F007C3}</Project>
+      <Name>FilingPortal.PluginEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.DataLayer\Framework.DataLayer.csproj">
+      <Project>{40e2f1e2-0f84-4436-9352-d76a6b6a2fc7}</Project>
+      <Name>Framework.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202102022159502_init.resx">
+      <DependentUpon>202102022159502_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102031012500_csfp_17_add_inbound_tables.resx">
+      <DependentUpon>202102031012500_csfp_17_add_inbound_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103241548269_csfp_31_add_review_and_create_structure.resx">
+      <DependentUpon>202103241548269_csfp_31_add_review_and_create_structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103311311057_csfp_33_final_configuration_seed.resx">
+      <DependentUpon>202103311311057_csfp_33_final_configuration_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011555342_csfp_32_change_validation_length.resx">
+      <DependentUpon>202104011555342_csfp_32_change_validation_length.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104061036566_csfp_34_invoice_line_number_not_editable.resx">
+      <DependentUpon>202104061036566_csfp_34_invoice_line_number_not_editable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104071454155_csfp_50_sp_add_packing_removed_join.resx">
+      <DependentUpon>202104071454155_csfp_50_sp_add_packing_removed_join.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104090914060_csfp_56_add_xml_and_status_cols.resx">
+      <DependentUpon>202104090914060_csfp_56_add_xml_and_status_cols.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121017020_csfp_58_add_missing_columns.resx">
+      <DependentUpon>202104121017020_csfp_58_add_missing_columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151013553_csfp_62_add_proper_mapping_transportmode.resx">
+      <DependentUpon>202104151013553_csfp_62_add_proper_mapping_transportmode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151024449_csfp_62_add_service_code_to_misc.resx">
+      <DependentUpon>202104151024449_csfp_62_add_service_code_to_misc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151153195_csfp_62_sp_add_declaration_new_structure.resx">
+      <DependentUpon>202104151153195_csfp_62_sp_add_declaration_new_structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151206119_csfp_62_packing_sp_structure.resx">
+      <DependentUpon>202104151206119_csfp_62_packing_sp_structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151216199_csfp_62_invoiceheader_sp_structure.resx">
+      <DependentUpon>202104151216199_csfp_62_invoiceheader_sp_structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151233236_csfp_62_invoiceline_sp_structure.resx">
+      <DependentUpon>202104151233236_csfp_62_invoiceline_sp_structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151249147_csfp_62_misc_sp_structure.resx">
+      <DependentUpon>202104151249147_csfp_62_misc_sp_structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160722096_csfp_62_add_default_grossweightunit_invline.resx">
+      <DependentUpon>202104160722096_csfp_62_add_default_grossweightunit_invline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160730415_csfp_62_remove_grosswunit.resx">
+      <DependentUpon>202104160730415_csfp_62_remove_grosswunit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160738238_csfp_62_manufacturer_invline.resx">
+      <DependentUpon>202104160738238_csfp_62_manufacturer_invline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160745480_csfp_62_invoice_qty_uq.resx">
+      <DependentUpon>202104160745480_csfp_62_invoice_qty_uq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160802085_csfp_62_packing_manifest_uq_condition.resx">
+      <DependentUpon>202104160802085_csfp_62_packing_manifest_uq_condition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160809227_csfp_62_invoice_no_altercolumn.resx">
+      <DependentUpon>202104160809227_csfp_62_invoice_no_altercolumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160814026_csfp_62_invoice_no_fix.resx">
+      <DependentUpon>202104160814026_csfp_62_invoice_no_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104211827463_csfp_66_fixed_sp_add_declaration.resx">
+      <DependentUpon>202104211827463_csfp_66_fixed_sp_add_declaration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104211843090_csfp_66_fixed_sp_add_misc.resx">
+      <DependentUpon>202104211843090_csfp_66_fixed_sp_add_misc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104220935076_csfp_67_v_inbound_grid_ftzoperatorid.resx">
+      <DependentUpon>202104220935076_csfp_67_v_inbound_grid_ftzoperatorid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104200815036_csfp_55_bugfixes_declaration.resx">
+      <DependentUpon>202104200815036_csfp_55_bugfixes_declaration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104200823505_csfp_55_bugfixes_packing.resx">
+      <DependentUpon>202104200823505_csfp_55_bugfixes_packing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104200903062_csfp_55_bugfixes_inv_line.resx">
+      <DependentUpon>202104200903062_csfp_55_bugfixes_inv_line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104210730163_csfp_55_bugfixes_misc_submitterirsno.resx">
+      <DependentUpon>202104210730163_csfp_55_bugfixes_misc_submitterirsno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104210809425_csfp_55_change_inbound_parsed_line_entity_hmf_type.resx">
+      <DependentUpon>202104210809425_csfp_55_change_inbound_parsed_line_entity_hmf_type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104221339393_csfp_55_declaration_sp_description_map.resx">
+      <DependentUpon>202104221339393_csfp_55_declaration_sp_description_map.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Migrations\202102031012500_csfp_17_add_inbound_tables.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202102031012500_csfp_17_add_inbound_tables_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202103241548269_csfp_31_add_review_and_create_structure.sql" />
+    <Content Include="Resources\Migrations\202103241548269_csfp_31_add_review_and_create_structure_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202103311311057_csfp_33_final_configuration_seed.sql" />
+    <Content Include="Resources\Migrations\202104071454155_csfp_50_sp_add_packing_removed_join.sql" />
+    <Content Include="Resources\Migrations\202104090914060_csfp_56_add_xml_and_status_cols.sql" />
+    <Content Include="Resources\Migrations\202104090914060_csfp_56_add_xml_and_status_cols_down.sql" />
+    <Content Include="Resources\Migrations\202104121017020_csfp_58_add_missing_columns.sql" />
+    <Content Include="Resources\Migrations\202104121017020_csfp_58_add_missing_columns_down.sql" />
+    <Content Include="Resources\Migrations\202104151013553_csfp_62_add_proper_mapping_transportmode.sql" />
+    <Content Include="Resources\Migrations\202104151013553_csfp_62_add_proper_mapping_transportmode_down.sql" />
+    <Content Include="Resources\Migrations\202104151024449_csfp_62_add_service_code_to_misc.sql" />
+    <Content Include="Resources\Migrations\202104151024449_csfp_62_add_service_code_to_misc_down.sql" />
+    <Content Include="Resources\Migrations\202104151153195_csfp_62_sp_add_declaration_new_structure.sql" />
+    <Content Include="Resources\Migrations\202104151153195_csfp_62_sp_add_declaration_new_structure_down.sql" />
+    <Content Include="Resources\Migrations\202104151206119_csfp_62_packing_sp_structure_down.sql" />
+    <Content Include="Resources\Migrations\202104151206119_csfp_62_packing_sp_structure.sql" />
+    <Content Include="Resources\Migrations\202104151216199_csfp_62_invoiceheader_sp_structure.sql" />
+    <Content Include="Resources\Migrations\202104151216199_csfp_62_invoiceheader_sp_structure_down.sql" />
+    <Content Include="Resources\Migrations\202104151233236_csfp_62_invoiceline_sp_structure.sql" />
+    <Content Include="Resources\Migrations\202104151233236_csfp_62_invoiceline_sp_structure_down.sql" />
+    <Content Include="Resources\Migrations\202104151249147_csfp_62_misc_sp_structure_down.sql" />
+    <Content Include="Resources\Migrations\202104151249147_csfp_62_misc_sp_structure.sql" />
+    <Content Include="Resources\Migrations\202104160722096_csfp_62_add_default_grossweightunit_invline.sql" />
+    <Content Include="Resources\Migrations\202104160722096_csfp_62_add_default_grossweightunit_invline_down.sql" />
+    <Content Include="Resources\Migrations\202104160730415_csfp_62_remove_grosswunit.sql" />
+    <Content Include="Resources\Migrations\202104160730415_csfp_62_remove_grosswunit_down.sql" />
+    <Content Include="Resources\Migrations\202104160738238_csfp_62_manufacturer_invline_down.sql" />
+    <Content Include="Resources\Migrations\202104160738238_csfp_62_manufacturer_invline.sql" />
+    <Content Include="Resources\Migrations\202104160745480_csfp_62_invoice_qty_uq_down.sql" />
+    <Content Include="Resources\Migrations\202104160745480_csfp_62_invoice_qty_uq.sql" />
+    <Content Include="Resources\Migrations\202104160802085_csfp_62_packing_manifest_uq_condition_down.sql" />
+    <Content Include="Resources\Migrations\202104160802085_csfp_62_packing_manifest_uq_condition.sql" />
+    <Content Include="Resources\Migrations\202104160809227_csfp_62_invoice_no_altercolumn.sql" />
+    <Content Include="Resources\Migrations\202104160814026_csfp_62_invoice_no_fix_down.sql" />
+    <Content Include="Resources\Migrations\202104160814026_csfp_62_invoice_no_fix.sql" />
+    <Content Include="Resources\Migrations\202104200815036_csfp_55_bugfixes_declaration_down.sql" />
+    <Content Include="Resources\Migrations\202104200815036_csfp_55_bugfixes_declaration.sql" />
+    <Content Include="Resources\Migrations\202104200823505_csfp_55_bugfixes_packing_down.sql" />
+    <Content Include="Resources\Migrations\202104200823505_csfp_55_bugfixes_packing.sql" />
+    <Content Include="Resources\Migrations\202104200903062_csfp_55_bugfixes_inv_line_down.sql" />
+    <Content Include="Resources\Migrations\202104200903062_csfp_55_bugfixes_inv_line.sql" />
+    <Content Include="Resources\Migrations\202104210730163_csfp_55_bugfixes_misc_submitterirsno_down.sql" />
+    <Content Include="Resources\Migrations\202104210730163_csfp_55_bugfixes_misc_submitterirsno.sql" />
+    <Content Include="Resources\Migrations\202104211827463_csfp_66_fixed_sp_add_declaration.sql" />
+    <Content Include="Resources\Migrations\202104211827463_csfp_66_fixed_sp_add_declaration_down.sql" />
+    <Content Include="Resources\Migrations\202104211843090_csfp_66_fixed_sp_add_misc.sql" />
+    <Content Include="Resources\Migrations\202104211843090_csfp_66_fixed_sp_add_misc_down.sql" />
+    <Content Include="Resources\Migrations\202104221339393_csfp_55_declaration_sp_description_map_down.sql" />
+    <Content Include="Resources\Migrations\202104221339393_csfp_55_declaration_sp_description_map.sql" />
+    <Content Include="Resources\Migrations\202104220935076_csfp_67_v_inbound_grid_ftzoperatorid_down.sql" />
+    <Content Include="Resources\Migrations\202104220935076_csfp_67_v_inbound_grid_ftzoperatorid.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(ProjectDir)Resources\Migrations" "$(SolutionDir)FilingPortal.Web\bin\Resources\Migrations\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

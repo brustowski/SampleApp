@@ -1,0 +1,21 @@
+<ng-container [ngSwitch]="type">
+  <lxft-field-boolean *ngSwitchCase="'boolean'"
+                      [(value)]="childValue"
+                      [options]="options"></lxft-field-boolean>
+  <lxft-field-number *ngSwitchCase="'integer'"
+                     [(value)]="childValue"
+                     [options]="options"></lxft-field-number>
+  <lxft-field-float-number *ngSwitchCase="'float'"
+                           [(value)]="childValue"
+                           [options]="options"></lxft-field-float-number>
+  <lxft-field-lookup *ngSwitchCase="'lookup'"
+                     lxftDependsOn
+                     [(value)]="childValue"
+                     [options]="options"></lxft-field-lookup>
+  <lxft-field-composite *ngSwitchCase="'composite'"
+                        [(value)]="childValue"
+                        [options]="options"></lxft-field-composite>
+  <lxft-field-text *ngSwitchDefault
+                   [(value)]="childValue"
+                   [options]="options"></lxft-field-text>
+</ng-container>

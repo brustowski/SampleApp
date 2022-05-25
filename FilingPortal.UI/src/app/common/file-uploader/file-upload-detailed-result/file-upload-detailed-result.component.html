@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Upload result</h3>
+</div>
+
+<div class="modal-body">
+  <div class="data-container">
+    <div>
+      Import successful.
+      Imported: {{uploadResult.count}}.
+      Created: {{uploadResult.inserted}}.
+      Updated: {{uploadResult.updated}}.
+      Errors: {{errorsCount}}.
+      <a href="javascript:void(0);"
+         (click)="download()">Download result</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <div class="popup-btn-set">
+    <button type="button"
+            class="btn btn-primary btn-default"
+            data-dismiss="modal"
+            (click)="ok()">Ok</button>
+  </div>
+</div>

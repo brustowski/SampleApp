@@ -1,0 +1,81 @@
+<div class="data-panel"
+     #dataPanel>
+  <div class="search-panel">
+    <span *ngIf="hasMarkedForReviewFields">
+      <input type="checkbox"
+             id="chb_markedForReviewEnabled"
+             [(ngModel)]="filterSettings.markedForReviewEnabled">
+      <label for="chb_markedForReviewEnabled"
+             class="datatable-checkbox"></label>
+      <label for="chb_markedForReviewEnabled"
+             class="checkbox-caption">Show validation fields</label>
+    </span>
+    <span class="search-box">
+    <input type="text"
+           placeholder="Search"
+           [(ngModel)]="filterSettings.searchText" />
+          </span>
+  </div>
+  <div class="tabset"
+       *ngIf="configuration$ | async as configuration">
+    <ngb-tabset (tabChange)='onSizeChange(100)'>
+      <ngb-tab [title]="configuration.manualTabTitle">
+        <ng-template ngbTabContent>
+          <div class="tab-content">
+            <lxft-filing-parameters-tree [node]="configuration.form7501"
+                                         [viewMode]="viewMode"
+                                         [filterSettings]="filterSettings"
+                                         (onChange)="updateGrid()"
+                                         (onResize)="onSizeChange()"></lxft-filing-parameters-tree>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Marks and Remarks"
+               *ngIf="isMarksRemarksVisible">
+        <ng-template ngbTabContent>
+          <div class="tab-content">
+            <lxft-marks-remarks></lxft-marks-remarks>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Documents">
+        <ng-template ngbTabContent>
+          <div class="tab-content">
+            <lxft-filing-parameters-tree [node]="configuration.documents"
+                                         [viewMode]="viewMode"
+                                         (onChange)="updateGrid()"
+                                         (onResize)="onSizeChange()"></lxft-filing-parameters-tree>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Rule Driven Data">
+        <ng-template ngbTabContent>
+          <div class="tab-content">
+            <lxft-filing-parameters-tree [node]="configuration.formRuleDrivenData"
+                                         [viewMode]="viewMode"
+                                         [filterSettings]="filterSettings"
+                                         (onChange)="updateGrid()"
+                                         (onResize)="onSizeChange()"></lxft-filing-parameters-tree>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Manifest Data"
+               *ngIf="isRailManifestVisible">
+        <ng-template ngbTabContent>
+          <div class="tab-content">
+            <lxft-rail-manifest-data [filingHeaderId]="filingHeaderId"></lxft-rail-manifest-data>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Containers"
+               *ngIf="inboundType == InboundType.RailExport">
+        <ng-template ngbTabContent>
+          <div class="tab-content">
+            <lxft-grid-data [filters]="getRailExportContainersFilter()"
+                            [pageConfig]="'containers'"></lxft-grid-data>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

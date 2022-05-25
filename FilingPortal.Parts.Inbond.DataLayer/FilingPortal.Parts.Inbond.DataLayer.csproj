@@ -1,0 +1,1027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EC9B13D9-1887-4182-930B-E12801D8BFAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FilingPortal.Parts.Inbond.DataLayer</RootNamespace>
+    <AssemblyName>FilingPortal.Parts.Inbond.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacModule.cs" />
+    <Compile Include="Configuration\DefValuesConfiguration.cs" />
+    <Compile Include="Configuration\DefValuesReadModelConfiguration.cs" />
+    <Compile Include="Configuration\InbondFilingHeaderConfiguration.cs" />
+    <Compile Include="Configuration\InbondDocumentsConfiguration.cs" />
+    <Compile Include="Configuration\InbondReadModelConfiguration.cs" />
+    <Compile Include="Configuration\MarksRemarksConfiguration.cs" />
+    <Compile Include="Configuration\InBondCarrierConfiguration.cs" />
+    <Compile Include="Configuration\RuleEntryConfiguration.cs" />
+    <Compile Include="Configuration\InbondRecordsConfiguration.cs" />
+    <Compile Include="Configuration\SectionsConfiguration.cs" />
+    <Compile Include="Configuration\TablesConfiguration.cs" />
+    <Compile Include="InbondContextFactory.cs" />
+    <Compile Include="Mapping\DtoToDomainProfile.cs" />
+    <Compile Include="Migrations\201912201039300_initial.cs" />
+    <Compile Include="Migrations\201912201039300_initial.Designer.cs">
+      <DependentUpon>201912201039300_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912201040541_cbdev_2749_add_inbond.cs" />
+    <Compile Include="Migrations\201912201040541_cbdev_2749_add_inbond.Designer.cs">
+      <DependentUpon>201912201040541_cbdev_2749_add_inbond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001151524579_cbdev_2914_hide_deleted_records_from_view.cs" />
+    <Compile Include="Migrations\202001151524579_cbdev_2914_hide_deleted_records_from_view.Designer.cs">
+      <DependentUpon>202001151524579_cbdev_2914_hide_deleted_records_from_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001241112466_cbdev_2940_add_inbond_rules.cs" />
+    <Compile Include="Migrations\202001241112466_cbdev_2940_add_inbond_rules.Designer.cs">
+      <DependentUpon>202001241112466_cbdev_2940_add_inbond_rules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001271444338_cbdev_2943_add_rule_validation.cs" />
+    <Compile Include="Migrations\202001271444338_cbdev_2943_add_rule_validation.Designer.cs">
+      <DependentUpon>202001271444338_cbdev_2943_add_rule_validation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001241447571_cbdev_2953_sync_handbooks.cs" />
+    <Compile Include="Migrations\202001241447571_cbdev_2953_sync_handbooks.Designer.cs">
+      <DependentUpon>202001241447571_cbdev_2953_sync_handbooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001280900230_cbdev_2923_remove_unnecessary_columns.cs" />
+    <Compile Include="Migrations\202001280900230_cbdev_2923_remove_unnecessary_columns.Designer.cs">
+      <DependentUpon>202001280900230_cbdev_2923_remove_unnecessary_columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001281054376_cbdev_2946_add_zones_inbond_resulting_tables.cs" />
+    <Compile Include="Migrations\202001281054376_cbdev_2946_add_zones_inbond_resulting_tables.Designer.cs">
+      <DependentUpon>202001281054376_cbdev_2946_add_zones_inbond_resulting_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001281129210_cbdev_2948_add_configuration_views.cs" />
+    <Compile Include="Migrations\202001281129210_cbdev_2948_add_configuration_views.Designer.cs">
+      <DependentUpon>202001281129210_cbdev_2948_add_configuration_views.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001311226119_cbdev_2949_add_mapping_procedures.cs" />
+    <Compile Include="Migrations\202001311226119_cbdev_2949_add_mapping_procedures.Designer.cs">
+      <DependentUpon>202001311226119_cbdev_2949_add_mapping_procedures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001271331121_cbdev_2930_sync_contexts.cs" />
+    <Compile Include="Migrations\202001271331121_cbdev_2930_sync_contexts.Designer.cs">
+      <DependentUpon>202001271331121_cbdev_2930_sync_contexts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001301511239_cbdev_2926_update_context.cs" />
+    <Compile Include="Migrations\202001301511239_cbdev_2926_update_context.Designer.cs">
+      <DependentUpon>202001301511239_cbdev_2926_update_context.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001311636352_cbdev_2947_resolve_migration_conflicts.cs" />
+    <Compile Include="Migrations\202001311636352_cbdev_2947_resolve_migration_conflicts.Designer.cs">
+      <DependentUpon>202001311636352_cbdev_2947_resolve_migration_conflicts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002031226010_cbdev_2966_audit_changes.cs" />
+    <Compile Include="Migrations\202002031226010_cbdev_2966_audit_changes.Designer.cs">
+      <DependentUpon>202002031226010_cbdev_2966_audit_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002051458560_cbdev_2974_update_zones_columns_mapping.cs" />
+    <Compile Include="Migrations\202002051458560_cbdev_2974_update_zones_columns_mapping.Designer.cs">
+      <DependentUpon>202002051458560_cbdev_2974_update_zones_columns_mapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002061611430_cbdev_2955_pipeline_update.cs" />
+    <Compile Include="Migrations\202002061611430_cbdev_2955_pipeline_update.Designer.cs">
+      <DependentUpon>202002061611430_cbdev_2955_pipeline_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002071229066_cbdev_2978_audit_update.cs" />
+    <Compile Include="Migrations\202002071229066_cbdev_2978_audit_update.Designer.cs">
+      <DependentUpon>202002071229066_cbdev_2978_audit_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002070901377_cbdev_2965_add_marks_remarks_templates.cs" />
+    <Compile Include="Migrations\202002070901377_cbdev_2965_add_marks_remarks_templates.Designer.cs">
+      <DependentUpon>202002070901377_cbdev_2965_add_marks_remarks_templates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002071747043_cbdev_2965_resolve_migration_conflicts.cs" />
+    <Compile Include="Migrations\202002071747043_cbdev_2965_resolve_migration_conflicts.Designer.cs">
+      <DependentUpon>202002071747043_cbdev_2965_resolve_migration_conflicts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002101215228_cbdev_2965_update_form_configuration.cs" />
+    <Compile Include="Migrations\202002101215228_cbdev_2965_update_form_configuration.Designer.cs">
+      <DependentUpon>202002101215228_cbdev_2965_update_form_configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002111525412_cbdev_2982_audit_remove_importer_no_from_rules.cs" />
+    <Compile Include="Migrations\202002111525412_cbdev_2982_audit_remove_importer_no_from_rules.Designer.cs">
+      <DependentUpon>202002111525412_cbdev_2982_audit_remove_importer_no_from_rules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002211129240_cbdev_2988_empty_migration.cs" />
+    <Compile Include="Migrations\202002211129240_cbdev_2988_empty_migration.Designer.cs">
+      <DependentUpon>202002211129240_cbdev_2988_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002260920159_cbdev_2995_update_transport_mode_rule.cs" />
+    <Compile Include="Migrations\202002260920159_cbdev_2995_update_transport_mode_rule.Designer.cs">
+      <DependentUpon>202002260920159_cbdev_2995_update_transport_mode_rule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002261358309_cbdev_2995_add_inbond_carrier_handbooks.cs" />
+    <Compile Include="Migrations\202002261358309_cbdev_2995_add_inbond_carrier_handbooks.Designer.cs">
+      <DependentUpon>202002261358309_cbdev_2995_add_inbond_carrier_handbooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002271302458_cbdev_3011_add_port_of_presentation.cs" />
+    <Compile Include="Migrations\202002271302458_cbdev_3011_add_port_of_presentation.Designer.cs">
+      <DependentUpon>202002271302458_cbdev_3011_add_port_of_presentation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003021507444_cbdev_3001_audit_changes.cs" />
+    <Compile Include="Migrations\202003021507444_cbdev_3001_audit_changes.Designer.cs">
+      <DependentUpon>202003021507444_cbdev_3001_audit_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003031441164_cbdev_3003_audit_importer_rule_columns.cs" />
+    <Compile Include="Migrations\202003031441164_cbdev_3003_audit_importer_rule_columns.Designer.cs">
+      <DependentUpon>202003031441164_cbdev_3003_audit_importer_rule_columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003051352487_cbdev_3032_app_settings_added.cs" />
+    <Compile Include="Migrations\202003051352487_cbdev_3032_app_settings_added.Designer.cs">
+      <DependentUpon>202003051352487_cbdev_3032_app_settings_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003101021194_cbdev_3036_update_inbond_rules.cs" />
+    <Compile Include="Migrations\202003101021194_cbdev_3036_update_inbond_rules.Designer.cs">
+      <DependentUpon>202003101021194_cbdev_3036_update_inbond_rules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003131128526_cbdev_3043_update_mapping.cs" />
+    <Compile Include="Migrations\202003131128526_cbdev_3043_update_mapping.Designer.cs">
+      <DependentUpon>202003131128526_cbdev_3043_update_mapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003191656575_cbdev_3042_add_app_addresses.cs" />
+    <Compile Include="Migrations\202003191656575_cbdev_3042_add_app_addresses.Designer.cs">
+      <DependentUpon>202003191656575_cbdev_3042_add_app_addresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003161525528_cbdev_3045_update_document_view.cs" />
+    <Compile Include="Migrations\202003161525528_cbdev_3045_update_document_view.Designer.cs">
+      <DependentUpon>202003161525528_cbdev_3045_update_document_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003191837379_cbdev_3042_sync_migrations.cs" />
+    <Compile Include="Migrations\202003191837379_cbdev_3042_sync_migrations.Designer.cs">
+      <DependentUpon>202003191837379_cbdev_3042_sync_migrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003251416516_cbdev_3067_audit_changes.cs" />
+    <Compile Include="Migrations\202003251416516_cbdev_3067_audit_changes.Designer.cs">
+      <DependentUpon>202003251416516_cbdev_3067_audit_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003261123380_cbdev_3068_add_app_document.cs" />
+    <Compile Include="Migrations\202003261123380_cbdev_3068_add_app_document.Designer.cs">
+      <DependentUpon>202003261123380_cbdev_3068_add_app_document.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003271911402_cbdev_3048_resolve_migration_conflicts.cs" />
+    <Compile Include="Migrations\202003271911402_cbdev_3048_resolve_migration_conflicts.Designer.cs">
+      <DependentUpon>202003271911402_cbdev_3048_resolve_migration_conflicts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003301501337_cbdev_3077_extend_spi_rule_index.cs" />
+    <Compile Include="Migrations\202003301501337_cbdev_3077_extend_spi_rule_index.Designer.cs">
+      <DependentUpon>202003301501337_cbdev_3077_extend_spi_rule_index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003311239348_cbdev_3080_audit_add_destination_state_to_spi_rule.cs" />
+    <Compile Include="Migrations\202003311239348_cbdev_3080_audit_add_destination_state_to_spi_rule.Designer.cs">
+      <DependentUpon>202003311239348_cbdev_3080_audit_add_destination_state_to_spi_rule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004071058223_cbdev_3088_update_rail_parse_script.cs" />
+    <Compile Include="Migrations\202004071058223_cbdev_3088_update_rail_parse_script.Designer.cs">
+      <DependentUpon>202004071058223_cbdev_3088_update_rail_parse_script.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004061304119_cbdev_3065_address_add_co_name.cs" />
+    <Compile Include="Migrations\202004061304119_cbdev_3065_address_add_co_name.Designer.cs">
+      <DependentUpon>202004061304119_cbdev_3065_address_add_co_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004071150539_cbdev_3088_resolve_migration_conflicts.cs" />
+    <Compile Include="Migrations\202004071150539_cbdev_3088_resolve_migration_conflicts.Designer.cs">
+      <DependentUpon>202004071150539_cbdev_3088_resolve_migration_conflicts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004081136546_cbdev_3092_update_job_link_column.cs" />
+    <Compile Include="Migrations\202004081136546_cbdev_3092_update_job_link_column.Designer.cs">
+      <DependentUpon>202004081136546_cbdev_3092_update_job_link_column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004081558116_cbdev_3090_add_entry_status.cs" />
+    <Compile Include="Migrations\202004081558116_cbdev_3090_add_entry_status.Designer.cs">
+      <DependentUpon>202004081558116_cbdev_3090_add_entry_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004201308261_cbdev_3122_remove_carrier_rule.cs" />
+    <Compile Include="Migrations\202004201308261_cbdev_3122_remove_carrier_rule.Designer.cs">
+      <DependentUpon>202004201308261_cbdev_3122_remove_carrier_rule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004211014269_cbdev_3123_remove_transport_mode_rule.cs" />
+    <Compile Include="Migrations\202004211014269_cbdev_3123_remove_transport_mode_rule.Designer.cs">
+      <DependentUpon>202004211014269_cbdev_3123_remove_transport_mode_rule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004211337008_cbdev_3124_add_consignee_address.cs" />
+    <Compile Include="Migrations\202004211337008_cbdev_3124_add_consignee_address.Designer.cs">
+      <DependentUpon>202004211337008_cbdev_3124_add_consignee_address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004271942589_cbdev_3133_update_field_configuration.cs" />
+    <Compile Include="Migrations\202004271942589_cbdev_3133_update_field_configuration.Designer.cs">
+      <DependentUpon>202004271942589_cbdev_3133_update_field_configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004291651417_cbdev_3134_update_field_configuration.cs" />
+    <Compile Include="Migrations\202004291651417_cbdev_3134_update_field_configuration.Designer.cs">
+      <DependentUpon>202004291651417_cbdev_3134_update_field_configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005070954428_cbdev_3146_make_port_carrier_mandatory.cs" />
+    <Compile Include="Migrations\202005070954428_cbdev_3146_make_port_carrier_mandatory.Designer.cs">
+      <DependentUpon>202005070954428_cbdev_3146_make_port_carrier_mandatory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005080951145_cbdev_3150_set_trip_no_default_value.cs" />
+    <Compile Include="Migrations\202005080951145_cbdev_3150_set_trip_no_default_value.Designer.cs">
+      <DependentUpon>202005080951145_cbdev_3150_set_trip_no_default_value.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005081337328_cbdev_3127_add_confirmation_needed_field.cs" />
+    <Compile Include="Migrations\202005081337328_cbdev_3127_add_confirmation_needed_field.Designer.cs">
+      <DependentUpon>202005081337328_cbdev_3127_add_confirmation_needed_field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005121223527_cbdev_3143_update_inbound_views.cs" />
+    <Compile Include="Migrations\202005121223527_cbdev_3143_update_inbound_views.Designer.cs">
+      <DependentUpon>202005121223527_cbdev_3143_update_inbound_views.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005131110259_cbdev_3140_empty_migration.cs" />
+    <Compile Include="Migrations\202005131110259_cbdev_3140_empty_migration.Designer.cs">
+      <DependentUpon>202005131110259_cbdev_3140_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005151108414_cbdev_3147_empty_migration.cs" />
+    <Compile Include="Migrations\202005151108414_cbdev_3147_empty_migration.Designer.cs">
+      <DependentUpon>202005151108414_cbdev_3147_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005181644319_cbdev_3156_empty_migration.cs" />
+    <Compile Include="Migrations\202005181644319_cbdev_3156_empty_migration.Designer.cs">
+      <DependentUpon>202005181644319_cbdev_3156_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211057338_cbdev_3167_empty.cs" />
+    <Compile Include="Migrations\202005211057338_cbdev_3167_empty.Designer.cs">
+      <DependentUpon>202005211057338_cbdev_3167_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005211103444_cbdev_3173_update_entry_rule.cs" />
+    <Compile Include="Migrations\202005211103444_cbdev_3173_update_entry_rule.Designer.cs">
+      <DependentUpon>202005211103444_cbdev_3173_update_entry_rule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005251917480_cbdev_3175_remove_value_field_from_form_configs.cs" />
+    <Compile Include="Migrations\202005251917480_cbdev_3175_remove_value_field_from_form_configs.Designer.cs">
+      <DependentUpon>202005251917480_cbdev_3175_remove_value_field_from_form_configs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005290902348_cbdev_3183_update_inbond_marks_remarks_values.cs" />
+    <Compile Include="Migrations\202005290902348_cbdev_3183_update_inbond_marks_remarks_values.Designer.cs">
+      <DependentUpon>202005290902348_cbdev_3183_update_inbond_marks_remarks_values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005291023124_cbdev_3187_update_inbond_report_view.cs" />
+    <Compile Include="Migrations\202005291023124_cbdev_3187_update_inbond_report_view.Designer.cs">
+      <DependentUpon>202005291023124_cbdev_3187_update_inbond_report_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006020954547_cbdev_3192_update_inbond_grid_view.cs" />
+    <Compile Include="Migrations\202006020954547_cbdev_3192_update_inbond_grid_view.Designer.cs">
+      <DependentUpon>202006020954547_cbdev_3192_update_inbond_grid_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006100927328_cbdev_3204_add_has_all_rules_to_view.cs" />
+    <Compile Include="Migrations\202006100927328_cbdev_3204_add_has_all_rules_to_view.Designer.cs">
+      <DependentUpon>202006100927328_cbdev_3204_add_has_all_rules_to_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006110324592_cbdev_3202_empty_migration.cs" />
+    <Compile Include="Migrations\202006110324592_cbdev_3202_empty_migration.Designer.cs">
+      <DependentUpon>202006110324592_cbdev_3202_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006171143448_cbdev_2303_empty_migration.cs" />
+    <Compile Include="Migrations\202006171143448_cbdev_2303_empty_migration.Designer.cs">
+      <DependentUpon>202006171143448_cbdev_2303_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006171219509_cbdev_3206_add_admin_section.cs" />
+    <Compile Include="Migrations\202006171219509_cbdev_3206_add_admin_section.Designer.cs">
+      <DependentUpon>202006171219509_cbdev_3206_add_admin_section.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191045027_cbdev_3208_audit_add_supplier_to_spi_rule.cs" />
+    <Compile Include="Migrations\202006191045027_cbdev_3208_audit_add_supplier_to_spi_rule.Designer.cs">
+      <DependentUpon>202006191045027_cbdev_3208_audit_add_supplier_to_spi_rule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006231405599_cbdev_3229_empty_migration.cs" />
+    <Compile Include="Migrations\202006231405599_cbdev_3229_empty_migration.Designer.cs">
+      <DependentUpon>202006231405599_cbdev_3229_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006261231516_cbdev_3236_update_bill_num_generator.cs" />
+    <Compile Include="Migrations\202006261231516_cbdev_3236_update_bill_num_generator.Designer.cs">
+      <DependentUpon>202006261231516_cbdev_3236_update_bill_num_generator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006261129562_cbdev_3231_empty.cs" />
+    <Compile Include="Migrations\202006261129562_cbdev_3231_empty.Designer.cs">
+      <DependentUpon>202006261129562_cbdev_3231_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006261431365_cbdev_3236_empty_migration.cs" />
+    <Compile Include="Migrations\202006261431365_cbdev_3236_empty_migration.Designer.cs">
+      <DependentUpon>202006261431365_cbdev_3236_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007081242145_cbdev_3244_empty.cs" />
+    <Compile Include="Migrations\202007081242145_cbdev_3244_empty.Designer.cs">
+      <DependentUpon>202007081242145_cbdev_3244_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007091204483_cbdev_3248_empty.cs" />
+    <Compile Include="Migrations\202007091204483_cbdev_3248_empty.Designer.cs">
+      <DependentUpon>202007091204483_cbdev_3248_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007101155580_cbdev_3241_empty.cs" />
+    <Compile Include="Migrations\202007101155580_cbdev_3241_empty.Designer.cs">
+      <DependentUpon>202007101155580_cbdev_3241_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007160747413_cbdev_3247_empty.cs" />
+    <Compile Include="Migrations\202007160747413_cbdev_3247_empty.Designer.cs">
+      <DependentUpon>202007160747413_cbdev_3247_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291038121_cbdev_3268_empty_migration.cs" />
+    <Compile Include="Migrations\202007291038121_cbdev_3268_empty_migration.Designer.cs">
+      <DependentUpon>202007291038121_cbdev_3268_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291444173_cbdev_3272_empty.cs" />
+    <Compile Include="Migrations\202007291444173_cbdev_3272_empty.Designer.cs">
+      <DependentUpon>202007291444173_cbdev_3272_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301257362_cbdev_3268_empty_migration_2.cs" />
+    <Compile Include="Migrations\202007301257362_cbdev_3268_empty_migration_2.Designer.cs">
+      <DependentUpon>202007301257362_cbdev_3268_empty_migration_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008041324405_cbdev_3280_empty.cs" />
+    <Compile Include="Migrations\202008041324405_cbdev_3280_empty.Designer.cs">
+      <DependentUpon>202008041324405_cbdev_3280_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061214007_cbdev_3280_empty1.cs" />
+    <Compile Include="Migrations\202008061214007_cbdev_3280_empty1.Designer.cs">
+      <DependentUpon>202008061214007_cbdev_3280_empty1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009031650506_cbdev_3321_empty.cs" />
+    <Compile Include="Migrations\202009031650506_cbdev_3321_empty.Designer.cs">
+      <DependentUpon>202009031650506_cbdev_3321_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009181256129_cbdev_3334_empty_migration.cs" />
+    <Compile Include="Migrations\202009181256129_cbdev_3334_empty_migration.Designer.cs">
+      <DependentUpon>202009181256129_cbdev_3334_empty_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009220313228_cbdev_3318_add_grid_view.cs" />
+    <Compile Include="Migrations\202009220313228_cbdev_3318_add_grid_view.Designer.cs">
+      <DependentUpon>202009220313228_cbdev_3318_add_grid_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009221359492_cbdev_3318_empty.cs" />
+    <Compile Include="Migrations\202009221359492_cbdev_3318_empty.Designer.cs">
+      <DependentUpon>202009221359492_cbdev_3318_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009241321243_cbdev_3335_empty.cs" />
+    <Compile Include="Migrations\202009241321243_cbdev_3335_empty.Designer.cs">
+      <DependentUpon>202009241321243_cbdev_3335_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009281304280_cbdev_3338_empty.cs" />
+    <Compile Include="Migrations\202009281304280_cbdev_3338_empty.Designer.cs">
+      <DependentUpon>202009281304280_cbdev_3338_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010062235314_cbdev_3369_empty.cs" />
+    <Compile Include="Migrations\202010062235314_cbdev_3369_empty.Designer.cs">
+      <DependentUpon>202010062235314_cbdev_3369_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010081259134_cbdev_3380_empty.cs" />
+    <Compile Include="Migrations\202010081259134_cbdev_3380_empty.Designer.cs">
+      <DependentUpon>202010081259134_cbdev_3380_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010121429237_cbdev_3386_empty.cs" />
+    <Compile Include="Migrations\202010121429237_cbdev_3386_empty.Designer.cs">
+      <DependentUpon>202010121429237_cbdev_3386_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010121541323_cbdev_3382_add_processed_flag.cs" />
+    <Compile Include="Migrations\202010121541323_cbdev_3382_add_processed_flag.Designer.cs">
+      <DependentUpon>202010121541323_cbdev_3382_add_processed_flag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010151823566_cbdev_3385_empty.cs" />
+    <Compile Include="Migrations\202010151823566_cbdev_3385_empty.Designer.cs">
+      <DependentUpon>202010151823566_cbdev_3385_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010211042197_cbdev_3418_empty.cs" />
+    <Compile Include="Migrations\202010211042197_cbdev_3418_empty.Designer.cs">
+      <DependentUpon>202010211042197_cbdev_3418_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010212121195_cbdev_3425_add_common_datalayer.cs" />
+    <Compile Include="Migrations\202010212121195_cbdev_3425_add_common_datalayer.Designer.cs">
+      <DependentUpon>202010212121195_cbdev_3425_add_common_datalayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010261231477_cbdev_3425_move_common_tables.cs" />
+    <Compile Include="Migrations\202010261231477_cbdev_3425_move_common_tables.Designer.cs">
+      <DependentUpon>202010261231477_cbdev_3425_move_common_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010301155426_cbdev_3457_empty.cs" />
+    <Compile Include="Migrations\202010301155426_cbdev_3457_empty.Designer.cs">
+      <DependentUpon>202010301155426_cbdev_3457_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011131130169_cbdev_3474_remove_inbond_number_from_mapping.cs" />
+    <Compile Include="Migrations\202011131130169_cbdev_3474_remove_inbond_number_from_mapping.Designer.cs">
+      <DependentUpon>202011131130169_cbdev_3474_remove_inbond_number_from_mapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011191532199_cbdev_3474_ensure_conveyance.cs" />
+    <Compile Include="Migrations\202011191532199_cbdev_3474_ensure_conveyance.Designer.cs">
+      <DependentUpon>202011191532199_cbdev_3474_ensure_conveyance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201450277_cbdev_3474_update_report.cs" />
+    <Compile Include="Migrations\202011201450277_cbdev_3474_update_report.Designer.cs">
+      <DependentUpon>202011201450277_cbdev_3474_update_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PluginDatabaseInit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DefValuesManualReadModelRepository.cs" />
+    <Compile Include="Repositories\DefValuesManualRepository.cs" />
+    <Compile Include="Repositories\DefValuesReadModelRepository.cs" />
+    <Compile Include="Repositories\DefValuesRepository.cs" />
+    <Compile Include="Repositories\DocumentsRepository.cs" />
+    <Compile Include="Repositories\InbondFilingHeadersRepository.cs" />
+    <Compile Include="Repositories\InboundReadModelRepository.cs" />
+    <Compile Include="Repositories\InbondRecordsRepository.cs" />
+    <Compile Include="Repositories\InBondCarrierRepository.cs" />
+    <Compile Include="Repositories\RuleEntryRepository.cs" />
+    <Compile Include="Repositories\SectionRepository.cs" />
+    <Compile Include="Repositories\MarksRemarksRepository.cs" />
+    <Compile Include="Repositories\TablesRepository.cs" />
+    <Compile Include="Services\DbStructureService.cs" />
+    <Compile Include="UnitOfWorkInbondContext.cs" />
+    <Compile Include="InbondContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilingPortal.Cargowise.DataLayer\FilingPortal.Cargowise.DataLayer.csproj">
+      <Project>{90AFFDF9-3C95-4784-B910-2CD46A003EE0}</Project>
+      <Name>FilingPortal.Cargowise.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Cargowise.Domain\FilingPortal.Cargowise.Domain.csproj">
+      <Project>{0F14E876-6876-410D-B819-8D4912669376}</Project>
+      <Name>FilingPortal.Cargowise.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.DataLayer\FilingPortal.Parts.Common.DataLayer.csproj">
+      <Project>{04F1A1D6-5F20-4FB1-9CDF-50FD1F2EECC8}</Project>
+      <Name>FilingPortal.Parts.Common.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Common.Domain\FilingPortal.Parts.Common.Domain.csproj">
+      <Project>{8F6823AE-087D-4C67-ABBB-A1F26D0714BF}</Project>
+      <Name>FilingPortal.Parts.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.Parts.Inbond.Domain\FilingPortal.Parts.Inbond.Domain.csproj">
+      <Project>{25D5C1B7-8413-497A-B388-A2C17379C0C0}</Project>
+      <Name>FilingPortal.Parts.Inbond.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilingPortal.PluginEngine\FilingPortal.PluginEngine.csproj">
+      <Project>{F86952F8-6A1A-4A29-8E24-8A5F72F007C3}</Project>
+      <Name>FilingPortal.PluginEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.DataLayer\Framework.DataLayer.csproj">
+      <Project>{40e2f1e2-0f84-4436-9352-d76a6b6a2fc7}</Project>
+      <Name>Framework.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Domain\Framework.Domain.csproj">
+      <Project>{502E19B9-F26B-4A7A-89C9-E432A6E39036}</Project>
+      <Name>Framework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\Framework.Infrastructure\Framework.Infrastructure.csproj">
+      <Project>{ACFA8188-4733-4142-8A02-53861B9A3E37}</Project>
+      <Name>Framework.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Migrations\202011201450277_cbdev_3474_update_report.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202011191532199_cbdev_3474_ensure_conveyance.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202011131130169_cbdev_3474_remove_inbond_number_from_mapping.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202011131130169_cbdev_3474_remove_inbond_number_from_mapping_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005080951145_cbdev_3150_set_trip_no_default_value.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004291651417_cbdev_3134_update_field_configuration.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004271942589_cbdev_3133_update_field_configuration.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202006261231516_cbdev_3236_update_bill_num_generator.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202006100927328_cbdev_3204_add_has_all_rules_to_view.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202006020954547_cbdev_3192_update_inbond_grid_view.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005291023124_cbdev_3187_update_inbond_report_view.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005290902348_cbdev_3183_update_inbond_marks_remarks_values.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005211103444_cbdev_3173_update_entry_rule.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005121223527_cbdev_3143_update_inbound_views.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005081337328_cbdev_3127_add_confirmation_needed_field.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004211337008_cbdev_3124_add_consignee_address.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004211014269_cbdev_3123_remove_transport_mode_rule.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004201308261_cbdev_3122_remove_carrier_rule.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004081558116_cbdev_3090_add_entry_status.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005080951145_cbdev_3150_set_trip_no_default_value_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004291651417_cbdev_3134_update_field_configuration_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004271942589_cbdev_3133_update_field_configuration_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202006261231516_cbdev_3236_update_bill_num_generator_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202006100927328_cbdev_3204_add_has_all_rules_to_view_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202006020954547_cbdev_3192_update_inbond_grid_view_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005291023124_cbdev_3187_update_inbond_report_view_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005290902348_cbdev_3183_update_inbond_marks_remarks_values_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005211103444_cbdev_3173_update_entry_rule_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005121223527_cbdev_3143_update_inbound_views_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202005081337328_cbdev_3127_add_confirmation_needed_field_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004211337008_cbdev_3124_add_consignee_address_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004211014269_cbdev_3123_remove_transport_mode_rule_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004201308261_cbdev_3122_remove_carrier_rule_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202004081558116_cbdev_3090_add_entry_status_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202003161525528_cbdev_3045_update_document_view.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202003131128526_cbdev_3043_update_mapping.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202003101021194_cbdev_3036_update_inbond_rules.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002271302458_cbdev_3011_add_port_of_presentation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002260920159_cbdev_2995_update_transport_mode_rule.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002101215228_cbdev_2965_update_form_configuration.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202003131128526_cbdev_3043_update_mapping_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202003101021194_cbdev_3036_update_inbond_rules_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002271302458_cbdev_3011_add_port_of_presentation_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002260920159_cbdev_2995_update_transport_mode_rule_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002101215228_cbdev_2965_update_form_configuration_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002070901377_cbdev_2965_add_marks_remarks_templates_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002070901377_cbdev_2965_add_marks_remarks_templates.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002051458560_cbdev_2974_update_zones_columns_mapping.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001311226119_cbdev_2949_add_mapping_procedures.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202002051458560_cbdev_2974_update_zones_columns_mapping_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001311226119_cbdev_2949_add_mapping_procedures_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001281129210_cbdev_2948_add_configuration_views_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001281129210_cbdev_2948_add_configuration_views.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001281054376_cbdev_2946_add_zones_inbond_resulting_tables.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001280900230_cbdev_2923_remove_unnecessary_columns.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001271444338_cbdev_2943_add_rule_validation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001241112466_cbdev_2940_add_inbond_rules.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001151524579_cbdev_2914_hide_deleted_records_from_view.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\201912201040541_cbdev_2749_add_inbond.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001281054376_cbdev_2946_add_zones_inbond_resulting_tables_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001280900230_cbdev_2923_remove_unnecessary_columns_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001271444338_cbdev_2943_add_rule_validation_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001241112466_cbdev_2940_add_inbond_rules_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\202001151524579_cbdev_2914_hide_deleted_records_from_view_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Migrations\201912201040541_cbdev_2749_add_inbond_down.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912201039300_initial.resx">
+      <DependentUpon>201912201039300_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912201040541_cbdev_2749_add_inbond.resx">
+      <DependentUpon>201912201040541_cbdev_2749_add_inbond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001151524579_cbdev_2914_hide_deleted_records_from_view.resx">
+      <DependentUpon>202001151524579_cbdev_2914_hide_deleted_records_from_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001241112466_cbdev_2940_add_inbond_rules.resx">
+      <DependentUpon>202001241112466_cbdev_2940_add_inbond_rules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001271444338_cbdev_2943_add_rule_validation.resx">
+      <DependentUpon>202001271444338_cbdev_2943_add_rule_validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001241447571_cbdev_2953_sync_handbooks.resx">
+      <DependentUpon>202001241447571_cbdev_2953_sync_handbooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001280900230_cbdev_2923_remove_unnecessary_columns.resx">
+      <DependentUpon>202001280900230_cbdev_2923_remove_unnecessary_columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001281054376_cbdev_2946_add_zones_inbond_resulting_tables.resx">
+      <DependentUpon>202001281054376_cbdev_2946_add_zones_inbond_resulting_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001281129210_cbdev_2948_add_configuration_views.resx">
+      <DependentUpon>202001281129210_cbdev_2948_add_configuration_views.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001311226119_cbdev_2949_add_mapping_procedures.resx">
+      <DependentUpon>202001311226119_cbdev_2949_add_mapping_procedures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001271331121_cbdev_2930_sync_contexts.resx">
+      <DependentUpon>202001271331121_cbdev_2930_sync_contexts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001301511239_cbdev_2926_update_context.resx">
+      <DependentUpon>202001301511239_cbdev_2926_update_context.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001311636352_cbdev_2947_resolve_migration_conflicts.resx">
+      <DependentUpon>202001311636352_cbdev_2947_resolve_migration_conflicts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002031226010_cbdev_2966_audit_changes.resx">
+      <DependentUpon>202002031226010_cbdev_2966_audit_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002051458560_cbdev_2974_update_zones_columns_mapping.resx">
+      <DependentUpon>202002051458560_cbdev_2974_update_zones_columns_mapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002061611430_cbdev_2955_pipeline_update.resx">
+      <DependentUpon>202002061611430_cbdev_2955_pipeline_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002071229066_cbdev_2978_audit_update.resx">
+      <DependentUpon>202002071229066_cbdev_2978_audit_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002070901377_cbdev_2965_add_marks_remarks_templates.resx">
+      <DependentUpon>202002070901377_cbdev_2965_add_marks_remarks_templates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002071747043_cbdev_2965_resolve_migration_conflicts.resx">
+      <DependentUpon>202002071747043_cbdev_2965_resolve_migration_conflicts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002101215228_cbdev_2965_update_form_configuration.resx">
+      <DependentUpon>202002101215228_cbdev_2965_update_form_configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002111525412_cbdev_2982_audit_remove_importer_no_from_rules.resx">
+      <DependentUpon>202002111525412_cbdev_2982_audit_remove_importer_no_from_rules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002211129240_cbdev_2988_empty_migration.resx">
+      <DependentUpon>202002211129240_cbdev_2988_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002260920159_cbdev_2995_update_transport_mode_rule.resx">
+      <DependentUpon>202002260920159_cbdev_2995_update_transport_mode_rule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261358309_cbdev_2995_add_inbond_carrier_handbooks.resx">
+      <DependentUpon>202002261358309_cbdev_2995_add_inbond_carrier_handbooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002271302458_cbdev_3011_add_port_of_presentation.resx">
+      <DependentUpon>202002271302458_cbdev_3011_add_port_of_presentation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003021507444_cbdev_3001_audit_changes.resx">
+      <DependentUpon>202003021507444_cbdev_3001_audit_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003031441164_cbdev_3003_audit_importer_rule_columns.resx">
+      <DependentUpon>202003031441164_cbdev_3003_audit_importer_rule_columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003051352487_cbdev_3032_app_settings_added.resx">
+      <DependentUpon>202003051352487_cbdev_3032_app_settings_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003101021194_cbdev_3036_update_inbond_rules.resx">
+      <DependentUpon>202003101021194_cbdev_3036_update_inbond_rules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003131128526_cbdev_3043_update_mapping.resx">
+      <DependentUpon>202003131128526_cbdev_3043_update_mapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003191656575_cbdev_3042_add_app_addresses.resx">
+      <DependentUpon>202003191656575_cbdev_3042_add_app_addresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003161525528_cbdev_3045_update_document_view.resx">
+      <DependentUpon>202003161525528_cbdev_3045_update_document_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003191837379_cbdev_3042_sync_migrations.resx">
+      <DependentUpon>202003191837379_cbdev_3042_sync_migrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003251416516_cbdev_3067_audit_changes.resx">
+      <DependentUpon>202003251416516_cbdev_3067_audit_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003261123380_cbdev_3068_add_app_document.resx">
+      <DependentUpon>202003261123380_cbdev_3068_add_app_document.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003271911402_cbdev_3048_resolve_migration_conflicts.resx">
+      <DependentUpon>202003271911402_cbdev_3048_resolve_migration_conflicts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301501337_cbdev_3077_extend_spi_rule_index.resx">
+      <DependentUpon>202003301501337_cbdev_3077_extend_spi_rule_index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003311239348_cbdev_3080_audit_add_destination_state_to_spi_rule.resx">
+      <DependentUpon>202003311239348_cbdev_3080_audit_add_destination_state_to_spi_rule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004071058223_cbdev_3088_update_rail_parse_script.resx">
+      <DependentUpon>202004071058223_cbdev_3088_update_rail_parse_script.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004061304119_cbdev_3065_address_add_co_name.resx">
+      <DependentUpon>202004061304119_cbdev_3065_address_add_co_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004071150539_cbdev_3088_resolve_migration_conflicts.resx">
+      <DependentUpon>202004071150539_cbdev_3088_resolve_migration_conflicts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081136546_cbdev_3092_update_job_link_column.resx">
+      <DependentUpon>202004081136546_cbdev_3092_update_job_link_column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081558116_cbdev_3090_add_entry_status.resx">
+      <DependentUpon>202004081558116_cbdev_3090_add_entry_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201308261_cbdev_3122_remove_carrier_rule.resx">
+      <DependentUpon>202004201308261_cbdev_3122_remove_carrier_rule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004211014269_cbdev_3123_remove_transport_mode_rule.resx">
+      <DependentUpon>202004211014269_cbdev_3123_remove_transport_mode_rule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004211337008_cbdev_3124_add_consignee_address.resx">
+      <DependentUpon>202004211337008_cbdev_3124_add_consignee_address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004271942589_cbdev_3133_update_field_configuration.resx">
+      <DependentUpon>202004271942589_cbdev_3133_update_field_configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004291651417_cbdev_3134_update_field_configuration.resx">
+      <DependentUpon>202004291651417_cbdev_3134_update_field_configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005070954428_cbdev_3146_make_port_carrier_mandatory.resx">
+      <DependentUpon>202005070954428_cbdev_3146_make_port_carrier_mandatory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005080951145_cbdev_3150_set_trip_no_default_value.resx">
+      <DependentUpon>202005080951145_cbdev_3150_set_trip_no_default_value.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005081337328_cbdev_3127_add_confirmation_needed_field.resx">
+      <DependentUpon>202005081337328_cbdev_3127_add_confirmation_needed_field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005121223527_cbdev_3143_update_inbound_views.resx">
+      <DependentUpon>202005121223527_cbdev_3143_update_inbound_views.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005131110259_cbdev_3140_empty_migration.resx">
+      <DependentUpon>202005131110259_cbdev_3140_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005151108414_cbdev_3147_empty_migration.resx">
+      <DependentUpon>202005151108414_cbdev_3147_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005181644319_cbdev_3156_empty_migration.resx">
+      <DependentUpon>202005181644319_cbdev_3156_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211057338_cbdev_3167_empty.resx">
+      <DependentUpon>202005211057338_cbdev_3167_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211103444_cbdev_3173_update_entry_rule.resx">
+      <DependentUpon>202005211103444_cbdev_3173_update_entry_rule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251917480_cbdev_3175_remove_value_field_from_form_configs.resx">
+      <DependentUpon>202005251917480_cbdev_3175_remove_value_field_from_form_configs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005290902348_cbdev_3183_update_inbond_marks_remarks_values.resx">
+      <DependentUpon>202005290902348_cbdev_3183_update_inbond_marks_remarks_values.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005291023124_cbdev_3187_update_inbond_report_view.resx">
+      <DependentUpon>202005291023124_cbdev_3187_update_inbond_report_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006020954547_cbdev_3192_update_inbond_grid_view.resx">
+      <DependentUpon>202006020954547_cbdev_3192_update_inbond_grid_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006100927328_cbdev_3204_add_has_all_rules_to_view.resx">
+      <DependentUpon>202006100927328_cbdev_3204_add_has_all_rules_to_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006110324592_cbdev_3202_empty_migration.resx">
+      <DependentUpon>202006110324592_cbdev_3202_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006171143448_cbdev_2303_empty_migration.resx">
+      <DependentUpon>202006171143448_cbdev_2303_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006171219509_cbdev_3206_add_admin_section.resx">
+      <DependentUpon>202006171219509_cbdev_3206_add_admin_section.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191045027_cbdev_3208_audit_add_supplier_to_spi_rule.resx">
+      <DependentUpon>202006191045027_cbdev_3208_audit_add_supplier_to_spi_rule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006231405599_cbdev_3229_empty_migration.resx">
+      <DependentUpon>202006231405599_cbdev_3229_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006261231516_cbdev_3236_update_bill_num_generator.resx">
+      <DependentUpon>202006261231516_cbdev_3236_update_bill_num_generator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006261129562_cbdev_3231_empty.resx">
+      <DependentUpon>202006261129562_cbdev_3231_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006261431365_cbdev_3236_empty_migration.resx">
+      <DependentUpon>202006261431365_cbdev_3236_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007081242145_cbdev_3244_empty.resx">
+      <DependentUpon>202007081242145_cbdev_3244_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007091204483_cbdev_3248_empty.resx">
+      <DependentUpon>202007091204483_cbdev_3248_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007101155580_cbdev_3241_empty.resx">
+      <DependentUpon>202007101155580_cbdev_3241_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007160747413_cbdev_3247_empty.resx">
+      <DependentUpon>202007160747413_cbdev_3247_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291038121_cbdev_3268_empty_migration.resx">
+      <DependentUpon>202007291038121_cbdev_3268_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291444173_cbdev_3272_empty.resx">
+      <DependentUpon>202007291444173_cbdev_3272_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301257362_cbdev_3268_empty_migration_2.resx">
+      <DependentUpon>202007301257362_cbdev_3268_empty_migration_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008041324405_cbdev_3280_empty.resx">
+      <DependentUpon>202008041324405_cbdev_3280_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061214007_cbdev_3280_empty1.resx">
+      <DependentUpon>202008061214007_cbdev_3280_empty1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009031650506_cbdev_3321_empty.resx">
+      <DependentUpon>202009031650506_cbdev_3321_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009181256129_cbdev_3334_empty_migration.resx">
+      <DependentUpon>202009181256129_cbdev_3334_empty_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009220313228_cbdev_3318_add_grid_view.resx">
+      <DependentUpon>202009220313228_cbdev_3318_add_grid_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009221359492_cbdev_3318_empty.resx">
+      <DependentUpon>202009221359492_cbdev_3318_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009241321243_cbdev_3335_empty.resx">
+      <DependentUpon>202009241321243_cbdev_3335_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009281304280_cbdev_3338_empty.resx">
+      <DependentUpon>202009281304280_cbdev_3338_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010062235314_cbdev_3369_empty.resx">
+      <DependentUpon>202010062235314_cbdev_3369_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010081259134_cbdev_3380_empty.resx">
+      <DependentUpon>202010081259134_cbdev_3380_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010121429237_cbdev_3386_empty.resx">
+      <DependentUpon>202010121429237_cbdev_3386_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010121541323_cbdev_3382_add_processed_flag.resx">
+      <DependentUpon>202010121541323_cbdev_3382_add_processed_flag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010151823566_cbdev_3385_empty.resx">
+      <DependentUpon>202010151823566_cbdev_3385_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010211042197_cbdev_3418_empty.resx">
+      <DependentUpon>202010211042197_cbdev_3418_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010212121195_cbdev_3425_add_common_datalayer.resx">
+      <DependentUpon>202010212121195_cbdev_3425_add_common_datalayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261231477_cbdev_3425_move_common_tables.resx">
+      <DependentUpon>202010261231477_cbdev_3425_move_common_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301155426_cbdev_3457_empty.resx">
+      <DependentUpon>202010301155426_cbdev_3457_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011131130169_cbdev_3474_remove_inbond_number_from_mapping.resx">
+      <DependentUpon>202011131130169_cbdev_3474_remove_inbond_number_from_mapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011191532199_cbdev_3474_ensure_conveyance.resx">
+      <DependentUpon>202011191532199_cbdev_3474_ensure_conveyance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201450277_cbdev_3474_update_report.resx">
+      <DependentUpon>202011201450277_cbdev_3474_update_report.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo F|xcopy /y "$(ProjectDir)Resources\Migrations" "$(SolutionDir)FilingPortal.Web\bin\Resources\Migrations"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

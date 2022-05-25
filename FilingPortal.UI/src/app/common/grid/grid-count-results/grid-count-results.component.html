@@ -1,0 +1,8 @@
+<span class="items-count" id="grid-count" *ngIf="pageOptions.isMatchLoading || pageOptions.filteredRows>0">
+    <span *ngIf="!pageOptions.isMatchLoading">{{getFromItem()}} - {{getToItem()}} of</span>
+    <span *ngIf="!pageOptions.isMatchLoading">{{pageOptions.filteredRows}}</span>
+
+</span>
+<span class="items-count" id="grid-count-empty" *ngIf="!pageOptions.isMatchLoading&&pageOptions.filteredRows===0">
+    0 Records Found
+</span>

@@ -1,0 +1,73 @@
+<div class="grid-content without-header" *ngIf="!isLoadingFirst">
+  <ngx-datatable
+    #gridTable
+    class="material grid-custom"
+    [headerHeight]="40"
+    [rowHeight]="40"
+    [rows]="rows"
+    [rowClass]="getRowClass"
+    [selected]="selectedRows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [externalPaging]="true"
+    [externalSorting]="true"
+    [scrollbarH]="false"
+    [rowIdentity]="getRowId"
+    [count]="paginationOptions.rowsOnPage"
+    [offset]="paginationOptions.pageNumber"
+    [limit]="paginationOptions.size"
+    [sorts]="defSortGrid"
+    [selectionType]="'single'"
+    (sort)="setSort($event)"
+    (select)="onSelect($event)"
+  >
+    <ngx-datatable-row-detail [rowHeight]="600" #myDetailRow>
+      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+        <lxft-expandable-grid-detailed-row [filingHeaderId]="getRowId(row)" [isConsolidated]="row.IsConsolidated"></lxft-expandable-grid-detailed-row>
+      </ng-template>
+    </ngx-datatable-row-detail>
+  </ngx-datatable>
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar
+      [pageOptions]="paginationOptions"
+      (setPageNumber)="setPageNumber($event)"
+      (setPageSize)="setPageSize($event)"
+    ></lxft-grid-toolbar>
+  </div>
+</div>
+
+<ng-template #notificationIconTmpl let-row="row" let-value="value">
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row)" [messages]="getErrorsFor(row)"></lxft-icon-tooltip>
+</ng-template>
+
+<ng-template #docsTmpl let-row="row" let-value="value">
+  <span class="icon-export"></span>
+  {{ value }}
+</ng-template>
+
+<ng-template #radioTmpl let-expanded="expanded">
+  <button class="btn-small btn-primary icon-details-cell clickable" [ngClass]="{ expanded: expanded }"></button>
+</ng-template>
+
+<ng-template #confirmationTmpl let-viewMode="viewMode" let-row="row">
+  <button class="btn-small confirmation-button"
+          [ngClass]="{'icon-toggle-off': !row.Confirmed, 'icon-toggle-on': row.Confirmed}"
+          (click)="onConfirm($event, row)"
+          [disabled]="viewMode"
+          [title]="row.ConfirmationMessage"></button>
+</ng-template>
+
+<ng-template #confirmationHeaderTmpl let-viewMode="viewMode">
+  <button class="btn-small confirmation-button"
+          [ngClass]="{'icon-toggle-off': !confirmed, 'icon-toggle-on': confirmed}"
+          (click)="onConfirmAll(!confirmed)"
+          [disabled]="viewMode"
+          title="Confirm all"></button>
+</ng-template>
+
+<ng-template #excludeTmpl let-viewMode="viewMode" let-row="row">
+  <button class="btn-small icon-delete"
+          (click)="exclude($event, row)"
+          [disabled]="viewMode"
+          title="Exclude record from creation"></button>
+</ng-template>

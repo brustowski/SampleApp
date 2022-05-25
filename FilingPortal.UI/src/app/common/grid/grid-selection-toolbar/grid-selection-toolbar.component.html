@@ -1,0 +1,10 @@
+<div class="grid-caption">
+  <h2 class="title">Records</h2>
+  <span>
+    <span *ngIf="selectedRows?.length > 0">{{selectedRows.length}} records
+      {{selectAllEnabled ? "deselected" : "selected"}}</span>
+    <button class="btn-small" (click)="clearSelected()" *ngIf="selectedRows?.length > 0">
+      <span class="icon-remove"></span>
+    </button>
+  </span>
+</div>

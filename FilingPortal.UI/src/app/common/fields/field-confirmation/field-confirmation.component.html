@@ -1,0 +1,7 @@
+<div>
+  <button class="btn-small confirmation-button"
+          [ngClass]="{'icon-toggle-off': !value, 'icon-toggle-on': value}"
+          [disabled]="options.isDisabled || viewMode"
+          (click)="onChange()"
+          title="Confirmation switch"></button>
+</div>

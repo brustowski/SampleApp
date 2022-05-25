@@ -1,0 +1,9 @@
+<div class="complex-field"
+     *ngIf='value'>
+  <div *ngFor="let option of options?.options">
+    <lxft-column-field-selector [value]="value[option.name]"
+                                (valueChange)="setValue(option.name, $event)"
+                                [options]="option"
+                                [type]="option.type"></lxft-column-field-selector>
+  </div>
+</div>

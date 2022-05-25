@@ -1,0 +1,182 @@
+<div class="page-header">
+  <div class="right">
+    <div
+      class="btn-group-dropdown"
+      *ngIf="pageAvailableActions?.Import"
+      ngbDropdown
+      container="body"
+    >
+      <button class="btn btn-primary" ngbDropdownToggle>
+        <span class="icon-import"></span>Import
+      </button>
+      <div class="dropdown-menu btn-group-dropdown-menu" ngbDropdownMenu>
+        <lxft-button-file-uploader
+          ngbDropdownItem
+          title="From XML"
+          btnClass="btn btn-primary dropdown-item"
+          [url]="importXmlUrl"
+          (success)="onUploadSuccess($event)"
+          (error)="onUploadError($event)"
+        >
+        </lxft-button-file-uploader>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="exportList()">
+      <span class="icon-export"></span>Export to Excel
+    </button>
+  </div>
+  <h1 class="page-title">{{ paginationOptions?.title }}</h1>
+</div>
+
+<lxft-filters-panel
+  [gridName]="paginationOptions?.filterConfigName"
+  (onApply)="setFilters($event)"
+  (onReset)="setFilters()"
+>
+</lxft-filters-panel>
+
+<div class="grid-content" *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <lxft-grid-selection-toolbar
+      [selectedRows]="selectedRows"
+      (onClear)="clearSelected()"
+    >
+    </lxft-grid-selection-toolbar>
+    <button class="btn btn-primary" (click)="createRecords()">
+      <span class="icon-view"></span>Review & Create
+    </button>
+    <button class="btn" (click)="validateRecords()" title="Click to validate 'validation failed' entries">
+      <span class="icon-check"></span>Validate All
+    </button>
+    <button class="btn" (click)="delete()">
+      <span class="icon-delete"></span>Delete
+    </button>
+  </div>
+
+  <ngx-datatable
+    #gridTable
+    class="material"
+    [headerHeight]="40"
+    [footerHeight]="0"
+    [rowHeight]="40"
+    [rows]="rows"
+    [rowClass]="getRowClass"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [reorderable]="true"
+    [externalPaging]="true"
+    [externalSorting]="true"
+    [scrollbarH]="true"
+    [scrollbarV]="true"
+    [selected]="selectedRows"
+    [rowIdentity]="getRowId"
+    [displayCheck]="canBeChecked"
+    [selectionType]="'checkbox'"
+    [selectAllRowsOnPage]="false"
+    [selectAllEnabled]="true"
+    [count]="paginationOptions.rowsOnPage"
+    [offset]="paginationOptions.pageNumber"
+    [limit]="paginationOptions.size"
+    [sorts]="defSortGrid"
+    (sort)="setSort($event)"
+    (select)="onSelect($event)"
+  >
+  </ngx-datatable>
+
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar
+      [pageOptions]="paginationOptions"
+      (setPageNumber)="setPageNumber($event)"
+      (setPageSize)="setPageSize($event)"
+    ></lxft-grid-toolbar>
+  </div>
+</div>
+
+<ng-template #notificationIconTmpl let-row="row" let-value="value">
+  <lxft-icon-tooltip
+    [iconType]="getIconTypeFor(row)"
+    [messages]="row.Errors"
+  ></lxft-icon-tooltip>
+</ng-template>
+<ng-template #statusTmpl let-row="row">
+  <app-colored-label
+    *ngIf="isNotNil(row.JobStatus)"
+    [css]="getJobLabelType(row.JobStatus)"
+    [title]="row.JobStatusTitle"
+    [value]="row.JobStatusCode"
+  >
+  </app-colored-label>
+  <app-colored-label
+    *ngIf="isNotNil(row.EntryStatus)"
+    [css]="'default'"
+    [title]="row.EntryStatusDescription"
+    [value]="row.EntryStatus"
+  >
+  </app-colored-label>
+</ng-template>
+<ng-template #actionsTmpl let-row="row" let-value="value">
+  <button
+    class="btn-small btn-primary"
+    [disabled]="!row?.Actions?.View"
+    (click)="view([row.FilingHeaderId])"
+    title="View"
+  >
+    <span class="icon-view"></span>
+  </button>
+  <button
+    class="btn-small btn-primary"
+    [disabled]="!row?.Actions?.Edit"
+    (click)="createRecords([row.Id])"
+    title="Review & Create"
+  >
+    <span class="icon-edit"></span>
+  </button>
+  <button
+    class="btn-small btn-primary"
+    [disabled]="!row?.Actions?.Delete"
+    (click)="delete([row.Id])"
+    title="Delete"
+  >
+    <span class="icon-delete"></span>
+  </button>
+  <button
+    class="btn-small btn-primary"
+    [disabled]="!row?.Actions?.Download"
+    (click)="downloadXml(row)"
+    title="Download XML"
+  >
+    <span class="icon-export"></span>
+  </button>
+</ng-template>
+<ng-template #filingNumberTmpl let-row="row" let-value="value">
+  <a *ngIf="row.JobLink" target="_blank" [href]="sanitize(row.JobLink)">{{
+    value
+  }}</a>
+  <span *ngIf="!row.JobLink">{{ value }}</span>
+</ng-template>
+
+<ng-template #applicantSelectionTemplate let-row="row" let-value="value">
+  <span *ngIf="!(pageAvailableActions?.Import && row.AvailableApplicantOptions)">{{value}}</span>
+  <div class="importer-selector" *ngIf="pageAvailableActions?.Import && row.AvailableApplicantOptions">
+    <lxft-field-lookup
+      [(value)]="value"
+      [options]="row.AvailableApplicantOptions"
+    ></lxft-field-lookup>
+    <button class="btn-small" (click)="saveSelectedImporter(row, value)">
+      <span class="icon-check"></span>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #ftzOperatorSelectionTemplate let-row="row" let-value="value">
+  <span *ngIf="!(pageAvailableActions?.Import && row.AvailableFtzOperatorsOptions)">{{value}}</span>
+  <div class="importer-selector" *ngIf="pageAvailableActions?.Import && row.AvailableFtzOperatorsOptions">
+    <lxft-field-lookup
+      [(value)]="value"
+      [options]="row.AvailableFtzOperatorsOptions"
+    ></lxft-field-lookup>
+    <button class="btn-small" (click)="saveSelectedFtzOperator(row, value)">
+      <span class="icon-check"></span>
+    </button>
+  </div>
+</ng-template>

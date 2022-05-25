@@ -1,0 +1,51 @@
+<lxft-filters-panel [gridName]="paginationOptions.filterConfigName"
+                    (onApply)="setFilters($event)"
+                    (onReset)="setFilters()">
+</lxft-filters-panel>
+<div class="grid-content"
+     *ngIf="!isLoadingFirst">
+  <div class="grid-header">
+    <div class="grid-caption">
+      <h2 class="title">Imported records</h2>
+    </div>
+    <ng-container *ngIf="availableActions['Import']">
+      <input type="file"
+             ng2FileSelect
+             [uploader]="uploader"
+             class="hidden"
+             #fileInput />
+    </ng-container>
+    <button class="btn btn-primary"
+            (click)="verify()">Verify</button>
+    <button class="btn"
+            (click)="clear()">Clear</button>
+  </div>
+  <ngx-datatable #gridTable
+                 class="material"
+                 [headerHeight]="40"
+                 [footerHeight]="0"
+                 [rowHeight]="40"
+                 [rows]="rows"
+                 [columns]="columns"
+                 [columnMode]="'force'"
+                 [externalPaging]="true"
+                 [externalSorting]="true"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+                 [count]="paginationOptions.rowsOnPage"
+                 [offset]="paginationOptions.pageNumber"
+                 [limit]="paginationOptions.size"
+                 [sorts]="defSortGrid"
+                 [rowClass]="getRowClass"
+                 (sort)="setSort($event, !isEdit)"
+                 (resize)="onColumnResize($event)">
+  </ngx-datatable>
+  <div class="toolbar-nav-section">
+    <lxft-grid-toolbar [pageOptions]="paginationOptions"
+                       (setPageNumber)="setPageNumber($event)"
+                       (setPageSize)="setPageSize($event)"></lxft-grid-toolbar>
+  </div>
+</div>
+<ng-template #notificationIconTmpl let-row="row" let-value="value">
+  <lxft-icon-tooltip [iconType]="getIconTypeFor(row)" [messages]="row.Errors"></lxft-icon-tooltip>
+</ng-template>

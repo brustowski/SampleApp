@@ -1,0 +1,22 @@
+<div class="grid-content without-header">
+  <ngx-datatable
+    #gridTable
+    class="material grid-custom"
+    [headerHeight]="40"
+    [rowHeight]="40"
+    [rows]="rows"
+    [selected]="selectedRows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [externalPaging]="true"
+    [externalSorting]="true"
+    [scrollbarH]="true"
+    [rowIdentity]="getRowId"
+    [count]="paginationOptions.rowsOnPage"
+    [offset]="paginationOptions.pageNumber"
+    [limit]="paginationOptions.size"
+    [sorts]="defSortGrid"
+    [selectionType]="'single'"
+  >
+  </ngx-datatable>
+</div>

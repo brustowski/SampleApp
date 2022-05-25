@@ -1,0 +1,18 @@
+<div class="btn-group-dropdown"
+     ngbDropdown
+     placement="bottom-right"
+     container="body">
+  <button class="btn"
+          ngbDropdownToggle>
+    <span class="icon-excel"></span> Export
+  </button>
+  <div ngbDropdownMenu>
+    <button *ngFor='let report of reports'
+            ngbDropdownItem
+            class="btn"
+            title="{{report.title}}"
+            (click)="exportList(report.name)">
+      {{report.title}}
+    </button>
+  </div>
+</div>
